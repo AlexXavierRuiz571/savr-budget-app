@@ -1,0 +1,15 @@
+@import url("../blocks/header.css");
+@import url("../blocks/form.css");
+@import url("../blocks/summary.css");
+@import url("../blocks/expenses.css");
+@import url("../blocks/footer.css");
+@import url("../blocks/budget-input.css");
+
+
+body {
+  background-color: #0a0a0a; /* black base */
+  color: #c0c0c0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+}

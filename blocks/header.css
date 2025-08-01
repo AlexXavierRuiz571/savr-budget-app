@@ -1,0 +1,18 @@
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 6px;
+}
+
+.header__title {
+  font-size: 32px;
+  color: #800000;
+  margin-bottom: 6px;
+}
+
+.header__subtitle {
+  font-size: 14px;
+  color: #c0c0c0;
+}

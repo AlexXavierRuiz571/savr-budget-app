@@ -1,0 +1,69 @@
+.budget-input {
+  background-color: #1e1e1e;
+  padding: 24px;
+  border-radius: 6px;
+  margin-bottom: 40px;
+}
+
+.budget-input__title {
+  color: #800000;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.budget-input__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.budget-input__label {
+  color: #c0c0c0;
+  font-size: 14px;
+}
+
+.budget-input__input {
+  padding: 10px;
+  border: 1px solid #444;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.budget-input__button {
+  padding: 10px;
+  background-color: #800000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.budget-input__button:hover {
+  background-color: #a10000;
+}
+
+.budget-input__summary {
+  background-color: #111;
+  padding: 16px;
+  border-radius: 4px;
+  margin-top: 24px;
+  border: 1px solid #333;
+}
+
+.budget-input__summary-item {
+  color: #c0c0c0;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.budget-input__summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.budget-input__summary-item--negative {
+  color: #d9534f;
+}
