@@ -1,6 +1,6 @@
-# 💸 Savr: Budget Simulation App
+# 💸 Savr: Budget Tracker App
 
-**Savr** is a responsive budget simulation app built from scratch as a cumulative project alongside my learning in the **TripleTen Software Engineering program**. This project brings together everything I've learned so far — from semantic HTML and modular CSS to clean, event-driven JavaScript — and demonstrates real-world front-end practices.
+**Savr** is a responsive budget tracking app built from scratch as a cumulative project alongside my learning in the **TripleTen Software Engineering program**. This project brings together everything I've learned so far — from semantic HTML and modular CSS to clean, event-driven JavaScript — and demonstrates real-world front-end practices.
 
 ---
 

@@ -14,11 +14,47 @@
   margin-bottom: 20px;
 }
 
-/*------------ Form Inputs & Selects ------------*/
+/*------------ Select Dropdown ------------*/
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  padding: 10px 12px;
+  padding-right: 36px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #c0c0c0;
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border 0.2s ease;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23c0c0c0' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 6px;
+}
+
+/*------------ Remove Number Input Arrows ------------*/
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/*------------ Form Inputs ------------*/
 
 input[type="text"],
-input[type="number"],
-select {
+input[type="number"] {
   width: 100%;
   padding: 10px 12px;
   background-color: #1a1a1a;

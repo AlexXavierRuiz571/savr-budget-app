@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SavR</title>
+    <title>Savr: Budget Tracker</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap"
       rel="stylesheet"
@@ -42,17 +42,21 @@
             </button>
           </form>
           <div class="budget-input__summary">
-            <p class="budget-input__summary-item">
-              <strong>Total Income:</strong> $<span id="total-income">0</span>
-            </p>
-            <p class="budget-input__summary-item">
-              <strong>Total Expenses:</strong> $<span id="total-expenses"
-                >0</span
-              >
-            </p>
-            <p class="budget-input__summary-item">
-              <strong>Remaining:</strong> $<span id="remaining-budget">0</span>
-            </p>
+            <div class="budget-input__summary-item">
+              <span class="label">Total Income:</span>
+              <span class="currency">$</span>
+              <span class="value" id="total-income">0.00</span>
+            </div>
+            <div class="budget-input__summary-item">
+              <span class="label">Total Expenses:</span>
+              <span class="currency">$</span>
+              <span class="value" id="total-expenses">0.00</span>
+            </div>
+            <div class="budget-input__summary-item">
+              <span class="label">Remaining:</span>
+              <span class="currency">$</span>
+              <span class="value" id="remaining-budget">0.00</span>
+            </div>
           </div>
         </section>
 

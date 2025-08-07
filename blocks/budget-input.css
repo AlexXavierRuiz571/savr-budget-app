@@ -9,6 +9,7 @@
   color: #800000;
   font-size: 24px;
   margin-bottom: 16px;
+  font-family: 'Orbitron', Arial, Helvetica, sans-serif;
 }
 
 .budget-input__form {
@@ -58,12 +59,28 @@
 
 .budget-input__summary-item {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
-  padding-bottom: 4px;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #e0e0e0;
   border-bottom: 1px solid #333;
 }
 
+.budget-input__summary-item .label {
+  flex: 1;
+}
+
+.budget-input__summary-item .currency {
+  width: 20px;
+  text-align: right;
+  margin-right: 4px;
+}
+
+.budget-input__summary-item .value {
+  min-width: 80px;
+  text-align: right;
+}
 
 .budget-input__summary-item:last-child {
   margin-bottom: 0;
