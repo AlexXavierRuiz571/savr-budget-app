@@ -47,7 +47,7 @@
 ## 🚧 To-Do List
 
 - [ ] Add localStorage for persistent budget state
-- [ ] Create tracker section with visual progress bar
+- [X] Create tracker section with visual progress bar
 - [ ] Add user profile for saved budgets
 - [ ] Integrate real-world data for estimated costs
 - [ ] Include icons and animations for UI polish
@@ -85,12 +85,13 @@ savr-budget-app/
 │   ├── budget-input.css
 │   ├── expenses.css
 │   ├── footer.css
-│   └── summary.css
+│   ├── form.css
+│   └── tracker.css
 ├── vendor/
 │   └── normalize.css
+├── images/
 ├── README.md
 └── .gitignore, .editorconfig, etc.
-```
 
 ---
 
