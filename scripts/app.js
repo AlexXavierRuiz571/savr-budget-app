@@ -114,6 +114,20 @@ function updateBudget() {
     remainingWrapper.classList.remove("budget-input__summary-item--negative");
   }
 
+const barFill = document.querySelector(".tracker__bar-fill");
+  const budgetUsed = income > 0 ? totalExpenses / income : 0;
+  const percentUsed = Math.min(budgetUsed * 100, 100);
+
+  barFill.style.width = `${percentUsed}%`;
+
+  if (budgetUsed < 0.6) {
+    barFill.style.backgroundColor = "#4caf50";
+  } else if (budgetUsed < 1) {
+    barFill.style.backgroundColor = "#ffcc00";
+  } else {
+    barFill.style.backgroundColor = "#ff0004ff";
+  }
+
   renderExpenses();
 }
 
