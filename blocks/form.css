@@ -89,4 +89,13 @@ button {
 
 button:hover:not(:disabled) {
   background-color: #a30000;
+  box-shadow: 2px 2px 0 #c0c0c0;
+  transition: box-shadow 0.2s ease;
 }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+

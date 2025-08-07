@@ -32,21 +32,6 @@
   border-radius: 4px;
 }
 
-.budget-input__button {
-  padding: 10px;
-  background-color: #800000;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.budget-input__button:hover {
-  background-color: #a10000;
-}
-
 .budget-input__summary {
   background-color: #1a1a1a;
   border-radius: 6px;
@@ -55,7 +40,6 @@
   color: #e0e0e0;
   font-size: 14px;
 }
-
 
 .budget-input__summary-item {
   display: flex;

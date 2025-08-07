@@ -1,15 +1,15 @@
 # 💸 Savr: Budget Tracker App
 
-**Savr** is a responsive budget tracking app built from scratch as a cumulative project alongside my learning in the **TripleTen Software Engineering program**. This project brings together everything I've learned so far — from semantic HTML and modular CSS to clean, event-driven JavaScript — and demonstrates real-world front-end practices.
+**Savr** is a responsive budget simulation app built from scratch as a cumulative project alongside my learning in the **TripleTen Software Engineering program**. This project brings together everything I've learned so far from semantic HTML, modular CSS to clean, and event-driven JavaScript to simulate real-world budgeting behaviors.
 
 ---
 
 ## 📌 Project Goals
 
-- Apply knowledge from TripleTen sprints in a single, focused build
-- Practice responsive layout and BEM-style CSS organization
-- Reinforce JavaScript fundamentals with real-time DOM interaction
-- Lay the groundwork for future React and full-stack refactoring
+- Apply TripleTen sprint knowledge in a single, focused build
+- Practice responsive layout, validation, and DOM interaction
+- Use BEM-style CSS and dark color theming
+- Lay groundwork for full-stack and React conversion
 
 ---
 
@@ -24,30 +24,35 @@
 
 ## 📱 Features
 
-- Set a monthly income and track real-time balance
-- Add expenses by name, amount, and category
-- Delete individual expenses
-- Auto-calculated total income, total expenses, and remaining balance
-- Dynamic year in footer
-- Responsive layout for desktop and mobile
+- Set a monthly income
+- Add/delete expenses by name, amount, and category
+- Auto-calculate total income, total expenses, and remaining balance
+- Live form validation with button state toggling
+- Custom input styling, spinner removal, and focus states
+- Context menu alerts on right-click
+- Dynamic current year in footer
+- Fully responsive across devices
 
 ---
 
 ## 🖼️ UI Style
 
-- **Color Theme:** Maroon, black, and silver (monochromatic)
-- **Component Layout:** Header, budget input, expenses list, and footer
-- **CSS Architecture:** Block-based BEM structure with separated files per section
+- Colors: Maroon, black, silver (monochromatic)
+- Font: Orbitron for headings, system sans-serif for body
+- Structure: Block-based layout: Budget Input, Expense Form, Summary
+- Styling: No shadows, no spinners, accessible focus/hover states section
 
 ---
 
-## 🚧 Roadmap
+## 🚧 To-Do List
 
-- [ ] Add localStorage for persistent data
-- [ ] Convert to React components after React sprint
-- [ ] Add chart or visual breakdown (Chart.js or SVG)
+- [ ] Add localStorage for persistent budget state
+- [ ] Create tracker section with visual progress bar
+- [ ] Add user profile for saved budgets
+- [ ] Integrate real-world data for estimated costs
+- [ ] Include icons and animations for UI polish
 - [ ] Filter expenses by category
-- [ ] Add login/auth for user-based data saving
+- [ ] Rebuild using React components
 
 ---
 
