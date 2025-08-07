@@ -6,48 +6,48 @@
 
 ## 📌 Project Goals
 
-* Apply knowledge from TripleTen sprints in a single, focused build
-* Practice responsive layout and BEM-style CSS organization
-* Reinforce JavaScript fundamentals with real-time DOM interaction
-* Lay the groundwork for future React and full-stack refactoring
+- Apply knowledge from TripleTen sprints in a single, focused build
+- Practice responsive layout and BEM-style CSS organization
+- Reinforce JavaScript fundamentals with real-time DOM interaction
+- Lay the groundwork for future React and full-stack refactoring
 
 ---
 
 ## 🔧 Tech Stack
 
-* **HTML5** — semantic structure with accessibility in mind
-* **CSS3** — modular styles using BEM naming and dark monochromatic color scheme (maroon/black/silver)
-* **JavaScript (vanilla)** — clean event-driven code for budget logic and interactivity
-* **Git & GitHub** — source control, versioning, and collaboration
+- **HTML5** — semantic structure with accessibility in mind
+- **CSS3** — modular styles using BEM naming and dark monochromatic color scheme (maroon/black/silver)
+- **JavaScript (vanilla)** — clean event-driven code for budget logic and interactivity
+- **Git & GitHub** — source control, versioning, and collaboration
 
 ---
 
 ## 📱 Features
 
-* Set a monthly income and track real-time balance
-* Add expenses by name, amount, and category
-* Delete individual expenses
-* Auto-calculated total income, total expenses, and remaining balance
-* Dynamic year in footer
-* Responsive layout for desktop and mobile
+- Set a monthly income and track real-time balance
+- Add expenses by name, amount, and category
+- Delete individual expenses
+- Auto-calculated total income, total expenses, and remaining balance
+- Dynamic year in footer
+- Responsive layout for desktop and mobile
 
 ---
 
 ## 🖼️ UI Style
 
-* **Color Theme:** Maroon, black, and silver (monochromatic)
-* **Component Layout:** Header, budget input, expenses list, and footer
-* **CSS Architecture:** Block-based BEM structure with separated files per section
+- **Color Theme:** Maroon, black, and silver (monochromatic)
+- **Component Layout:** Header, budget input, expenses list, and footer
+- **CSS Architecture:** Block-based BEM structure with separated files per section
 
 ---
 
 ## 🚧 Roadmap
 
-* [ ] Add localStorage for persistent data
-* [ ] Convert to React components after React sprint
-* [ ] Add chart or visual breakdown (Chart.js or SVG)
-* [ ] Filter expenses by category
-* [ ] Add login/auth for user-based data saving
+- [ ] Add localStorage for persistent data
+- [ ] Convert to React components after React sprint
+- [ ] Add chart or visual breakdown (Chart.js or SVG)
+- [ ] Filter expenses by category
+- [ ] Add login/auth for user-based data saving
 
 ---
 
@@ -93,8 +93,8 @@ savr-budget-app/
 
 Throughout the development of this project, I used AI tools (ChatGPT and GitHub Copilot) to assist with:
 
-* Structuring modular CSS and BEM naming
-* Debugging JavaScript logic
-* Planning and writing README documentation
+- Structuring modular CSS and BEM naming
+- Debugging JavaScript logic
+- Planning and writing README documentation
 
 All code and decisions were made by me, with AI used as a development support resource.

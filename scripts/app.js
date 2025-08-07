@@ -67,6 +67,23 @@ expenseList.addEventListener("click", (e) => {
   }
 });
 
+//------------ Handle Right-Click Context Menu ------------
+
+expenseList.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+
+  const expenseItem = e.target.closest(".expenses__item");
+  if (!expenseItem) return;
+
+  const button = expenseItem.querySelector(".expenses__delete-button");
+  const id = parseInt(button.dataset.id);
+  const expense = expenses.find((item) => item.id === id);
+
+  if (expense) {
+    alert(`Right-clicked on: ${expense.name} — $${expense.amount.toFixed(2)} (${expense.category})`);
+  }
+});
+
 //------------ Update Budget Summary ------------
 
 function updateBudget() {
