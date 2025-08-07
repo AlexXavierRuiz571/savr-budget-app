@@ -1,0 +1,56 @@
+/*------------ Global Defaults ------------*/
+
+* {
+  box-sizing: border-box;
+}
+
+/*------------ Form Containers ------------*/
+
+.budget-input__form,
+.expenses__form {
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+/*------------ Form Inputs & Selects ------------*/
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #c0c0c0;
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #800000;
+}
+
+/*------------ Form Buttons ------------*/
+
+button {
+  padding: 10px 16px;
+  background-color: #800000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #a30000;
+}

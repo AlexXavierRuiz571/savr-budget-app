@@ -47,23 +47,34 @@
 }
 
 .budget-input__summary {
-  background-color: #111;
+  background-color: #1a1a1a;
+  border-radius: 6px;
   padding: 16px;
-  border-radius: 4px;
-  margin-top: 24px;
-  border: 1px solid #333;
-}
-
-.budget-input__summary-item {
-  color: #c0c0c0;
-  margin-bottom: 8px;
+  margin-top: 20px;
+  color: #e0e0e0;
   font-size: 14px;
 }
+
+
+.budget-input__summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #333;
+}
+
 
 .budget-input__summary-item:last-child {
   margin-bottom: 0;
 }
 
 .budget-input__summary-item--negative {
-  color: #d9534f;
+  color: #ff4d4f;
+  font-weight: bold;
 }
+
+.budget-input__summary strong {
+  font-weight: 600;
+}
+

@@ -25,9 +25,15 @@ budgetForm.addEventListener("submit", (e) => {
 
   if (!isNaN(newIncome) && newIncome > 0) {
     income = newIncome;
-    incomeInput.value = "";
+    budgetForm.reset();
+    setBudgetButtonState(false);
     updateBudget();
   }
+});
+
+budgetForm.addEventListener("input", function () {
+  const isValid = incomeInput.value.trim().length > 0;
+  setBudgetButtonState(isValid);
 });
 
 //------------ Handle Add Expense ------------
@@ -50,11 +56,17 @@ expenseForm.addEventListener("submit", (e) => {
 
   expenses.push(expense);
 
-  expenseNameInput.value = "";
-  expenseAmountInput.value = "";
-  expenseCategoryInput.value = "Housing";
-
+  expenseForm.reset();
+  setSubmitButtonState(false);
   updateBudget();
+});
+
+
+expenseForm.addEventListener("input", function () {
+  const isValid =
+    expenseNameInput.value.trim().length > 0 &&
+    expenseAmountInput.value.trim().length > 0;
+  setSubmitButtonState(isValid);
 });
 
 //------------ Handle Delete ------------
@@ -119,6 +131,30 @@ function renderExpenses() {
     `;
     expenseList.appendChild(li);
   });
+}
+
+function setSubmitButtonState(isFormValid) {
+  const addButton = expenseForm.querySelector(".expenses__button");
+
+  if (isFormValid) {
+    addButton.removeAttribute("disabled");
+    addButton.classList.remove("expenses__button_disabled");
+  } else {
+    addButton.setAttribute("disabled", true);
+    addButton.classList.add("expenses__button_disabled");
+  }
+}
+
+function setBudgetButtonState(isFormValid) {
+  const budgetButton = budgetForm.querySelector(".budget-input__button");
+
+  if (isFormValid) {
+    budgetButton.removeAttribute("disabled");
+    budgetButton.classList.remove("budget-input__button_disabled");
+  } else {
+    budgetButton.setAttribute("disabled", true);
+    budgetButton.classList.add("budget-input__button_disabled");
+  }
 }
 
 //------------ Footer Year ------------

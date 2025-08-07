@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Savr</title>
+    <title>SavR</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./vendor/normalize.css" />
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
@@ -29,7 +33,11 @@
               id="income"
               required
             />
-            <button class="budget-input__button" type="submit">
+            <button
+              class="budget-input__button budget-input__button_disabled"
+              type="submit"
+              disabled
+            >
               Set Budget
             </button>
           </form>
@@ -74,7 +82,13 @@
               <option value="Entertainment">Entertainment</option>
               <option value="Other">Other</option>
             </select>
-            <button class="expenses__button" type="submit">Add Expense</button>
+            <button
+              class="expenses__button expenses__button_disabled"
+              type="submit"
+              disabled
+            >
+              Add Expense
+            </button>
           </form>
 
           <ul class="expenses__list" id="expense-list"></ul>
@@ -82,7 +96,10 @@
       </main>
 
       <footer class="footer">
-        <p class="footer__text">Savr Budget App &copy; <span id="footer-year"></span> - Built by Alex Xavier Ruiz</p>
+        <p class="footer__text">
+          Savr Budget App &copy; <span id="footer-year"></span> - Built by Alex
+          Xavier Ruiz
+        </p>
       </footer>
     </div>
 
