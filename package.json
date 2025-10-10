@@ -1,0 +1,21 @@
+{
+  "name": "savr-budget-app",
+  "version": "1.0.0",
+  "description": "**Savr** is a responsive budget simulation app built from scratch as a cumulative project alongside my learning in the **TripleTen Software Engineering program**. This project brings together everything I've learned so far from semantic HTML, modular CSS to clean, and event-driven JavaScript to simulate real-world budgeting behaviors.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexXavierRuiz571/savr-budget-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AlexXavierRuiz571/savr-budget-app/issues"
+  },
+  "homepage": "https://github.com/AlexXavierRuiz571/savr-budget-app#readme"
+}
