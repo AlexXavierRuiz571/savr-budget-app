@@ -1,0 +1,11 @@
+.footer {
+  width: 100%;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer__text {
+  margin: 0;
+  font-size: 14px;
+}
