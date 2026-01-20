@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Main.css";
 import arrowCircle from "../../assets/images/arrow-circle.svg";
 import detailsIcon from "../../assets/images/details-icon.svg";
@@ -102,7 +103,7 @@ function Main() {
             <p className="main__card-text">monthly</p>
           </div>
 
-          <button className="main__card-action" type="button">
+          <Link className="main__card-action main__card-action_link" to="/income">
             <img
               className="main__card-action-icon"
               src={detailsIcon}
@@ -110,7 +111,7 @@ function Main() {
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
-          </button>
+          </Link>
         </div>
 
         <div className="main__card main__card_type_expenses">

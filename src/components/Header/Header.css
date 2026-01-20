@@ -58,6 +58,21 @@
   line-height: 1;
 }
 
+.header__title-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.header__title-link:visited {
+  color: inherit;
+}
+
+.header__title-link:hover,
+.header__title-link:active {
+  text-decoration: none;
+}
+
 .header__slogan {
   margin-top: 10px;
   font-size: 24px;

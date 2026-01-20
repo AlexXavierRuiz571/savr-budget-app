@@ -259,6 +259,11 @@
   color: #b3b3b3;
 }
 
+.main__card-action_link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .main__card-title_type_income {
   color: #800000;
 }
