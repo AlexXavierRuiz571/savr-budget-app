@@ -1,10 +1,30 @@
 .main {
-  width: 450px;
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  row-gap: 50px;
   box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("../../assets/images/main-page-background.png");
+    filter: blur(3px);
+  background-position: center;
+  background-size: cover;
+}
+
+.main__summary {
+  width: 100%;
+  max-width: 460px;
+  align-self: center;
 }
 
 .main__summary-bar {
@@ -20,46 +40,269 @@
 .main__summary-text {
   margin: 0;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
   color: #b3b3b3;
 }
 
-.main__summary-icon {
-  width: 40px;
+/* the button on the right */
+.main__summary-toggle {
+  width: 30px;
   height: 40px;
-  border-left: 1px solid #000000;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
-.main__chart-panel {
+.main__summary-toggle:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* the svg image inside the button */
+.main__summary-icon {
+  width: 25px;
+  height: 25px;
+  transition: transform 200ms ease;
+}
+
+.main__summary-icon_open {
+  transform: rotate(180deg);
+}
+
+/* expandable section */
+.main__breakdown {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 250ms ease,
+    opacity 200ms ease;
+}
+
+.main__breakdown_open {
+  max-height: 1200px;
+  opacity: 1;
+}
+
+/* panel styling */
+.main__breakdown-inner {
   width: 100%;
   background-color: #333333;
+  padding: 20px;
   box-sizing: border-box;
-  padding: 0 0 20px 0;
 }
 
-.main__summary-bar_type_open {
+/* chart placeholder */
+.main__chart {
+  width: 100%;
+  height: 360px;
+  background-color: #4b4b4b;
+  border: 1px solid #000000;
+  box-sizing: border-box;
   margin-bottom: 20px;
 }
 
-.main__summary-icon_type_up {
-  border-left: 1px solid #000000;
+/* explanation + insight text */
+.main__chart-explanation {
+  margin-bottom: 20px;
 }
 
-.main__chart-placeholder {
-  width: 100%;
-  height: 360px;
-  background-color: #333333;
+.main__chart-line {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: #b3b3b3;
 }
 
-.main__insight-panel {
+.main__insight-label,
+.main__suggestion-label {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.main__insight-text,
+.main__suggestion-text {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #b3b3b3;
+}
+
+.main__chart-highlight {
+  font-weight: 600;
+}
+
+.main__chart-highlight_expenses {
+  color: #00b3d3;
+}
+
+.main__chart-highlight_savings {
+  color: #00632d;
+}
+
+.main__chart-highlight_debt {
+  color: #574084;
+}
+
+.main__chart-highlight_lifestyle {
+  color: #c9a43e;
+}
+
+/* Category Cards */
+
+.main__cards {
   width: 100%;
-  background-color: #333333;
-  padding: 16px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 275px);
+  justify-content: center;
+  gap: 40px;
   box-sizing: border-box;
 }
 
-.main__insight-text {
+.main__card {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #333333;
+  border: 1px solid #000000;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.main__card-header {
+  padding: 18px 18px 0 18px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.main__card-title {
   margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.main__card-accent {
+  width: calc(100% + 36px);
+  height: 6px;
+  margin: 12px -18px 0 -18px;
+}
+
+.main__card-body {
+  padding: 30px;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.main__card-amount {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
   color: #b3b3b3;
-  font-size: 14px;
+  text-align: center;
+}
+
+.main__card-text {
+  margin: 6px 0 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #b3b3b3;
+  text-align: center;
+}
+
+.main__card-info-text {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #b3b3b3;
+  text-align: center;
+}
+
+.main__card-action {
+  width: 100%;
+  padding: 14px 18px;
+  margin-top: 30px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 12px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.main__card-action:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.main__card-action-icon {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.main__card-action-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b3b3b3;
+}
+
+.main__card-title_type_income {
+  color: #800000;
+}
+
+.main__card-accent_type_income {
+  background-color: #800000;
+}
+
+.main__card-title_type_expenses {
+  color: #00b3d3;
+}
+
+.main__card-accent_type_expenses {
+  background-color: #00b3d3;
+}
+
+.main__card-title_type_savings {
+  color: #00632d;
+}
+
+.main__card-accent_type_savings {
+  background-color: #00632d;
+}
+
+.main__card-title_type_debt {
+  color: #574084;
+}
+
+.main__card-accent_type_debt {
+  background-color: #574084;
+}
+
+.main__card-title_type_lifestyle {
+  color: #c9a43e;
+}
+
+.main__card-accent_type_lifestyle {
+  background-color: #c9a43e;
+}
+
+.main__card-title_type_info {
+  color: #ffffff;
+}
+
+.main__card-accent_type_info {
+  background-color: #ffffff;
 }
