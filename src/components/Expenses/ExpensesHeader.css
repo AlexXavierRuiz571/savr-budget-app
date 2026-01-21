@@ -1,0 +1,72 @@
+.expenses-header {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 400px 1fr 400px;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 50px;
+}
+
+.expenses-header__left-panel,
+.expenses-header__right-panel,
+.expenses-header__center {
+  background-color: #333333;
+  box-sizing: border-box;
+}
+
+.expenses-header__left-panel,
+.expenses-header__right-panel {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  height: 108px;
+}
+
+.expenses-header__left-panel {
+  justify-content: center;
+  font-size: 25px;
+}
+
+.expenses-header__right-panel {
+  justify-content: center;
+  font-size: 35px;
+}
+
+.expenses-header__center {
+  width: 100%;
+  max-width: 680px;
+  justify-self: center;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.expenses-header__left-text,
+.expenses-header__right-text,
+.expenses-header__title {
+  margin: 0;
+  color: #b3b3b3;
+}
+
+.expenses-header__title {
+  color: #00b3d3;
+  font-size: 95px;
+}
+
+.expenses-header__title-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.expenses-header__title-link:visited {
+  color: inherit;
+}
+
+.expenses-header__title-link:hover,
+.expenses-header__title-link:active {
+  text-decoration: none;
+}

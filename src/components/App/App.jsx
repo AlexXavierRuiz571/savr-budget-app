@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Main from "../Main/Main.jsx";
 import Income from "../Income/Income.jsx";
@@ -28,8 +27,6 @@ function App() {
   return (
     <div className={`app app__page__${currentPage}`}>
       <div className="app__container">
-        <Header />
-
         <main className="app__content">
           <Routes>
             <Route path="/" element={<Main />} />

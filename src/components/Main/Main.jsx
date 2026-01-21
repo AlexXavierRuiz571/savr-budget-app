@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import MainHeader from "./MainHeader.jsx";
 import "./Main.css";
-import arrowCircle from "../../assets/images/arrow-circle.svg";
-import detailsIcon from "../../assets/images/details-icon.svg";
-import settingIcon from "../../assets/images/setting-icon.svg";
+import arrowCircle from "../../assets/Icons/arrow-circle.svg";
+import detailsIcon from "../../assets/Icons/details-icon.svg";
+import settingIcon from "../../assets/Icons/setting-icon.svg";
 
 function Main() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -14,6 +15,8 @@ function Main() {
 
   return (
     <section className="main">
+      <MainHeader />
+
       <div className="main__summary">
         <div className="main__summary-bar">
           <p className="main__summary-text">
@@ -103,7 +106,10 @@ function Main() {
             <p className="main__card-text">monthly</p>
           </div>
 
-          <Link className="main__card-action main__card-action_link" to="/income">
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/income"
+          >
             <img
               className="main__card-action-icon"
               src={detailsIcon}
@@ -127,7 +133,10 @@ function Main() {
             <p className="main__card-text">this month</p>
           </div>
 
-          <button className="main__card-action" type="button">
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/expenses"
+          >
             <img
               className="main__card-action-icon"
               src={detailsIcon}
@@ -135,7 +144,7 @@ function Main() {
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
-          </button>
+          </Link>
         </div>
 
         <div className="main__card main__card_type_savings">
@@ -151,7 +160,10 @@ function Main() {
             <p className="main__card-text">this month</p>
           </div>
 
-          <button className="main__card-action" type="button">
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/savings"
+          >
             <img
               className="main__card-action-icon"
               src={detailsIcon}
@@ -159,7 +171,7 @@ function Main() {
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
-          </button>
+          </Link>
         </div>
 
         <div className="main__card main__card_type_debt">
@@ -175,7 +187,7 @@ function Main() {
             <p className="main__card-text">this month</p>
           </div>
 
-          <button className="main__card-action" type="button">
+          <Link className="main__card-action main__card-action_link" to="/debt">
             <img
               className="main__card-action-icon"
               src={detailsIcon}
@@ -183,7 +195,7 @@ function Main() {
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
-          </button>
+          </Link>
         </div>
 
         <div className="main__card main__card_type_lifestyle">
@@ -199,7 +211,10 @@ function Main() {
             <p className="main__card-text">this month</p>
           </div>
 
-          <button className="main__card-action" type="button">
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/lifestyle"
+          >
             <img
               className="main__card-action-icon"
               src={detailsIcon}
@@ -207,7 +222,7 @@ function Main() {
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
-          </button>
+          </Link>
         </div>
 
         <div className="main__card main__card_type_info">
@@ -222,7 +237,10 @@ function Main() {
             <p className="main__card-info-text">Overview & Reference</p>
           </div>
 
-          <button className="main__card-action" type="button">
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/info"
+          >
             <img
               className="main__card-action-icon"
               src={settingIcon}
@@ -230,7 +248,7 @@ function Main() {
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

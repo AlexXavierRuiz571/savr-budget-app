@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./Header.css";
+import "./MainHeader.css";
 
-function Header() {
+function MainHeader() {
   return (
     <header className="header">
       <div className="header__left-panel">
@@ -28,4 +28,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default MainHeader;

@@ -1,0 +1,68 @@
+.infohub-header {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 50px;
+}
+
+.infohub-header__right-panel,
+.infohub-header__center {
+  background-color: #333333;
+  box-sizing: border-box;
+}
+
+.infohub-header__right-panel {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  height: 108px;
+}
+
+.infohub-header__right-panel {
+  justify-content: center;
+  font-size: 35px;
+}
+
+.infohub-header__center {
+  width: 100%;
+  max-width: none;
+  height: 175px;
+  padding: 16px 24px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infohub-header__right-text,
+.infohub-header__title {
+  margin: 0;
+  color: #b3b3b3;
+}
+
+.infohub-header__title {
+  color: #ffffff;
+  font-size: 60px;
+  justify-content: center;
+}
+
+.infohub-header__title-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.infohub-header__title-link:visited {
+  color: inherit;
+}
+
+.infohub-header__title-link:hover,
+.infohub-header__title-link:active {
+  text-decoration: none;
+}

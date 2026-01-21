@@ -1,0 +1,104 @@
+.secondary-nav {
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  background-color: #333333;
+  box-sizing: border-box;
+}
+
+.secondary-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  box-sizing: border-box;
+}
+
+.secondary-nav__item {
+  margin: 0;
+  padding: 0;
+  color: #b3b3b3;
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 1;
+  user-select: none;
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.secondary-nav__item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.secondary-nav__item a:visited {
+  color: inherit;
+}
+
+.secondary-nav__item a:hover,
+.secondary-nav__item a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.secondary-nav__item_active {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.secondary-nav__item_active[data-color="income"] {
+  color: #800000;
+}
+
+.secondary-nav__item_active[data-color="expenses"] {
+  color: #00b3d3;
+}
+
+.secondary-nav__item_active[data-color="savings"] {
+  color: #00632d;
+}
+
+.secondary-nav__item_active[data-color="debt"] {
+  color: #574084;
+}
+
+.secondary-nav__item_active[data-color="lifestyle"] {
+  color: #c9a43e;
+}
+
+.secondary-nav__item_active[data-color="info"] {
+  color: #ffffff;
+}
+
+.secondary-nav__item:hover {
+  transform: translateY(-2px);
+}
+
+.secondary-nav__item[data-color="income"]:hover {
+  color: #800000;
+}
+
+.secondary-nav__item[data-color="expenses"]:hover {
+  color: #00b3d3;
+}
+
+.secondary-nav__item[data-color="savings"]:hover {
+  color: #00632d;
+}
+
+.secondary-nav__item[data-color="debt"]:hover {
+  color: #574084;
+}
+
+.secondary-nav__item[data-color="lifestyle"]:hover {
+  color: #c9a43e;
+}
+
+.secondary-nav__item[data-color="info"]:hover {
+  color: #ffffff;
+}

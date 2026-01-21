@@ -1,41 +1,42 @@
-.header {
+.income-header {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1000px;
   padding: 0;
   padding-bottom: 50px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 400px 1fr 400px;
   align-items: flex-start;
+  justify-content: center;
   column-gap: 50px;
 }
 
-.header__left-panel,
-.header__right-panel,
-.header__center {
+.income-header__left-panel,
+.income-header__right-panel,
+.income-header__center {
   background-color: #333333;
   box-sizing: border-box;
 }
 
-.header__left-panel,
-.header__right-panel {
+.income-header__left-panel,
+.income-header__right-panel {
   padding: 16px 24px;
   display: flex;
   align-items: center;
-  min-height: 108px;
+  height: 108px;
 }
 
-.header__left-panel {
+.income-header__left-panel {
   justify-content: center;
-  font-size: 50px;
+  font-size: 30px;
 }
 
-.header__right-panel {
+.income-header__right-panel {
   justify-content: center;
   font-size: 35px;
 }
 
-.header__center {
+.income-header__center {
   width: 100%;
   max-width: 680px;
   justify-self: center;
@@ -43,45 +44,29 @@
   text-align: center;
 }
 
-.header__left-text,
-.header__right-text,
-.header__title,
-.header__slogan,
-.header__tagline {
+.income-header__left-text,
+.income-header__right-text,
+.income-header__title {
   margin: 0;
   color: #b3b3b3;
 }
 
-.header__title {
+.income-header__title {
   color: #800000;
-  font-size: 125px;
-  line-height: 1;
+  font-size: 95px;
 }
 
-.header__title-link {
+.income-header__title-link {
   text-decoration: none;
   color: inherit;
   display: inline-block;
 }
 
-.header__title-link:visited {
+.income-header__title-link:visited {
   color: inherit;
 }
 
-.header__title-link:hover,
-.header__title-link:active {
+.income-header__title-link:hover,
+.income-header__title-link:active {
   text-decoration: none;
-}
-
-.header__slogan {
-  margin-top: 10px;
-  font-size: 24px;
-}
-
-.header__tagline {
-  font-size: 18px;
-}
-
-.text-highlight {
-  color: #800000;
 }
