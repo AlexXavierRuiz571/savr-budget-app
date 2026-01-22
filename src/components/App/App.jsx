@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { use, useEffect } from "react";
 import Footer from "../Footer/Footer.jsx";
 import Main from "../Main/Main.jsx";
 import Income from "../Income/Income.jsx";
@@ -11,6 +12,10 @@ import InfoHub from "../InfoHub/InfoHub.jsx";
 
 function App() {
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const pageMap = {
     "/": "Main",

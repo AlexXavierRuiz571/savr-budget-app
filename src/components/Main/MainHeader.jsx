@@ -16,13 +16,13 @@ function MainHeader() {
         </Link>
 
         <p className="header__slogan">Save and Vibe Right</p>
-        <p className="header__tagline">
-          Plan today. Avoid surprises tomorrow.
-        </p>
+        <p className="header__tagline">Plan today. Avoid surprises tomorrow.</p>
       </div>
 
       <div className="header__right-panel">
-        <p className="header__right-text">*Profile Name*</p>
+        <Link className="header__right-text" to="/info">
+          Profile
+        </Link>
       </div>
     </header>
   );

@@ -53,6 +53,16 @@
   color: #b3b3b3;
 }
 
+.header__right-text {
+  color: #b3b3b3;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header__right-text:hover {
+  color: #ffffff;
+}
+
 .header__title {
   color: #800000;
   font-size: 125px;

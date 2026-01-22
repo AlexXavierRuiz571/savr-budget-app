@@ -20,3 +20,80 @@
   background-position: center;
   background-size: cover;
 }
+
+.lifestyle__summary {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: #333333;
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+.lifestyle__summary-title {
+  margin: 0 0 35px 0;
+  color: #b3b3b3;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.lifestyle__summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lifestyle__summary-currency {
+  color: #b3b3b3;
+  font-size: 28px;
+  margin-right: 8px;
+}
+
+.lifestyle__summary-line {
+  height: 4px;
+  width: 260px;
+  background-color: #b3b3b3;
+}
+
+.lifestyle__content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lifestyle__bar {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto 0;
+  background-color: #333333;
+  border: none;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lifestyle__bar-text {
+  color: #b3b3b3;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.lifestyle__bar-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.lifestyle__bar-action {
+  margin-top: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+}

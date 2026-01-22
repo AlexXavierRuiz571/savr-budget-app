@@ -237,10 +237,7 @@ function Main() {
             <p className="main__card-info-text">Overview & Reference</p>
           </div>
 
-          <Link
-            className="main__card-action main__card-action_link"
-            to="/info"
-          >
+          <Link className="main__card-action main__card-action_link" to="/info">
             <img
               className="main__card-action-icon"
               src={settingIcon}
