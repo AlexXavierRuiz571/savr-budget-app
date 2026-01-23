@@ -1,4 +1,4 @@
-import "./lifestyle.css";
+import "./Lifestyle.css";
 import LifestyleHeader from "./LifestyleHeader.jsx";
 import SecondaryNav from "../SecondaryNav/SecondaryNav.jsx";
 import addIcon from "../../assets/icons/add-icon.svg";

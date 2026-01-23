@@ -1,9 +1,16 @@
 import "./Expenses.css";
+import { useEffect } from "react";
 import ExpensesHeader from "./ExpensesHeader";
 import SecondaryNav from "../SecondaryNav/SecondaryNav.jsx";
 import addIcon from "../../assets/icons/add-icon.svg";
 
-function Expenses() {
+function Expenses({ getCityDetails }) {
+  useEffect(() => {
+    if (!getCityDetails) return;
+
+    getCityDetails(2746);
+  }, []);
+
   return (
     <section className="expenses">
       <div className="expenses__container">
