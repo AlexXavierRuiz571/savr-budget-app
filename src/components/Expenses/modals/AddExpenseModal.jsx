@@ -1,0 +1,385 @@
+import "./AddExpenseModal.css";
+import { useEffect, useMemo, useState } from "react";
+import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
+import { expenseGoodIds } from "../../../utils/goodIds.js";
+
+const CITY_OPTIONS = [
+  { cityId: "2746", label: "Pensacola, FL" },
+  { cityId: "2701", label: "New York, NY" },
+  { cityId: "2334", label: "Austin, TX" },
+];
+
+const EXPENSE_TYPES = [
+  { label: "Housing", value: "housing" },
+  { label: "Utilities", value: "utilities" },
+  { label: "Transportation", value: "transportation" },
+  { label: "Food", value: "food" },
+  { label: "Other", value: "other" },
+];
+
+const TRANSPORT_TYPES = [
+  { label: "Public Transit", value: "public_transit" },
+  { label: "Personal Vehicle", value: "personal_vehicle" },
+  { label: "Bicycle", value: "bicycle" },
+  { label: "Other", value: "other" },
+];
+
+function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
+  const [cityId, setCityId] = useState("");
+
+  // User inputs (left side)
+  const [expenseType, setExpenseType] = useState("");
+  const [transportType, setTransportType] = useState("");
+  const [expenseName, setExpenseName] = useState("");
+  const [amount, setAmount] = useState("");
+  const [frequency, setFrequency] = useState("");
+  const [isVariable, setIsVariable] = useState(null);
+
+  // Estimates (right side)
+  const [hasLoadedEstimates, setHasLoadedEstimates] = useState(false);
+  const [isLoadingEstimates, setIsLoadingEstimates] = useState(false);
+  const [estimateError, setEstimateError] = useState("");
+  const [cityDetails, setCityDetails] = useState(null);
+  const [selectedGoodId, setSelectedGoodId] = useState("");
+
+  const isLocationSet = Boolean(cityId);
+
+  const resetEstimates = () => {
+    setHasLoadedEstimates(false);
+    setIsLoadingEstimates(false);
+    setEstimateError("");
+    setCityDetails(null);
+    setSelectedGoodId("");
+  };
+
+  const resetForm = () => {
+    setCityId("");
+    setExpenseType("");
+    setTransportType("");
+    setExpenseName("");
+    setAmount("");
+    setFrequency("");
+    setIsVariable(null);
+    resetEstimates();
+  };
+
+  const handleLocationChange = (evt) => {
+    setCityId(evt.target.value);
+    resetEstimates();
+  };
+
+  const handleExpenseTypeChange = (evt) => {
+    const next = evt.target.value;
+    setExpenseType(next);
+
+    if (next !== "transportation") {
+      setTransportType("");
+    }
+  };
+
+  const filteredItems = useMemo(() => {
+    if (!hasLoadedEstimates || !cityDetails || !expenseType) return [];
+
+    const allowed = expenseGoodIds[expenseType] || [];
+    const allowedSet = new Set(allowed);
+
+    const prices = Array.isArray(cityDetails.prices) ? cityDetails.prices : [];
+
+    return prices
+      .filter((p) => allowedSet.has(p.good_id))
+      .map((p) => ({
+        goodId: String(p.good_id),
+        name: p.item_name,
+        min: p.usd?.min ?? String(p.min ?? ""),
+        avg: p.usd?.avg ?? String(p.avg ?? ""),
+        max: p.usd?.max ?? String(p.max ?? ""),
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [hasLoadedEstimates, cityDetails, expenseType]);
+
+  const selectedItem = useMemo(() => {
+    if (!selectedGoodId) return null;
+    return (
+      filteredItems.find((i) => i.goodId === String(selectedGoodId)) || null
+    );
+  }, [filteredItems, selectedGoodId]);
+
+  useEffect(() => {
+    if (!hasLoadedEstimates) return;
+    if (!expenseType) {
+      setSelectedGoodId("");
+      return;
+    }
+
+    if (filteredItems.length === 0) {
+      setSelectedGoodId("");
+      return;
+    }
+
+    // If current selection isn't valid, pick the first valid item
+    const stillValid = filteredItems.some((i) => i.goodId === selectedGoodId);
+    if (!stillValid) {
+      setSelectedGoodId(filteredItems[0].goodId);
+    }
+  }, [hasLoadedEstimates, expenseType, filteredItems, selectedGoodId]);
+
+  const handleLoadEstimates = async () => {
+    if (!cityId) return;
+
+    setIsLoadingEstimates(true);
+    setEstimateError("");
+
+    try {
+      const data = await getCityDetails(cityId);
+      setCityDetails(data);
+      setHasLoadedEstimates(true);
+    } catch (err) {
+      setEstimateError("No estimates could be loaded.");
+      setHasLoadedEstimates(false);
+    } finally {
+      setIsLoadingEstimates(false);
+    }
+  };
+
+  const formatMoney = (value) => {
+    if (value === "" || value === null || value === undefined) return "__";
+
+    const num = Number(value);
+    if (Number.isNaN(num)) return "__";
+
+    return num.toFixed(2);
+  };
+
+  const canSubmit =
+    isLocationSet &&
+    expenseType &&
+    expenseName.trim() &&
+    amount !== "" &&
+    frequency &&
+    isVariable !== null &&
+    (expenseType !== "transportation" || transportType);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (!canSubmit) return;
+
+    resetForm();
+    onClose();
+  };
+
+  return (
+    <ModalWithForm
+      isOpen={isOpen}
+      title="Add Expenses"
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      submitText="Submit"
+      className="expenses-modal"
+    >
+      {/* Location first */}
+      <div className="add-expense__location">
+        <label className="add-expense__label">
+          Location <span className="add-expense__required">*</span>
+        </label>
+
+        <select
+          className="add-expense__select"
+          value={cityId}
+          onChange={handleLocationChange}
+          required
+        >
+          <option value="">City, State</option>
+          {CITY_OPTIONS.map((c) => (
+            <option key={c.cityId} value={c.cityId}>
+              {c.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {!isLocationSet ? (
+        <p className="add-expense__placeholder">
+          Select a location to continue.
+        </p>
+      ) : (
+        <div className="add-expense__grid">
+          {/* LEFT SIDE */}
+          <div className="add-expense__left">
+            <label className="add-expense__label">
+              Expense Type <span className="add-expense__required">*</span>
+            </label>
+            <select
+              className="add-expense__select"
+              value={expenseType}
+              onChange={handleExpenseTypeChange}
+              required
+            >
+              <option value="">Select type</option>
+              {EXPENSE_TYPES.map((t) => (
+                <option key={t.value} value={t.value}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
+
+            {expenseType === "transportation" && (
+              <>
+                <label className="add-expense__label">
+                  Transport Type{" "}
+                  <span className="add-expense__required">*</span>
+                </label>
+                <select
+                  className="add-expense__select"
+                  value={transportType}
+                  onChange={(evt) => setTransportType(evt.target.value)}
+                  required
+                >
+                  <option value="">Select method</option>
+                  {TRANSPORT_TYPES.map((t) => (
+                    <option key={t.value} value={t.value}>
+                      {t.label}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
+
+            <label className="add-expense__label">
+              Expense Name <span className="add-expense__required">*</span>
+            </label>
+            <input
+              className="add-expense__input"
+              type="text"
+              value={expenseName}
+              onChange={(evt) => setExpenseName(evt.target.value)}
+              placeholder="Must be typed"
+              required
+            />
+
+            <label className="add-expense__label">
+              Amount <span className="add-expense__required">*</span>
+            </label>
+            <input
+              className="add-expense__input"
+              type="number"
+              min="0"
+              step="0.01"
+              value={amount}
+              onChange={(evt) => setAmount(evt.target.value)}
+              required
+            />
+
+            <label className="add-expense__label">
+              Fixed or Variable <span className="add-expense__required">*</span>
+            </label>
+            <div className="add-expense__radio-row">
+              <label className="add-expense__radio">
+                <input
+                  type="radio"
+                  name="fixedVariable"
+                  checked={isVariable === false}
+                  onChange={() => setIsVariable(false)}
+                />
+                Fixed
+              </label>
+
+              <label className="add-expense__radio">
+                <input
+                  type="radio"
+                  name="fixedVariable"
+                  checked={isVariable === true}
+                  onChange={() => setIsVariable(true)}
+                />
+                Variable
+              </label>
+            </div>
+
+            <label className="add-expense__label">
+              Frequency <span className="add-expense__required">*</span>
+            </label>
+            <select
+              className="add-expense__select"
+              value={frequency}
+              onChange={(evt) => setFrequency(evt.target.value)}
+              required
+            >
+              <option value="">Select frequency</option>
+              <option value="monthly">Monthly</option>
+              <option value="weekly">Weekly</option>
+              <option value="bi_weekly">Bi-weekly</option>
+              <option value="quarterly">Quarterly</option>
+              <option value="yearly">Yearly</option>
+              <option value="one_time">One-time</option>
+            </select>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="add-expense__right">
+            <button
+              className="add-expense__estimate-button"
+              type="button"
+              onClick={handleLoadEstimates}
+              disabled={!cityId || isLoadingEstimates}
+            >
+              {isLoadingEstimates ? "Loading..." : "Load Estimates"}
+            </button>
+
+            {estimateError ? (
+              <p className="add-expense__error">{estimateError}</p>
+            ) : !hasLoadedEstimates ? (
+              <p className="add-expense__placeholder">
+                No estimates have been loaded.
+              </p>
+            ) : !expenseType ? (
+              <p className="add-expense__placeholder">
+                Select an expense type to see estimates.
+              </p>
+            ) : filteredItems.length === 0 ? (
+              <p className="add-expense__placeholder">
+                No estimate items found for this type.
+              </p>
+            ) : (
+              <>
+                <label className="add-expense__label">Estimate Item</label>
+                <select
+                  className="add-expense__select"
+                  value={selectedGoodId}
+                  onChange={(evt) => setSelectedGoodId(evt.target.value)}
+                >
+                  {filteredItems.map((item) => (
+                    <option key={item.goodId} value={item.goodId}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+
+                <div className="add-expense__ranges">
+                  <div className="add-expense__range-row">
+                    <span>Low</span>
+                    <span>
+                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.min)}
+                    </span>
+                  </div>
+                  <div className="add-expense__range-row">
+                    <span>Mid</span>
+                    <span>
+                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.avg)}
+                    </span>
+                  </div>
+                  <div className="add-expense__range-row">
+                    <span>High</span>
+                    <span>
+                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.max)}
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </ModalWithForm>
+  );
+}
+
+export default AddExpenseModal;
