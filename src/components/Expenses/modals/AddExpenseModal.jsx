@@ -167,43 +167,67 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
     onClose();
   };
 
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
+
   return (
     <ModalWithForm
       isOpen={isOpen}
       title="Add Expenses"
-      onClose={onClose}
+      onClose={handleClose}
       onSubmit={handleSubmit}
       submitText="Submit"
       className="expenses-modal"
+      footerContent={
+        <>
+          <button
+            className="add-expense__submit"
+            type="button"
+            disable={!canSubmit}
+          >
+            Submit
+          </button>
+          <button
+            className="add-expense__cancel"
+            type="button"
+            onClick={handleClose}
+          >
+            Cancel
+          </button>
+        </>
+      }
+      headerContent={
+        <div className="add-expense__location">
+          <label className="add-expense__label">
+            Location <span className="add-expense__required">*</span>
+          </label>
+
+          <select
+            className="add-expense__select"
+            value={cityId}
+            onChange={handleLocationChange}
+            required
+          >
+            <option value="">City, State</option>
+            {CITY_OPTIONS.map((c) => (
+              <option key={c.cityId} value={c.cityId}>
+                {c.label}
+              </option>
+            ))}
+          </select>
+
+          {!cityId && (
+            <p className="add-expense__placeholder">
+              Select a location to continue.
+            </p>
+          )}
+        </div>
+      }
     >
-      {/* Location first */}
-      <div className="add-expense__location">
-        <label className="add-expense__label">
-          Location <span className="add-expense__required">*</span>
-        </label>
-
-        <select
-          className="add-expense__select"
-          value={cityId}
-          onChange={handleLocationChange}
-          required
-        >
-          <option value="">City, State</option>
-          {CITY_OPTIONS.map((c) => (
-            <option key={c.cityId} value={c.cityId}>
-              {c.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {!isLocationSet ? (
-        <p className="add-expense__placeholder">
-          Select a location to continue.
-        </p>
-      ) : (
+      {isLocationSet && (
         <div className="add-expense__grid">
-          {/* LEFT SIDE */}
           <div className="add-expense__left">
             <label className="add-expense__label">
               Expense Type <span className="add-expense__required">*</span>
@@ -313,7 +337,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
             </select>
           </div>
 
-          {/* RIGHT SIDE */}
           <div className="add-expense__right">
             <button
               className="add-expense__estimate-button"
@@ -340,7 +363,9 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
               </p>
             ) : (
               <>
-                <label className="add-expense__label">Estimate Item</label>
+                <label className="add-expense__estimate-label">
+                  Estimate Item
+                </label>
                 <select
                   className="add-expense__select"
                   value={selectedGoodId}
@@ -372,6 +397,13 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
                       {isVariable ? "~" : ""}${formatMoney(selectedItem?.max)}
                     </span>
                   </div>
+                </div>
+
+                <div className="add-expense__disclaimer">
+                  <p className="add-expense__disclaimer-text">
+                    Estimates are based on average costs for the selected
+                    location and may vary.
+                  </p>
                 </div>
               </>
             )}

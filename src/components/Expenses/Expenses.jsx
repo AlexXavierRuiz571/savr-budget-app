@@ -3,15 +3,18 @@ import { useEffect, useState } from "react";
 import ExpensesHeader from "./ExpensesHeader";
 import SecondaryNav from "../SecondaryNav/SecondaryNav.jsx";
 import addIcon from "../../assets/icons/add-icon.svg";
+import AddExpenseModal from "./modals/AddExpenseModal.jsx";
 
 function Expenses({ getCityDetails }) {
-  const [cityData, setCityData] = useState(null);
+  const [isAddExpenseModalOpen, setIsAddExpenseModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (!getCityDetails) return;
+  const handleOpenAddExpenseModal = () => {
+    setIsAddExpenseModalOpen(true);
+  };
 
-    getCityDetails(2746);
-  }, [getCityDetails]);
+  const handleCloseAddExpenseModal = () => {
+    setIsAddExpenseModalOpen(false);
+  };
 
   return (
     <section className="expenses">
@@ -36,6 +39,7 @@ function Expenses({ getCityDetails }) {
               className="expenses__bar-action"
               type="button"
               aria-label="Add Expenses"
+              onClick={handleOpenAddExpenseModal}
             >
               <img
                 className="expenses__bar-icon"
@@ -47,6 +51,12 @@ function Expenses({ getCityDetails }) {
           </div>
         </div>
       </div>
+
+      <AddExpenseModal
+        isOpen={isAddExpenseModalOpen}
+        onClose={handleCloseAddExpenseModal}
+        getCityDetails={getCityDetails}
+      />
     </section>
   );
 }
