@@ -3,6 +3,12 @@
   max-width: 900px;
 }
 
+.modal__body{
+  background-color: #00262d;
+  border-top: 5px solid #00323b;
+  border-bottom: 5px solid #00323b;
+}
+
 .add-expense__location {
   margin-top: 8px;
   margin-bottom: 24px;
@@ -28,10 +34,10 @@
 
 .add-expense__right {
   padding-left: 30px;
-  border-left: 5px solid #00323b;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  border-left: 5px solid #00323b;
 }
 
 .add-expense__label {
@@ -53,7 +59,7 @@
 
 .add-expense__input,
 .add-expense__select {
-  max-width: 402px;
+  max-width: 410px;
   height: 36px;
   background-color: #1e1e1e;
   border: 1px solid #00b3d3;

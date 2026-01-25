@@ -24,7 +24,7 @@ const TRANSPORT_TYPES = [
   { label: "Other", value: "other" },
 ];
 
-function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
+function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   const [cityId, setCityId] = useState("");
 
   // User inputs (left side)
@@ -86,26 +86,25 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
     const prices = Array.isArray(cityDetails.prices) ? cityDetails.prices : [];
 
     return prices
-      .filter((p) => allowedSet.has(p.good_id))
-      .map((p) => ({
-        goodId: String(p.good_id),
-        name: p.item_name,
-        min: p.usd?.min ?? String(p.min ?? ""),
-        avg: p.usd?.avg ?? String(p.avg ?? ""),
-        max: p.usd?.max ?? String(p.max ?? ""),
+      .filter((price) => allowedSet.has(price.good_id))
+      .map((price) => ({
+        goodId: String(price.good_id),
+        name: price.item_name,
+        min: price.usd?.min ?? String(price.min ?? ""),
+        avg: price.usd?.avg ?? String(price.avg ?? ""),
+        max: price.usd?.max ?? String(price.max ?? ""),
       }))
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .sort((priceA, priceB) => priceA.name.localeCompare(priceB.name));
   }, [hasLoadedEstimates, cityDetails, expenseType]);
 
   const selectedItem = useMemo(() => {
     if (!selectedGoodId) return null;
-    return (
-      filteredItems.find((i) => i.goodId === String(selectedGoodId)) || null
-    );
+    return filteredItems.find((i) => i.goodId === String(selectedGoodId)) || null;
   }, [filteredItems, selectedGoodId]);
 
   useEffect(() => {
     if (!hasLoadedEstimates) return;
+
     if (!expenseType) {
       setSelectedGoodId("");
       return;
@@ -116,7 +115,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
       return;
     }
 
-    // If current selection isn't valid, pick the first valid item
     const stillValid = filteredItems.some((i) => i.goodId === selectedGoodId);
     if (!stillValid) {
       setSelectedGoodId(filteredItems[0].goodId);
@@ -163,6 +161,20 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
     evt.preventDefault();
     if (!canSubmit) return;
 
+    if (typeof onAddExpense === "function") {
+      onAddExpense({
+        id: crypto.randomUUID(),
+        name: expenseName.trim(),
+        amount: Number(amount),
+        frequency,
+        isEstimate: isVariable === true,
+        expenseType,
+        transportType: expenseType === "transportation" ? transportType : "",
+        isVariable,
+        cityId,
+      });
+    }
+
     resetForm();
     onClose();
   };
@@ -178,17 +190,18 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
       title="Add Expenses"
       onClose={handleClose}
       onSubmit={handleSubmit}
-      submitText="Submit"
       className="expenses-modal"
+      showDefaultAtions={false}
       footerContent={
         <>
           <button
             className="add-expense__submit"
-            type="button"
-            disable={!canSubmit}
+            type="submit"
+            disabled={!canSubmit}
           >
             Submit
           </button>
+
           <button
             className="add-expense__cancel"
             type="button"
@@ -249,8 +262,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails }) {
             {expenseType === "transportation" && (
               <>
                 <label className="add-expense__label">
-                  Transport Type{" "}
-                  <span className="add-expense__required">*</span>
+                  Transport Type <span className="add-expense__required">*</span>
                 </label>
                 <select
                   className="add-expense__select"
