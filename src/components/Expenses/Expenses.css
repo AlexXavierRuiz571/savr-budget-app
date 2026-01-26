@@ -90,7 +90,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .expenses__bar-icon:hover {
@@ -176,7 +176,7 @@
 .expenses__submission-icon {
   width: 30px;
   height: 30px;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .expenses__submission-icon-btn:hover .expenses__submission-icon {
@@ -266,7 +266,8 @@
   border-color: #000000;
 }
 
-/* Saved groups (shows ONLY after Save) */
+/* Saved groups */
+
 .expenses__saved {
   width: 100%;
   max-width: 500px;
@@ -329,7 +330,42 @@
   opacity: 1;
 }
 
-/* If submission exists, reduce the top margin so it sits tight under saved groups */
 .expenses__saved + .expenses__submission {
   margin-top: 14px;
+}
+
+.expenses__title-highlight {
+  color: #00b3d3;
+  font-weight: 700;
+}
+
+.expenses__highlight {
+  color: #00b3d3;
+}
+
+.expenses__confirm-delete {
+  background-color: #00b3d3;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.expenses__confirm-delete:hover {
+  background-color: #15dcff;
+  color: #000000;
+  border: 1px solid #000000;
+  text-shadow: none;
+}
+
+.delete-modal__cancel {
+  background-color: #00262d;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.delete-modal__cancel:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
 }

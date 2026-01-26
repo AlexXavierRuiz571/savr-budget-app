@@ -1,4 +1,4 @@
-import "./AddExpenseModal.css";
+import "../modals/AddExpenseModal.css";
 import { useEffect, useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 import Preloader from "../../Preloader/Preloader.jsx";
@@ -25,7 +25,13 @@ const TRANSPORT_TYPES = [
   { label: "Other", value: "other" },
 ];
 
-function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
+function EditExpenseModal({
+  isOpen,
+  onClose,
+  getCityDetails,
+  expenseToEdit,
+  onUpdateExpense,
+}) {
   const [cityId, setCityId] = useState("");
 
   // User inputs (left side)
@@ -64,6 +70,40 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
     resetEstimates();
   };
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    if (!expenseToEdit) {
+      resetForm();
+      return;
+    }
+
+    const nextCityId = String(expenseToEdit.cityId || "");
+    const nextExpenseType = expenseToEdit.expenseType || "";
+    const nextIsVariable =
+      typeof expenseToEdit.isVariable === "boolean"
+        ? expenseToEdit.isVariable
+        : null;
+
+    setCityId(nextCityId);
+    setExpenseType(nextExpenseType);
+    setTransportType(
+      nextExpenseType === "transportation"
+        ? expenseToEdit.transportType || ""
+        : "",
+    );
+    setExpenseName(expenseToEdit.name || "");
+    setAmount(
+      expenseToEdit.amount === 0 || expenseToEdit.amount
+        ? String(expenseToEdit.amount)
+        : "",
+    );
+    setFrequency(expenseToEdit.frequency || "");
+    setIsVariable(nextIsVariable);
+
+    resetEstimates();
+  }, [isOpen, expenseToEdit]);
+
   const handleLocationChange = (evt) => {
     setCityId(evt.target.value);
     resetEstimates();
@@ -72,11 +112,12 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   const handleExpenseTypeChange = (evt) => {
     const next = evt.target.value;
     setExpenseType(next);
-    resetEstimates();
 
     if (next !== "transportation") {
       setTransportType("");
     }
+
+    resetEstimates();
   };
 
   const filteredItems = useMemo(() => {
@@ -92,9 +133,9 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
       .map((price) => ({
         goodId: String(price.good_id),
         name: price.item_name,
-        min: price.usd?.min ?? price.min ?? "",
-        avg: price.usd?.avg ?? price.avg ?? "",
-        max: price.usd?.max ?? price.max ?? "",
+        min: price.usd?.min ?? String(price.min ?? ""),
+        avg: price.usd?.avg ?? String(price.avg ?? ""),
+        max: price.usd?.max ?? String(price.max ?? ""),
       }))
       .sort((priceA, priceB) => priceA.name.localeCompare(priceB.name));
   }, [hasLoadedEstimates, cityDetails, expenseType]);
@@ -106,12 +147,16 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
     );
   }, [filteredItems, selectedGoodId]);
 
-  // Keep selectedGoodId valid after estimates/type changes
   useEffect(() => {
     if (!hasLoadedEstimates) return;
 
     if (!expenseType || filteredItems.length === 0) {
       setSelectedGoodId("");
+      return;
+    }
+
+    if (!selectedGoodId) {
+      setSelectedGoodId(filteredItems[0].goodId);
       return;
     }
 
@@ -134,8 +179,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
     } catch (err) {
       setEstimateError("No estimates could be loaded.");
       setHasLoadedEstimates(false);
-      setCityDetails(null);
-      setSelectedGoodId("");
     } finally {
       setIsLoadingEstimates(false);
     }
@@ -150,11 +193,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
     return num.toFixed(2);
   };
 
-  // IMPORTANT:
-  // "~" on the estimate ranges should NOT depend on the user's Fixed/Variable choice.
-  // Estimates are always approximate.
-  const showEstimateTilde = true;
-
   const canSubmit =
     isLocationSet &&
     expenseType &&
@@ -167,14 +205,14 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (!canSubmit) return;
+    if (!expenseToEdit) return;
 
-    if (typeof onAddExpense === "function") {
-      onAddExpense({
-        id: crypto.randomUUID(),
+    if (typeof onUpdateExpense === "function") {
+      onUpdateExpense({
+        ...expenseToEdit,
         name: expenseName.trim(),
         amount: Number(amount),
         frequency,
-        isEstimate: isVariable === true,
         expenseType,
         transportType: expenseType === "transportation" ? transportType : "",
         isVariable,
@@ -182,9 +220,15 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
       });
     }
 
-    resetForm();
     onClose();
   };
+
+  const modalTitle = (
+    <>
+      Edit{" "}
+      <span className="expenses__title-highlight">{expenseToEdit?.name}</span>
+    </>
+  );
 
   const handleClose = () => {
     resetForm();
@@ -194,7 +238,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   return (
     <ModalWithForm
       isOpen={isOpen}
-      title="Add Expenses"
+      title={modalTitle}
       onClose={handleClose}
       onSubmit={handleSubmit}
       className="expenses-modal"
@@ -229,6 +273,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
             value={cityId}
             onChange={handleLocationChange}
             required
+            disabled={isLoadingEstimates}
           >
             <option value="">City, State</option>
             {CITY_OPTIONS.map((c) => (
@@ -252,11 +297,13 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
             <label className="add-expense__label">
               Expense Type <span className="add-expense__required">*</span>
             </label>
+
             <select
               className="add-expense__select"
               value={expenseType}
               onChange={handleExpenseTypeChange}
               required
+              disabled={isLoadingEstimates}
             >
               <option value="">Select type</option>
               {EXPENSE_TYPES.map((t) => (
@@ -272,11 +319,13 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
                   Transport Type{" "}
                   <span className="add-expense__required">*</span>
                 </label>
+
                 <select
                   className="add-expense__select"
                   value={transportType}
                   onChange={(evt) => setTransportType(evt.target.value)}
                   required
+                  disabled={isLoadingEstimates}
                 >
                   <option value="">Select method</option>
                   {TRANSPORT_TYPES.map((t) => (
@@ -298,6 +347,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
               onChange={(evt) => setExpenseName(evt.target.value)}
               placeholder="Must be typed"
               required
+              disabled={isLoadingEstimates}
             />
 
             <label className="add-expense__label">
@@ -311,6 +361,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
               value={amount}
               onChange={(evt) => setAmount(evt.target.value)}
               required
+              disabled={isLoadingEstimates}
             />
 
             <label className="add-expense__label">
@@ -320,9 +371,10 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
               <label className="add-expense__radio">
                 <input
                   type="radio"
-                  name="fixedVariable"
+                  name="fixedVariableEdit"
                   checked={isVariable === false}
                   onChange={() => setIsVariable(false)}
+                  disabled={isLoadingEstimates}
                 />
                 Fixed
               </label>
@@ -330,9 +382,10 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
               <label className="add-expense__radio">
                 <input
                   type="radio"
-                  name="fixedVariable"
+                  name="fixedVariableEdit"
                   checked={isVariable === true}
                   onChange={() => setIsVariable(true)}
+                  disabled={isLoadingEstimates}
                 />
                 Variable
               </label>
@@ -346,6 +399,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
               value={frequency}
               onChange={(evt) => setFrequency(evt.target.value)}
               required
+              disabled={isLoadingEstimates}
             >
               <option value="">Select frequency</option>
               <option value="monthly">Monthly</option>
@@ -375,10 +429,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
               <p className="add-expense__placeholder">
                 No estimates have been loaded.
               </p>
-            ) : !expenseType ? (
-              <p className="add-expense__placeholder">
-                Select an expense type to see estimates.
-              </p>
             ) : filteredItems.length === 0 ? (
               <p className="add-expense__placeholder">
                 No estimate items found for this type.
@@ -392,6 +442,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
                   className="add-expense__select"
                   value={selectedGoodId}
                   onChange={(evt) => setSelectedGoodId(evt.target.value)}
+                  disabled={isLoadingEstimates}
                 >
                   {filteredItems.map((item) => (
                     <option key={item.goodId} value={item.goodId}>
@@ -400,38 +451,28 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
                   ))}
                 </select>
 
-                {/* CRITICAL GUARD: selectedItem can be null for a moment */}
-                {selectedItem ? (
-                  <div className="add-expense__ranges">
-                    <div className="add-expense__range-row">
-                      <span>Low</span>
-                      <span>
-                        {showEstimateTilde ? "~ " : ""}
-                        {formatMoney(selectedItem.min)}
-                      </span>
-                    </div>
-
-                    <div className="add-expense__range-row">
-                      <span>Mid</span>
-                      <span>
-                        {showEstimateTilde ? "~ " : ""}
-                        {formatMoney(selectedItem.avg)}
-                      </span>
-                    </div>
-
-                    <div className="add-expense__range-row">
-                      <span>High</span>
-                      <span>
-                        {showEstimateTilde ? "~ " : ""}
-                        {formatMoney(selectedItem.max)}
-                      </span>
-                    </div>
+                <div className="add-expense__ranges">
+                  <div className="add-expense__range-row">
+                    <span>Low</span>
+                    <span>
+                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.min)}
+                    </span>
                   </div>
-                ) : (
-                  <p className="add-expense__placeholder">
-                    Select an estimate item to see ranges.
-                  </p>
-                )}
+
+                  <div className="add-expense__range-row">
+                    <span>Mid</span>
+                    <span>
+                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.avg)}
+                    </span>
+                  </div>
+
+                  <div className="add-expense__range-row">
+                    <span>High</span>
+                    <span>
+                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.max)}
+                    </span>
+                  </div>
+                </div>
 
                 <div className="add-expense__disclaimer">
                   <p className="add-expense__disclaimer-text">
@@ -448,4 +489,4 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   );
 }
 
-export default AddExpenseModal;
+export default EditExpenseModal;
