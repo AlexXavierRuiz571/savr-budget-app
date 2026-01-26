@@ -27,7 +27,9 @@ h6,
 li,
 label,
 a,
-button {
+button,
+.expenses__saved-title,
+.expenses__saved-monthly {
   text-shadow:
     2px 0 0 #000,
     -2px 0 0 #000,

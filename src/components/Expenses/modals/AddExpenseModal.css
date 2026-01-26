@@ -210,3 +210,32 @@
   background-color: #000000;
   border-color: #000000;
 }
+
+.add-expense__loader-wrap {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-expense__spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #00b3d3;
+  animation: add-expense-spin 0.9s linear infinite;
+}
+
+@keyframes add-expense-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.add-expense__loading-text {
+  font-size: 14px;
+  color: #b3b3b3;
+  text-align: center;
+}

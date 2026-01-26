@@ -99,7 +99,9 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
 
   const selectedItem = useMemo(() => {
     if (!selectedGoodId) return null;
-    return filteredItems.find((i) => i.goodId === String(selectedGoodId)) || null;
+    return (
+      filteredItems.find((i) => i.goodId === String(selectedGoodId)) || null
+    );
   }, [filteredItems, selectedGoodId]);
 
   useEffect(() => {
@@ -122,7 +124,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   }, [hasLoadedEstimates, expenseType, filteredItems, selectedGoodId]);
 
   const handleLoadEstimates = async () => {
-    if (!cityId) return;
+    if (!cityId || !expenseType) return;
 
     setIsLoadingEstimates(true);
     setEstimateError("");
@@ -191,7 +193,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
       className="expenses-modal"
-      showDefaultAtions={false}
+      showDefaultActions={false}
       footerContent={
         <>
           <button
@@ -262,7 +264,8 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
             {expenseType === "transportation" && (
               <>
                 <label className="add-expense__label">
-                  Transport Type <span className="add-expense__required">*</span>
+                  Transport Type{" "}
+                  <span className="add-expense__required">*</span>
                 </label>
                 <select
                   className="add-expense__select"
@@ -354,7 +357,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
               className="add-expense__estimate-button"
               type="button"
               onClick={handleLoadEstimates}
-              disabled={!cityId || isLoadingEstimates}
+              disabled={!cityId || !expenseType || isLoadingEstimates}
             >
               {isLoadingEstimates ? "Loading..." : "Load Estimates"}
             </button>
