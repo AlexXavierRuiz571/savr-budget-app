@@ -357,15 +357,20 @@
   text-shadow: none;
 }
 
-.delete-modal__cancel {
+.expenses .delete-modal__cancel {
   background-color: #00262d;
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
 }
 
-.delete-modal__cancel:hover {
+.expenses .delete-modal__cancel:hover {
   background-color: #000000;
   color: #ffffff;
   border: 1px solid #000000;
+}
+
+.expenses .modal__body {
+  background: none;
+  border: none;
 }

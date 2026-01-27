@@ -111,6 +111,10 @@
   cursor: pointer;
 }
 
+.header__help-trigger:hover {
+  color: #800000;
+}
+
 .header__help-panel {
   position: absolute;
   top: 100%;

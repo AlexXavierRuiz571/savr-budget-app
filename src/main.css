@@ -30,7 +30,9 @@ a,
 button,
 .expenses__saved-title,
 .expenses__saved-monthly,
-.delete-modal__text
+.delete-modal__text,
+.lifestyle__saved-title,
+.lifestyle__saved-monthly
 {
   text-shadow:
     2px 0 0 #000,

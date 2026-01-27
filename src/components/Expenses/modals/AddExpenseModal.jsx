@@ -150,9 +150,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
     return num.toFixed(2);
   };
 
-  // IMPORTANT:
-  // "~" on the estimate ranges should NOT depend on the user's Fixed/Variable choice.
-  // Estimates are always approximate.
   const showEstimateTilde = true;
 
   const canSubmit =
@@ -400,7 +397,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
                   ))}
                 </select>
 
-                {/* CRITICAL GUARD: selectedItem can be null for a moment */}
                 {selectedItem ? (
                   <div className="add-expense__ranges">
                     <div className="add-expense__range-row">

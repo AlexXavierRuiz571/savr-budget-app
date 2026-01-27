@@ -1,0 +1,180 @@
+{
+  "travel": {
+    "label": "Travel",
+    "note": "Shown as a monthly equivalent (12-month average).",
+    "options": [
+      {
+        "value": "domestic_weekend",
+        "label": "Domestic Weekend Trips",
+        "low": 120,
+        "mid": 220,
+        "high": 420
+      },
+      {
+        "value": "domestic_flights",
+        "label": "Domestic Flights (Occasional)",
+        "low": 180,
+        "mid": 320,
+        "high": 600
+      },
+      {
+        "value": "caribbean_cruise",
+        "label": "Caribbean Cruise Style",
+        "low": 220,
+        "mid": 380,
+        "high": 750
+      },
+      {
+        "value": "mexico_central",
+        "label": "Mexico / Central America",
+        "low": 200,
+        "mid": 360,
+        "high": 700
+      },
+      {
+        "value": "europe_city",
+        "label": "Europe (City Travel)",
+        "low": 280,
+        "mid": 520,
+        "high": 1050
+      },
+      {
+        "value": "asia_longhaul",
+        "label": "Asia (Long-haul)",
+        "low": 300,
+        "mid": 560,
+        "high": 1150
+      }
+    ]
+  },
+  "subscriptions": {
+    "label": "Subscriptions",
+    "note": "Typical monthly subscription bundles.",
+    "options": [
+      {
+        "value": "streaming_basic",
+        "label": "Streaming (1–2 services)",
+        "low": 15,
+        "mid": 28,
+        "high": 45
+      },
+      {
+        "value": "streaming_bundle",
+        "label": "Streaming Bundle (3–5 services)",
+        "low": 35,
+        "mid": 60,
+        "high": 95
+      },
+      {
+        "value": "music_plus",
+        "label": "Music + Cloud Storage",
+        "low": 15,
+        "mid": 25,
+        "high": 40
+      },
+      {
+        "value": "gaming",
+        "label": "Gaming Memberships",
+        "low": 10,
+        "mid": 22,
+        "high": 45
+      },
+      {
+        "value": "fitness_apps",
+        "label": "Fitness Apps",
+        "low": 10,
+        "mid": 20,
+        "high": 40
+      },
+      {
+        "value": "software_tools",
+        "label": "Software Tools (Editing, AI, etc.)",
+        "low": 15,
+        "mid": 45,
+        "high": 120
+      }
+    ]
+  },
+  "hobbies": {
+    "label": "Hobbies",
+    "note": "Broad benchmarks, monthly equivalent.",
+    "options": [
+      {
+        "value": "low_key",
+        "label": "Low-Key Hobby (minimal spend)",
+        "low": 20,
+        "mid": 45,
+        "high": 80
+      },
+      {
+        "value": "creative",
+        "label": "Creative Hobby (art, music, crafts)",
+        "low": 35,
+        "mid": 85,
+        "high": 180
+      },
+      {
+        "value": "sports_fitness",
+        "label": "Sports / Fitness Hobby",
+        "low": 30,
+        "mid": 90,
+        "high": 220
+      },
+      {
+        "value": "collecting",
+        "label": "Collecting (cards, figures, etc.)",
+        "low": 25,
+        "mid": 100,
+        "high": 250
+      },
+      {
+        "value": "outdoor",
+        "label": "Outdoor Hobby (gear + trips)",
+        "low": 40,
+        "mid": 120,
+        "high": 280
+      }
+    ]
+  },
+  "other": {
+    "label": "Other",
+    "note": "General lifestyle spending that does not fit other categories.",
+    "options": [
+      {
+        "value": "self_care",
+        "label": "Self-Care (haircuts, nails, skincare)",
+        "low": 20,
+        "mid": 60,
+        "high": 120
+      },
+      {
+        "value": "shopping_misc",
+        "label": "Shopping (misc. non-essentials)",
+        "low": 30,
+        "mid": 90,
+        "high": 200
+      },
+      {
+        "value": "gifts",
+        "label": "Gifts / Holidays",
+        "low": 15,
+        "mid": 50,
+        "high": 140
+      },
+      {
+        "value": "nights_out",
+        "label": "Nights Out (bars, events)",
+        "low": 25,
+        "mid": 80,
+        "high": 180
+      },
+      {
+        "value": "misc_fun",
+        "label": "Misc. Fun Spending",
+        "low": 20,
+        "mid": 75,
+        "high": 175
+      }
+    ]
+  }
+}

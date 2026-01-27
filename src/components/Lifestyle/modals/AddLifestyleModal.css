@@ -1,15 +1,15 @@
-.expenses-modal {
+.lifestyle-modal {
   width: 100%;
   max-width: 900px;
 }
 
-.expenses-modal .modal__body{
-  background-color: #00262d;
-  border-top: 5px solid #00323b;
-  border-bottom: 5px solid #00323b;
+.lifestyle-modal .modal__body {
+  background-color: #362c11;
+  border-top: 5px solid #c9a43e;
+  border-bottom: 5px solid #c9a43e;
 }
 
-.add-expense__location {
+.add-lifestyle__type {
   margin-top: 8px;
   margin-bottom: 24px;
   padding-left: 20px;
@@ -17,52 +17,52 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-top: 8px solid #00b3d3;
+  border-top: 8px solid #c9a43e;
 }
 
-.add-expense__grid {
+.add-lifestyle__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
 }
 
-.add-expense__left {
+.add-lifestyle__left {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.add-expense__right {
+.add-lifestyle__right {
   padding-left: 30px;
   display: flex;
   flex-direction: column;
   gap: 25px;
-  border-left: 5px solid #00323b;
+  border-left: 5px solid #c9a43e;
 }
 
-.add-expense__label {
+.add-lifestyle__label {
   font-size: 24px;
   color: #ffffff;
   font-weight: 500;
 }
 
-.add-expense__estimate-label {
+.add-lifestyle__estimate-label {
   font-size: 24px;
   color: #ffffff;
   font-weight: 500;
   text-align: center;
 }
 
-.add-expense__required {
-  color: #00b3d3;
+.add-lifestyle__required {
+  color: #c9a43e;
 }
 
-.add-expense__input,
-.add-expense__select {
+.add-lifestyle__input,
+.add-lifestyle__select {
   max-width: 410px;
   height: 36px;
   background-color: #1e1e1e;
-  border: 1px solid #00b3d3;
+  border: 1px solid #c9a43e;
   color: #ffffff;
   padding: 0 8px;
   font-style: italic;
@@ -70,43 +70,32 @@
   border-radius: 4px;
 }
 
-.add-expense__select {
+.add-lifestyle__select {
   height: 36px;
   background-color: #1e1e1e;
-  border: 1px solid #00b3d3;
+  border: 1px solid #c9a43e;
   color: #ffffff;
   padding: 0 8px;
 }
 
-.add-expense__select:required:invalid {
+.add-lifestyle__select:required:invalid {
   color: rgba(255, 255, 255, 0.4);
   font-style: italic;
 }
 
-.add-expense__select option {
+.add-lifestyle__select option {
   color: #ffffff;
   font-style: italic;
 }
 
-.add-expense__input::placeholder {
+.add-lifestyle__input::placeholder {
   color: #b3b3b3;
   font-style: italic;
 }
 
-.add-expense__radio-row {
-  display: flex;
-  gap: 30px;
-}
-
-.add-expense__radio {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.add-expense__estimate-button {
-  align-self: flex-start;
+.add-lifestyle__estimate-button {
   color: #ffffff;
-  background-color: #00b3d3;
+  background-color: #c9a43e;
   border: 1px solid #ffffff;
   padding: 12px 12px;
   border-radius: 6px;
@@ -120,52 +109,59 @@
     color 0.2s ease;
 }
 
-.add-expense__estimate-button:hover {
-  background-color: #00323b;
+.add-lifestyle__estimate-button:hover {
+  background-color: #6b5520;
   border: 1px solid #ffffff;
   color: #ffffff;
   text-shadow: none;
 }
 
-.add-expense__estimate-button:disabled {
+.add-lifestyle__estimate-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.add-expense__placeholder {
+.add-lifestyle__placeholder {
   font-size: 14px;
   color: #b3b3b3;
   text-align: center;
 }
 
-.add-expense__error {
+.add-lifestyle__error {
   color: #ff6b6b;
   font-size: 13px;
 }
 
-.add-expense__ranges {
+.add-lifestyle__ranges {
   margin-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 45px;
 }
 
-.add-expense__range-row {
+.add-lifestyle__range-row {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
   font-weight: 500;
+  color: #b3b3b3;
 }
 
-.add-expense__disclaimer-text {
+.add-lifestyle__summary {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-lifestyle__summary-text {
   font-size: 14px;
   color: #b3b3b3;
-  margin-top: 50px;
+  margin: 0;
   text-align: center;
 }
 
-.add-expense__submit,
-.add-expense__cancel {
+.add-lifestyle__submit,
+.add-lifestyle__cancel {
   height: 40px;
   min-width: 120px;
   padding: 0 18px;
@@ -175,8 +171,8 @@
   cursor: pointer;
 }
 
-.add-expense__submit {
-  background-color: #00b3d3;
+.add-lifestyle__submit {
+  background-color: #c9a43e;
   border: 1px solid #ffffff;
   color: #ffffff;
   text-shadow: none;
@@ -185,19 +181,19 @@
     color 0.2s ease;
 }
 
-.add-expense__submit:hover {
-  background-color: #00323b;
+.add-lifestyle__submit:hover {
+  background-color: #5b4300;
   border: 1px solid #ffffff;
   color: #ffffff;
 }
 
-.add-expense__submit:disabled {
+.add-lifestyle__submit:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-.add-expense__cancel {
-  background-color: #00262d;
+.add-lifestyle__cancel {
+  background-color: #5d4d20;
   color: #ffffff;
   border: 1px solid #ffffff;
   transition:
@@ -206,12 +202,12 @@
     color 0.2s ease;
 }
 
-.add-expense__cancel:hover {
+.add-lifestyle__cancel:hover {
   background-color: #000000;
   border-color: #000000;
 }
 
-.add-expense__loader-wrap {
+.add-lifestyle__loader-wrap {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -219,22 +215,22 @@
   gap: 12px;
 }
 
-.add-expense__spinner {
+.add-lifestyle__spinner {
   width: 36px;
   height: 36px;
   border-radius: 50%;
   border: 4px solid rgba(255, 255, 255, 0.25);
-  border-top-color: #00b3d3;
-  animation: add-expense-spin 0.9s linear infinite;
+  border-top-color: #c9a43e;
+  animation: add-lifestyle-spin 0.9s linear infinite;
 }
 
-@keyframes add-expense-spin {
+@keyframes add-lifestyle-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-.add-expense__loading-text {
+.add-lifestyle__loading-text {
   font-size: 14px;
   color: #b3b3b3;
   text-align: center;

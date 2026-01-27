@@ -101,7 +101,9 @@ function ExpensesHeader() {
       </div>
 
       <div className="expenses-header__right-panel">
-        <p className="expenses-header__right-text">*Profile Name*</p>
+        <Link className="lifestyle-header__right-text" to="/info">
+          Profile
+        </Link>{" "}
       </div>
     </header>
   );

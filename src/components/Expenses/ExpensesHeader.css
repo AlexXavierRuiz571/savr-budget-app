@@ -51,6 +51,16 @@
   color: #b3b3b3;
 }
 
+.expenses-header__right-text {
+  color: #b3b3b3;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.expenses-header__right-text:hover {
+  color: #ffffff;
+}
+
 .expenses-header__title {
   color: #00b3d3;
   font-size: 95px;
@@ -84,6 +94,11 @@
   color: #b3b3b3;
   cursor: pointer;
 }
+
+.expenses-header__help-trigger:hover {
+ color: #00b3d3;
+}
+
 
 .expenses-header__help-panel {
   position: absolute;

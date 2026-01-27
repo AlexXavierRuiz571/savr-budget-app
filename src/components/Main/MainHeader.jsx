@@ -46,7 +46,7 @@ function MainHeader() {
           onClick={handleToggleHelp}
           aria-label="Open SAVR Help"
         >
-          What is <span className="text-highlight">SAVR</span>?
+          What is SAVR?
         </button>
 
         {isHelpOpen && (
