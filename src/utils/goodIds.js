@@ -1,7 +1,7 @@
 export const expenseGoodIds = {
   housing: [28, 29, 30, 31],
   utilities: [54, 55],
-  transportation: [45, 46, 47],
+  transportation: [45, 46, 47, 48, 49, 50],
   food: [9, 10, 11, 13, 15, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 58],
   other: [3, 4],
 };
