@@ -1,5 +1,5 @@
 import "./Expenses.css";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ExpensesHeader from "./ExpensesHeader";
 import SecondaryNav from "../SecondaryNav/SecondaryNav.jsx";
 import addIcon from "../../assets/icons/add-icon.svg";
@@ -8,10 +8,12 @@ import deleteIcon from "../../assets/icons/delete-icon.svg";
 import AddExpenseModal from "./modals/AddExpenseModal.jsx";
 import EditExpenseModal from "./modals/EditExpenseModal.jsx";
 import DeleteModal from "../Modals/DeleteModal/DeleteModal.jsx";
-
-const EXPENSES_GROUPS_KEY = "savr_expenses_savedGroups_v1";
+import ProfileStore from "../../utils/ProfileStore.js";
+import useProfileGroups from "../../utils/useProfileGroups.js";
 
 function Expenses({ getCityDetails }) {
+  const savedGroups = useProfileGroups("expenses");
+
   const [isAddExpenseModalOpen, setIsAddExpenseModalOpen] = useState(false);
   const [isEditExpenseModalOpen, setIsEditExpenseModalOpen] = useState(false);
 
@@ -23,9 +25,6 @@ function Expenses({ getCityDetails }) {
 
   const [submissionTitle, setSubmissionTitle] = useState("");
   const [submissionItems, setSubmissionItems] = useState([]);
-
-  const [savedGroups, setSavedGroups] = useState([]);
-  const [hasLoadedSavedGroups, setHasLoadedSavedGroups] = useState(false);
 
   const [editingGroupId, setEditingGroupId] = useState(null);
 
@@ -113,7 +112,10 @@ function Expenses({ getCityDetails }) {
   const confirmDeleteGroup = () => {
     if (!groupToDelete) return;
 
-    setSavedGroups((prev) => prev.filter((g) => g.id !== groupToDelete.id));
+    ProfileStore.setGroups(
+      "expenses",
+      savedGroups.filter((g) => g.id !== groupToDelete.id),
+    );
 
     if (editingGroupId === groupToDelete.id) {
       handleCancelSubmission();
@@ -161,26 +163,25 @@ function Expenses({ getCityDetails }) {
 
     const baseLabel = "Expenses";
     const trimmedTitle = submissionTitle.trim();
-
     const title = trimmedTitle || getDefaultGroupTitle(baseLabel);
 
     const monthlyTotal = getMonthlyTotalForItems(submissionItems);
     const isEstimate = submissionItems.some((item) => item.isEstimate);
 
     if (editingGroupId) {
-      setSavedGroups((prev) =>
-        prev.map((group) => {
-          if (group.id !== editingGroupId) return group;
+      const next = savedGroups.map((group) => {
+        if (group.id !== editingGroupId) return group;
 
-          return {
-            ...group,
-            title,
-            items: [...submissionItems],
-            monthlyTotal,
-            isEstimate,
-          };
-        }),
-      );
+        return {
+          ...group,
+          title,
+          items: [...submissionItems],
+          monthlyTotal,
+          isEstimate,
+        };
+      });
+
+      ProfileStore.setGroups("expenses", next);
 
       setSubmissionItems([]);
       setSubmissionTitle("");
@@ -196,7 +197,7 @@ function Expenses({ getCityDetails }) {
       isEstimate,
     };
 
-    setSavedGroups((prev) => [newGroup, ...prev]);
+    ProfileStore.setGroups("expenses", [newGroup, ...savedGroups]);
 
     setSubmissionItems([]);
     setSubmissionTitle("");
@@ -227,50 +228,6 @@ function Expenses({ getCityDetails }) {
     setSubmissionTitle(group.title || "");
     setSubmissionItems(Array.isArray(group.items) ? [...group.items] : []);
   };
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(EXPENSES_GROUPS_KEY);
-      if (!raw) {
-        setHasLoadedSavedGroups(true);
-        return;
-      }
-
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed)) {
-        const normalized = parsed.map((group) => {
-          const items = Array.isArray(group.items) ? group.items : [];
-          const monthlyTotal =
-            typeof group.monthlyTotal === "number"
-              ? group.monthlyTotal
-              : getMonthlyTotalForItems(items);
-
-          const isEstimate =
-            typeof group.isEstimate === "boolean"
-              ? group.isEstimate
-              : items.some((item) => item.isEstimate);
-
-          return { ...group, items, monthlyTotal, isEstimate };
-        });
-
-        setSavedGroups(normalized);
-      }
-    } catch (err) {
-      console.error("Failed to load saved groups:", err);
-    } finally {
-      setHasLoadedSavedGroups(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!hasLoadedSavedGroups) return;
-
-    try {
-      localStorage.setItem(EXPENSES_GROUPS_KEY, JSON.stringify(savedGroups));
-    } catch (err) {
-      console.error("Failed to save groups:", err);
-    }
-  }, [savedGroups, hasLoadedSavedGroups]);
 
   return (
     <section className="expenses">

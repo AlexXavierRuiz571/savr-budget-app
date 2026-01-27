@@ -11,6 +11,7 @@ import Savings from "../Savings/Savings.jsx";
 import Debt from "../Debt/Debt.jsx";
 import Lifestyle from "../Lifestyle/Lifestyle.jsx";
 import InfoHub from "../InfoHub/InfoHub.jsx";
+import ProfileStore from "../../utils/ProfileStore.js";
 
 function App() {
   const cityCacheRef = useRef(new Map());
@@ -44,6 +45,10 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    ProfileStore.init();
+  }, []);
 
   const pageMap = {
     "/": "Main",
