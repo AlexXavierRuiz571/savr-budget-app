@@ -70,3 +70,82 @@
 .expenses-header__title-link:active {
   text-decoration: none;
 }
+
+.expenses-header__left-panel {
+  position: relative;
+}
+
+.expenses-header__help-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.expenses-header__help-panel {
+  position: absolute;
+  top: 60%;
+  left: 75%;
+  margin-top: 14px;
+  width: 720px;
+  background-color: #333333;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  z-index: 50;
+  padding: 0;
+}
+
+.expenses-header__help-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 8px solid #00b3d3;
+}
+
+.expenses-header__help-title {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: 34px;
+}
+
+.expenses-header__help-highlight {
+  color: #00b3d3;
+}
+
+.expenses-header__help-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.expenses-header__help-close-icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0.75;
+  display: block;
+}
+
+.expenses-header__help-close-icon:hover {
+  opacity: 1;
+}
+
+.expenses-header__help-list {
+  margin: 0;
+  margin-top: 25px;
+  padding: 18px 26px 22px 46px;
+  color: #b3b3b3;
+  font-size: 25px;
+}
+
+.expenses-header__help-list li {
+  margin-bottom: 45px;
+}
+
+.expenses-header__help-list li:last-child {
+  margin-bottom: 30px;
+}
