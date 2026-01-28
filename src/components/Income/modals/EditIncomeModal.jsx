@@ -29,12 +29,12 @@ const toMonthlyAmount = (amount, frequency) => {
 function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
   const [amount, setAmount] = useState("");
   const [frequency, setFrequency] = useState("");
-  const [incomeName, setIncomeName] = useState("");
+  const [incomeTitle, setIncomeTitle] = useState("");
 
   const resetForm = () => {
     setAmount("");
     setFrequency("");
-    setIncomeName("");
+    setIncomeTitle("");
   };
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
         : "",
     );
     setFrequency(incomeToEdit.frequency || "");
-    setIncomeName(incomeToEdit.name || "");
+    setIncomeTitle(incomeToEdit.title || "");
   }, [isOpen, incomeToEdit]);
 
   const canSubmit = useMemo(() => {
@@ -63,20 +63,23 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
     if (!canSubmit) return;
     if (!incomeToEdit) return;
 
-    const monthlyAmount = toMonthlyAmount(amount, frequency);
+    const monthlyTotal = toMonthlyAmount(amount, frequency);
     const isEstimate = frequency !== "monthly";
+
+    const trimmedTitle = (incomeTitle || "").trim();
 
     if (typeof onUpdateIncome === "function") {
       onUpdateIncome({
         ...incomeToEdit,
-        name: incomeName.trim(),
+        title: trimmedTitle,
         amount: Number(amount),
         frequency,
-        monthlyAmount,
+        monthlyTotal,
         isEstimate,
       });
     }
 
+    resetForm();
     onClose();
   };
 
@@ -85,17 +88,17 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
     onClose();
   };
 
-  const titleName = incomeToEdit?.name?.trim() || "Income";
-  const modalTitle = (
-    <>
-      Edit <span className="income__highlight">{titleName}</span>
-    </>
-  );
-
   return (
     <ModalWithForm
       isOpen={isOpen}
-      title={modalTitle}
+      title={
+        <>
+          Edit{" "}
+          <span className="income__title-highlight">
+            {incomeToEdit?.title || "Income"}
+          </span>
+        </>
+      }
       onClose={handleClose}
       onSubmit={handleSubmit}
       className="income-modal"
@@ -141,6 +144,7 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
         <label className="add-income__label">
           Frequency <span className="add-income__required">*</span>
         </label>
+
         <select
           className="add-income__select"
           value={frequency}
@@ -159,8 +163,8 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
         <input
           className="add-income__input"
           type="text"
-          value={incomeName}
-          onChange={(evt) => setIncomeName(evt.target.value)}
+          value={incomeTitle}
+          onChange={(evt) => setIncomeTitle(evt.target.value)}
           placeholder="Job"
         />
       </div>

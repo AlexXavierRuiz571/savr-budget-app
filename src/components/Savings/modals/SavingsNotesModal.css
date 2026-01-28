@@ -1,0 +1,29 @@
+.savings-notes-modal {
+  width: 100%;
+  max-width: 600px;
+  position: absolute;
+  top: 20%;
+}
+
+.savings-notes-modal .modal__body {
+  border-top: 8px solid #00632d;
+}
+
+.savings-notes__body {
+  padding: 20px 0;
+}
+
+.savings-notes__text {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: 22px;
+  overflow-wrap: anywhere;
+}
+
+.savings .modal__close-icon {
+  opacity: .75;
+}
+
+.savings .modal__close-icon:hover {
+  opacity: 1;
+}

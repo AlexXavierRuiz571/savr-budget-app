@@ -4,7 +4,7 @@
 }
 
 .income-modal .modal__body {
-  border-top: 5px solid #800000;
+  border-top: 8px solid #800000;
 }
 
 .add-income {
@@ -99,4 +99,8 @@
 .add-income__cancel:hover {
   background-color: #000000;
   border-color: #000000;
+}
+
+.income__title-highlight {
+  color: #800000;
 }

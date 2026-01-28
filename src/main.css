@@ -30,7 +30,9 @@ a,
 button,
 .income__saved-entry,
 .expenses__saved-group,
-.lifestyle__saved-group
+.savings__saved-entry,
+.lifestyle__saved-group,
+.delete-modal__text
 {
   text-shadow:
     2px 0 0 #000,
