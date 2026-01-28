@@ -1,4 +1,3 @@
-// src/components/Savings/Savings.jsx
 import "./Savings.css";
 import { useMemo, useState } from "react";
 import SavingsHeader from "./SavingsHeader.jsx";

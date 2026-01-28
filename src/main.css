@@ -31,8 +31,11 @@ button,
 .income__saved-entry,
 .expenses__saved-group,
 .savings__saved-entry,
+.debt__saved-entry,
 .lifestyle__saved-group,
-.delete-modal__text
+.delete-modal__text,
+.add-savings__note-max,
+.add-debt__note-max
 {
   text-shadow:
     2px 0 0 #000,
