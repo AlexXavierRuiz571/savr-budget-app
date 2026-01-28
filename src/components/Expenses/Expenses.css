@@ -30,6 +30,7 @@
   padding: 20px 24px;
   box-sizing: border-box;
   border-radius: 10px;
+  border: 1px solid #00b3d3;
 }
 
 .expenses__summary-title {
@@ -77,6 +78,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 10px;
+  border: 1px solid #00b3d3;
 }
 
 .expenses__bar-text {
@@ -266,8 +268,6 @@
   border-color: #000000;
 }
 
-/* Saved groups */
-
 .expenses__saved {
   width: 100%;
   max-width: 500px;
@@ -285,6 +285,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid #00b3d3;
 }
 
 .expenses__saved-left {
@@ -373,4 +374,9 @@
 .expenses .modal__body {
   background: none;
   border: none;
+}
+
+.expenses .secondary-nav__list {
+  border: 1px solid #00b3d3;
+  border-radius: 10px;
 }

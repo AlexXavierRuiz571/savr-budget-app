@@ -17,6 +17,7 @@
   background-color: #333333;
   box-sizing: border-box;
   border-radius: 10px;
+  border: 1px solid #00b3d3;
 }
 
 .expenses-header__left-panel,
@@ -97,9 +98,8 @@
 }
 
 .expenses-header__help-trigger:hover {
- color: #00b3d3;
+  color: #00b3d3;
 }
-
 
 .expenses-header__help-panel {
   position: absolute;

@@ -28,11 +28,9 @@ li,
 label,
 a,
 button,
-.expenses__saved-title,
-.expenses__saved-monthly,
-.delete-modal__text,
-.lifestyle__saved-title,
-.lifestyle__saved-monthly
+.income__saved-entry,
+.expenses__saved-group,
+.lifestyle__saved-group
 {
   text-shadow:
     2px 0 0 #000,

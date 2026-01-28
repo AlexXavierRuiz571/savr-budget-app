@@ -30,6 +30,7 @@
   padding: 20px 24px;
   box-sizing: border-box;
   border-radius: 10px;
+  border: 1px solid #c9a43e;
 }
 
 .lifestyle__summary-title {
@@ -83,6 +84,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 10px;
+  border: 1px solid #c9a43e;
 }
 
 .lifestyle__bar-text {
@@ -288,6 +290,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid #c9a43e;
 }
 
 .lifestyle__saved-left {
@@ -376,4 +379,9 @@
 .lifestyle .modal__body {
   background: none;
   border: none;
+}
+
+.lifestyle .secondary-nav__list {
+  border: 1px solid #c9a43e;
+  border-radius: 10px;
 }
