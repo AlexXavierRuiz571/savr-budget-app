@@ -30,6 +30,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  justify-content: space-evenly;
 }
 
 .add-lifestyle__right {
@@ -119,6 +120,32 @@
 .add-lifestyle__estimate-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.add-lifestyle__travel {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-lifestyle__travel-title {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+}
+
+.add-lifestyle__travel-line {
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+  color: #b3b3b3;
+  justify-content: space-evenly;
+}
+
+.add-lifestyle__travel-sub {
+  font-weight: 500;
+  text-align: center;
 }
 
 .add-lifestyle__placeholder {

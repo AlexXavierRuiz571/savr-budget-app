@@ -4,46 +4,39 @@
     "note": "Shown as a monthly equivalent (12-month average).",
     "options": [
       {
-        "value": "domestic_weekend",
-        "label": "Domestic Weekend Trips",
-        "low": 120,
-        "mid": 220,
-        "high": 420
+        "value": "domestic_us",
+        "label": "United States (Domestic)",
+        "flights": { "low": 60, "mid": 110, "high": 200 },
+        "lodging": { "low": 90, "mid": 160, "high": 300 },
+        "foodLocal": { "low": 50, "mid": 80, "high": 150 }
       },
       {
-        "value": "domestic_flights",
-        "label": "Domestic Flights (Occasional)",
-        "low": 180,
-        "mid": 320,
-        "high": 600
+        "value": "caribbean",
+        "label": "Caribbean",
+        "flights": { "low": 70, "mid": 120, "high": 220 },
+        "lodging": { "low": 130, "mid": 250, "high": 450 },
+        "foodLocal": { "low": 50, "mid": 80, "high": 130 }
       },
       {
-        "value": "caribbean_cruise",
-        "label": "Caribbean Cruise Style",
-        "low": 220,
-        "mid": 380,
-        "high": 750
-      },
-      {
-        "value": "mexico_central",
+        "value": "mexico_central_america",
         "label": "Mexico / Central America",
-        "low": 200,
-        "mid": 360,
-        "high": 700
+        "flights": { "low": 60, "mid": 110, "high": 200 },
+        "lodging": { "low": 120, "mid": 230, "high": 420 },
+        "foodLocal": { "low": 50, "mid": 80, "high": 140 }
       },
       {
-        "value": "europe_city",
-        "label": "Europe (City Travel)",
-        "low": 280,
-        "mid": 520,
-        "high": 1050
+        "value": "europe",
+        "label": "Europe",
+        "flights": { "low": 120, "mid": 200, "high": 350 },
+        "lodging": { "low": 170, "mid": 300, "high": 550 },
+        "foodLocal": { "low": 60, "mid": 100, "high": 200 }
       },
       {
-        "value": "asia_longhaul",
-        "label": "Asia (Long-haul)",
-        "low": 300,
-        "mid": 560,
-        "high": 1150
+        "value": "asia",
+        "label": "Asia",
+        "flights": { "low": 140, "mid": 240, "high": 420 },
+        "lodging": { "low": 180, "mid": 330, "high": 650 },
+        "foodLocal": { "low": 60, "mid": 110, "high": 180 }
       }
     ]
   },

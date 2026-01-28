@@ -16,7 +16,7 @@
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url("../../assets/images/main-page-background.png");
-    filter: blur(5px);
+  filter: blur(5px);
   background-position: center;
   background-size: cover;
 }
@@ -35,6 +35,8 @@
   grid-template-columns: 1fr 40px;
   align-items: center;
   box-sizing: border-box;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .main__summary-text {
@@ -43,8 +45,6 @@
   font-size: 18px;
   color: #b3b3b3;
 }
-
-/* the button on the right */
 
 .main__summary-toggle {
   width: 30px;
@@ -64,8 +64,6 @@
   outline-offset: 2px;
 }
 
-/* the svg image inside the button */
-
 .main__summary-icon {
   width: 25px;
   height: 25px;
@@ -75,8 +73,6 @@
 .main__summary-icon_open {
   transform: rotate(180deg);
 }
-
-/* expandable section */
 
 .main__breakdown {
   max-height: 0;
@@ -98,6 +94,8 @@
   background-color: #333333;
   padding: 20px;
   box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 /* chart placeholder */
@@ -174,7 +172,7 @@
   width: 100%;
   margin: 0 auto;
   background-color: #333333;
-  border: 1px solid #000000;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -319,4 +317,23 @@
 
 .main__card-accent_type_info {
   background-color: #ffffff;
+}
+
+.main__card_type_income {
+  border: 1px solid #800000;
+}
+.main__card_type_expenses {
+  border: 1px solid #00b3d3;
+}
+.main__card_type_savings {
+  border: 1px solid #00632d;
+}
+.main__card_type_debt {
+  border: 1px solid #574084;
+}
+.main__card_type_lifestyle {
+  border: 1px solid #c9a43e;
+}
+.main__card_type_info {
+  border: 1px solid #ffffff;
 }

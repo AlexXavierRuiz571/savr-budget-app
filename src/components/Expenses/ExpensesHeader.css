@@ -16,6 +16,7 @@
 .expenses-header__center {
   background-color: #333333;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .expenses-header__left-panel,

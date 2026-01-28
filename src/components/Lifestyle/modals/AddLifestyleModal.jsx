@@ -1,8 +1,10 @@
+// src/components/Lifestyle/modals/AddLifestyleModal.jsx
 import "./AddLifestyleModal.css";
 import { useEffect, useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 import Preloader from "../../Preloader/Preloader.jsx";
 import { lifestyleGoodIds } from "../../../utils/goodIds.js";
+import lifestyleEstimateTables from "../../../utils/lifestyleEstimateTables.json";
 
 const CITY_OPTIONS = [
   { cityId: "2746", label: "Pensacola, FL" },
@@ -19,27 +21,11 @@ const LIFESTYLE_TYPES = [
   { label: "Other", value: "other" },
 ];
 
-const TRAVEL_DESTINATIONS = [
-  { value: "domestic_us", label: "United States (Domestic)" },
-  { value: "caribbean", label: "Caribbean" },
-  { value: "mexico_central_america", label: "Mexico / Central America" },
-  { value: "europe", label: "Europe" },
-  { value: "asia", label: "Asia" },
-];
-
-const TRAVEL_TABLE = {
-  domestic_us: { low: 200, mid: 350, high: 650 },
-  caribbean: { low: 250, mid: 450, high: 800 },
-  mexico_central_america: { low: 230, mid: 420, high: 760 },
-  europe: { low: 350, mid: 600, high: 1100 },
-  asia: { low: 380, mid: 680, high: 1250 },
-};
-
-const BENCHMARK_TABLE = {
-  subscriptions: { low: 25, mid: 60, high: 120 },
-  hobbies: { low: 40, mid: 120, high: 250 },
-  other: { low: 50, mid: 150, high: 300 },
-};
+const TRAVEL_DESTINATIONS = (() => {
+  const opts = lifestyleEstimateTables?.travel?.options;
+  if (!Array.isArray(opts)) return [];
+  return opts.map((opt) => ({ value: opt.value, label: opt.label }));
+})();
 
 const SUMMARY_COPY = {
   diningOut: {
@@ -97,6 +83,7 @@ function AddLifestyleModal({
     lifestyleType === "diningOut" || lifestyleType === "entertainment";
 
   const isTravel = lifestyleType === "travel";
+
   const isBenchmarkType =
     lifestyleType === "subscriptions" ||
     lifestyleType === "hobbies" ||
@@ -107,6 +94,26 @@ function AddLifestyleModal({
     const found = TRAVEL_DESTINATIONS.find((d) => d.value === destination);
     return found?.label || "";
   }, [destination]);
+
+  const travelOption = useMemo(() => {
+    if (!isTravel) return null;
+    if (!destination) return null;
+
+    const options = lifestyleEstimateTables?.travel?.options;
+    if (!Array.isArray(options)) return null;
+
+    return options.find((opt) => opt.value === destination) || null;
+  }, [isTravel, destination]);
+
+  // For subscriptions/hobbies/other, use the first option as the benchmark range.
+  // (No dropdown for these types in your current modal.)
+  const benchmarkOption = useMemo(() => {
+    if (!isBenchmarkType) return null;
+
+    const section = lifestyleEstimateTables?.[lifestyleType];
+    const options = Array.isArray(section?.options) ? section.options : [];
+    return options[0] || null;
+  }, [isBenchmarkType, lifestyleType]);
 
   const getCityLabelById = (id) => {
     if (!id) return "";
@@ -219,17 +226,16 @@ function AddLifestyleModal({
       };
     }
 
-    if (isTravel) {
-      if (!destination) return null;
-      const row = TRAVEL_TABLE[destination];
-      if (!row) return null;
-      return { low: row.low, mid: row.mid, high: row.high };
-    }
+    // Travel renders as a breakdown panel (not Low/Mid/High)
+    if (isTravel) return null;
 
     if (isBenchmarkType) {
-      const row = BENCHMARK_TABLE[lifestyleType];
-      if (!row) return null;
-      return { low: row.low, mid: row.mid, high: row.high };
+      if (!benchmarkOption) return null;
+      return {
+        low: benchmarkOption.low,
+        mid: benchmarkOption.mid,
+        high: benchmarkOption.high,
+      };
     }
 
     return null;
@@ -237,9 +243,8 @@ function AddLifestyleModal({
     isDiningOrEntertainment,
     selectedItem,
     isTravel,
-    destination,
     isBenchmarkType,
-    lifestyleType,
+    benchmarkOption,
   ]);
 
   const getSummaryLines = () => {
@@ -324,7 +329,7 @@ function AddLifestyleModal({
       return;
     }
 
-    // Travel + Benchmark types are local tables, no API call needed.
+    // Travel + Benchmark types are local JSON, no API call needed.
     setCityDetails(null);
     setSelectedGoodId("");
     setHasLoadedEstimates(true);
@@ -356,6 +361,53 @@ function AddLifestyleModal({
   const handleClose = () => {
     resetForm();
     onClose();
+  };
+
+  const renderTravelBreakdown = () => {
+    if (!travelOption) {
+      return (
+        <p className="add-lifestyle__placeholder">
+          Select the required fields to see estimates.
+        </p>
+      );
+    }
+
+    const flightsLow = travelOption.flights?.low ?? "";
+    const flightsHigh = travelOption.flights?.high ?? "";
+    const lodgingLow = travelOption.lodging?.low ?? "";
+    const lodgingHigh = travelOption.lodging?.high ?? "";
+    const foodLow = travelOption.foodLocal?.low ?? "";
+    const foodHigh = travelOption.foodLocal?.high ?? "";
+
+    return (
+      <div className="add-lifestyle__travel">
+        <h3 className="add-lifestyle__travel-title">Estimated Monthly Cost</h3>
+
+        <div className="add-lifestyle__travel-row">
+          <p className="add-lifestyle__travel-line">
+            Flights: {showEstimateTilde ? "~ $ " : "$ "}
+            {formatMoney(flightsLow)} - {formatMoney(flightsHigh)}
+          </p>
+          <p className="add-lifestyle__travel-sub">Round-trip</p>
+        </div>
+
+        <div className="add-lifestyle__travel-row">
+          <p className="add-lifestyle__travel-line">
+            Lodging &amp; Activities: {showEstimateTilde ? "~ $ " : "$ "}
+            {formatMoney(lodgingLow)} - {formatMoney(lodgingHigh)}
+          </p>
+          <p className="add-lifestyle__travel-sub">Hotels, tours, etc</p>
+        </div>
+
+        <div className="add-lifestyle__travel-row">
+          <p className="add-lifestyle__travel-line">
+            Food / Local Spending: {showEstimateTilde ? "~ $ " : "$ "}
+            {formatMoney(foodLow)} - {formatMoney(foodHigh)}
+          </p>
+          <p className="add-lifestyle__travel-sub">Meals, transit, shopping</p>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -526,6 +578,18 @@ function AddLifestyleModal({
               <p className="add-lifestyle__placeholder">
                 No estimate items found for this type.
               </p>
+            ) : isTravel ? (
+              <>
+                {renderTravelBreakdown()}
+
+                <div className="add-lifestyle__summary">
+                  {getSummaryLines().map((line, idx) => (
+                    <p key={idx} className="add-lifestyle__summary-text">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </>
             ) : !estimateRanges ? (
               <p className="add-lifestyle__placeholder">
                 Select the required fields to see estimates.
