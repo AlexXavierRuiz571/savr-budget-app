@@ -2,13 +2,8 @@ import "../modals/AddExpenseModal.css";
 import { useEffect, useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 import Preloader from "../../Preloader/Preloader.jsx";
+import { CITY_OPTIONS} from "../../../utils/cities.js";
 import { expenseGoodIds } from "../../../utils/goodIds.js";
-
-const CITY_OPTIONS = [
-  { cityId: "2746", label: "Pensacola, FL" },
-  { cityId: "2701", label: "New York, NY" },
-  { cityId: "2334", label: "Austin, TX" },
-];
 
 const EXPENSE_TYPES = [
   { label: "Housing", value: "housing" },

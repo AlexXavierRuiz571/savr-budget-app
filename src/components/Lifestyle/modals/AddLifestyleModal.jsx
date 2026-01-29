@@ -1,16 +1,10 @@
-// src/components/Lifestyle/modals/AddLifestyleModal.jsx
 import "./AddLifestyleModal.css";
 import { useEffect, useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 import Preloader from "../../Preloader/Preloader.jsx";
+import { CITY_OPTIONS } from "../../../utils/cities.js";
 import { lifestyleGoodIds } from "../../../utils/goodIds.js";
 import lifestyleEstimateTables from "../../../utils/lifestyleEstimateTables.json";
-
-const CITY_OPTIONS = [
-  { cityId: "2746", label: "Pensacola, FL" },
-  { cityId: "2701", label: "New York, NY" },
-  { cityId: "2334", label: "Austin, TX" },
-];
 
 const LIFESTYLE_TYPES = [
   { label: "Dining Out", value: "diningOut" },

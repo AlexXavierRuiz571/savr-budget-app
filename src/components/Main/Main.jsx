@@ -6,7 +6,10 @@ import arrowCircle from "../../assets/Icons/arrow-circle.svg";
 import detailsIcon from "../../assets/Icons/details-icon.svg";
 import settingIcon from "../../assets/Icons/setting-icon.svg";
 import useProfileGroups from "../../utils/useProfileGroups.js";
-import { getBudgetTotals, getCategoryPercents } from "../../utils/budgetMath.js";
+import {
+  getBudgetTotals,
+  getCategoryPercents,
+} from "../../utils/budgetMath.js";
 import { getInsight } from "../../utils/insightRules.js";
 import { getSuggestion } from "../../utils/suggestionRules.js";
 
@@ -27,11 +30,20 @@ function Main() {
       debtEntries,
       lifestyleEntries,
     });
-  }, [incomeEntries, expenseEntries, savingsEntries, debtEntries, lifestyleEntries]);
+  }, [
+    incomeEntries,
+    expenseEntries,
+    savingsEntries,
+    debtEntries,
+    lifestyleEntries,
+  ]);
 
   const percents = useMemo(() => getCategoryPercents(totals), [totals]);
 
-  const insight = useMemo(() => getInsight({ totals, percents }), [totals, percents]);
+  const insight = useMemo(
+    () => getInsight({ totals, percents }),
+    [totals, percents],
+  );
   const suggestion = useMemo(
     () => getSuggestion({ totals, percents }),
     [totals, percents],
@@ -97,7 +109,8 @@ function Main() {
 
     const expensesEnd = percents.expenses * 100;
     const savingsEnd = (percents.expenses + percents.savings) * 100;
-    const debtEnd = (percents.expenses + percents.savings + percents.debt) * 100;
+    const debtEnd =
+      (percents.expenses + percents.savings + percents.debt) * 100;
 
     return `conic-gradient(
       #00b3d3 0% ${expensesEnd}%,
@@ -107,7 +120,8 @@ function Main() {
     )`;
   }, [totals.income, percents.expenses, percents.savings, percents.debt]);
 
-  const suggestionText = typeof suggestion === "string" ? suggestion : suggestion?.text || "";
+  const suggestionText =
+    typeof suggestion === "string" ? suggestion : suggestion?.text || "";
   const insightText = insight?.text || "";
 
   return (
@@ -116,7 +130,9 @@ function Main() {
 
       <div className="main__summary">
         <div className="main__summary-bar">
-          <p className={`main__summary-text main__summary-text_${summaryStatus}`}>
+          <p
+            className={`main__summary-text main__summary-text_${summaryStatus}`}
+          >
             {summaryText}
           </p>
 
@@ -141,7 +157,10 @@ function Main() {
           id="main__breakdown"
         >
           <div className="main__breakdown-inner">
-            <div className="main__chart" style={{ background: chartBackground }} />
+            <div
+              className="main__chart"
+              style={{ background: chartBackground }}
+            />
 
             <div className="main__chart-explanation">
               <p className="main__chart-line">
@@ -193,7 +212,9 @@ function Main() {
       <div className="main__cards">
         <div className="main__card main__card_type_income">
           <div className="main__card-header">
-            <h3 className="main__card-title main__card-title_type_income">Income</h3>
+            <h3 className="main__card-title main__card-title_type_income">
+              Income
+            </h3>
             <div className="main__card-accent main__card-accent_type_income" />
           </div>
 
@@ -202,15 +223,25 @@ function Main() {
             <p className="main__card-text">monthly</p>
           </div>
 
-          <Link className="main__card-action main__card-action_link" to="/income">
-            <img className="main__card-action-icon" src={detailsIcon} alt="" aria-hidden="true" />
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/income"
+          >
+            <img
+              className="main__card-action-icon"
+              src={detailsIcon}
+              alt=""
+              aria-hidden="true"
+            />
             <span className="main__card-action-text">View Details</span>
           </Link>
         </div>
 
         <div className="main__card main__card_type_expenses">
           <div className="main__card-header">
-            <h3 className="main__card-title main__card-title_type_expenses">Expenses</h3>
+            <h3 className="main__card-title main__card-title_type_expenses">
+              Expenses
+            </h3>
             <div className="main__card-accent main__card-accent_type_expenses" />
           </div>
 
@@ -219,15 +250,25 @@ function Main() {
             <p className="main__card-text">this month</p>
           </div>
 
-          <Link className="main__card-action main__card-action_link" to="/expenses">
-            <img className="main__card-action-icon" src={detailsIcon} alt="" aria-hidden="true" />
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/expenses"
+          >
+            <img
+              className="main__card-action-icon"
+              src={detailsIcon}
+              alt=""
+              aria-hidden="true"
+            />
             <span className="main__card-action-text">View Details</span>
           </Link>
         </div>
 
         <div className="main__card main__card_type_savings">
           <div className="main__card-header">
-            <h3 className="main__card-title main__card-title_type_savings">Savings</h3>
+            <h3 className="main__card-title main__card-title_type_savings">
+              Savings
+            </h3>
             <div className="main__card-accent main__card-accent_type_savings" />
           </div>
 
@@ -236,15 +277,25 @@ function Main() {
             <p className="main__card-text">this month</p>
           </div>
 
-          <Link className="main__card-action main__card-action_link" to="/savings">
-            <img className="main__card-action-icon" src={detailsIcon} alt="" aria-hidden="true" />
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/savings"
+          >
+            <img
+              className="main__card-action-icon"
+              src={detailsIcon}
+              alt=""
+              aria-hidden="true"
+            />
             <span className="main__card-action-text">View Details</span>
           </Link>
         </div>
 
         <div className="main__card main__card_type_debt">
           <div className="main__card-header">
-            <h3 className="main__card-title main__card-title_type_debt">Debt</h3>
+            <h3 className="main__card-title main__card-title_type_debt">
+              Debt
+            </h3>
             <div className="main__card-accent main__card-accent_type_debt" />
           </div>
 
@@ -254,14 +305,21 @@ function Main() {
           </div>
 
           <Link className="main__card-action main__card-action_link" to="/debt">
-            <img className="main__card-action-icon" src={detailsIcon} alt="" aria-hidden="true" />
+            <img
+              className="main__card-action-icon"
+              src={detailsIcon}
+              alt=""
+              aria-hidden="true"
+            />
             <span className="main__card-action-text">View Details</span>
           </Link>
         </div>
 
         <div className="main__card main__card_type_lifestyle">
           <div className="main__card-header">
-            <h3 className="main__card-title main__card-title_type_lifestyle">Lifestyle</h3>
+            <h3 className="main__card-title main__card-title_type_lifestyle">
+              Lifestyle
+            </h3>
             <div className="main__card-accent main__card-accent_type_lifestyle" />
           </div>
 
@@ -270,15 +328,25 @@ function Main() {
             <p className="main__card-text">this month</p>
           </div>
 
-          <Link className="main__card-action main__card-action_link" to="/lifestyle">
-            <img className="main__card-action-icon" src={detailsIcon} alt="" aria-hidden="true" />
+          <Link
+            className="main__card-action main__card-action_link"
+            to="/lifestyle"
+          >
+            <img
+              className="main__card-action-icon"
+              src={detailsIcon}
+              alt=""
+              aria-hidden="true"
+            />
             <span className="main__card-action-text">View Details</span>
           </Link>
         </div>
 
         <div className="main__card main__card_type_info">
           <div className="main__card-header">
-            <h3 className="main__card-title main__card-title_type_info">Info Hub</h3>
+            <h3 className="main__card-title main__card-title_type_info">
+              Info Hub
+            </h3>
             <div className="main__card-accent main__card-accent_type_info" />
           </div>
 
@@ -287,7 +355,12 @@ function Main() {
           </div>
 
           <Link className="main__card-action main__card-action_link" to="/info">
-            <img className="main__card-action-icon" src={settingIcon} alt="" aria-hidden="true" />
+            <img
+              className="main__card-action-icon"
+              src={settingIcon}
+              alt=""
+              aria-hidden="true"
+            />
             <span className="main__card-action-text">View Details</span>
           </Link>
         </div>
