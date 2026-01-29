@@ -52,13 +52,14 @@
 .lifestyle__summary-currency {
   color: #b3b3b3;
   font-size: 40px;
+  font-weight: 700;
   margin-right: 8px;
 }
 
 .lifestyle__summary-value {
   color: #b3b3b3;
   font-size: 40px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .lifestyle__summary-line {
@@ -384,4 +385,157 @@
 .lifestyle .secondary-nav__list {
   border: 1px solid #c9a43e;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .lifestyle {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  .lifestyle__summary {
+    margin-top: 70px;
+  }
+
+  .lifestyle__summary-title {
+    font-size: 32px;
+  }
+
+  .lifestyle__summary-row,
+  .lifestyle__summary-currency,
+  .lifestyle__summary-value {
+    font-size: 36px;
+  }
+
+  .lifestyle__summary-line {
+    width: 230px;
+  }
+
+  .lifestyle__bar-text {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lifestyle {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .lifestyle__summary {
+    margin-top: 50px;
+    padding: 18px 20px;
+  }
+
+  .lifestyle__summary-title {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .lifestyle__summary-row,
+  .lifestyle__summary-currency,
+  .lifestyle__summary-value {
+    font-size: 32px;
+  }
+
+  .lifestyle__summary-line {
+    width: 200px;
+  }
+
+  .lifestyle__bar {
+    margin-top: 35px;
+    padding: 12px 18px;
+  }
+
+  .lifestyle__bar-text {
+    font-size: 22px;
+  }
+
+  .lifestyle__saved {
+    margin-top: 35px;
+  }
+
+  .lifestyle__saved-title {
+    font-size: 24px;
+  }
+
+  .lifestyle__saved-monthly {
+    font-size: 22px;
+  }
+
+  .lifestyle__submission {
+    padding: 16px;
+  }
+
+  .lifestyle__submission-name {
+    font-size: 24px;
+  }
+
+  .lifestyle__submission-amount {
+    font-size: 28px;
+  }
+
+  .lifestyle__submission-label {
+    font-size: 20px;
+  }
+
+  .lifestyle__submission-buttons {
+    margin-top: 35px;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .lifestyle {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .lifestyle__summary {
+    margin-top: 35px;
+  }
+
+  .lifestyle__summary-title {
+    font-size: 24px;
+  }
+
+  .lifestyle__summary-row,
+  .lifestyle__summary-currency,
+  .lifestyle__summary-value {
+    font-size: 28px;
+  }
+
+  .lifestyle__summary-line {
+    width: 170px;
+  }
+
+  .lifestyle__bar-text {
+    font-size: 20px;
+  }
+
+  .lifestyle__submission-actions {
+    justify-content: flex-end;
+  }
+
+  .lifestyle__submission-name {
+    font-size: 22px;
+  }
+
+  .lifestyle__submission-amount {
+    font-size: 24px;
+  }
+
+  .lifestyle__saved-group {
+    padding: 12px;
+  }
+
+  .lifestyle__saved-title {
+    font-size: 22px;
+  }
+
+  .lifestyle__saved-monthly {
+    font-size: 20px;
+  }
 }

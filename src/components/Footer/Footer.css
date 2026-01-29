@@ -12,3 +12,23 @@
   font-size: 14px;
   color: #b3b3b3;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 24px 0;
+  }
+
+  .footer__text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 20px 0;
+  }
+
+  .footer__text {
+    font-size: 13px;
+  }
+}

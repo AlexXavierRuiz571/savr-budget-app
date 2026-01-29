@@ -26,11 +26,17 @@
   box-sizing: border-box;
 }
 
+.infohub__container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 .infohub__about,
 .infohub__profile-plan
 {
   width: 100%;
-  max-width: 1280px;
   margin: 100px auto 0;
   background-color: #333333;
   padding: 20px 24px;
@@ -142,4 +148,87 @@
 .infohub .secondary-nav__list {
   border: 1px solid #ffffff;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .infohub__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .infohub__about-title,
+  .infohub__profile-plan-title,
+  .infohub__faq-title {
+    font-size: 34px;
+  }
+
+  .infohub__about {
+    margin-top: 85px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .infohub__container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .infohub__about,
+  .infohub__profile-plan {
+    padding: 18px 18px;
+  }
+
+  .infohub__faq {
+    padding: 22px 18px;
+  }
+
+  .infohub__about-title,
+  .infohub__profile-plan-title {
+    font-size: 30px;
+  }
+
+  .infohub__faq-title {
+    font-size: 30px;
+  }
+
+  .infohub__about-text,
+  .infohub__profile-plan-text,
+  .infohub__faq-text {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .infohub__container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .infohub__about,
+  .infohub__profile-plan {
+    padding: 16px 14px;
+  }
+
+  .infohub__about {
+    margin-top: 64px;
+  }
+
+  .infohub__faq {
+    padding: 18px 14px;
+  }
+
+  .infohub__about-title,
+  .infohub__profile-plan-title {
+    font-size: 26px;
+  }
+
+  .infohub__faq-title {
+    font-size: 26px;
+  }
+
+  .infohub__about-text,
+  .infohub__profile-plan-text,
+  .infohub__faq-text {
+    font-size: 16px;
+  }
 }

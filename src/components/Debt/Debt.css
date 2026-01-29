@@ -52,6 +52,7 @@
 .debt__summary-currency {
   color: #b3b3b3;
   font-size: 40px;
+  font-weight: 700;
   margin-right: 8px;
 }
 
@@ -217,4 +218,146 @@
 .debt .secondary-nav__list {
   border: 1px solid #574084;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .debt {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  .debt__summary,
+  .debt__bar,
+  .debt__saved {
+    max-width: 520px;
+  }
+
+  .debt__summary {
+    margin-top: 80px;
+  }
+
+  .debt__summary-title {
+    font-size: 32px;
+  }
+
+  .debt__summary-row,
+  .debt__summary-currency,
+  .debt__summary-value {
+    font-size: 36px;
+  }
+
+  .debt__bar-text {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .debt {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .debt__summary,
+  .debt__bar,
+  .debt__saved {
+    max-width: 100%;
+  }
+
+  .debt__summary {
+    margin-top: 60px;
+    padding: 18px 20px;
+  }
+
+  .debt__summary-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .debt__summary-row,
+  .debt__summary-currency,
+  .debt__summary-value {
+    font-size: 32px;
+  }
+
+  .debt__bar {
+    padding: 12px 20px;
+  }
+
+  .debt__bar-text {
+    font-size: 22px;
+  }
+
+  .debt__saved-entry {
+    padding: 12px 12px;
+  }
+
+  .debt__saved-title {
+    font-size: 24px;
+  }
+
+  .debt__saved-amount {
+    font-size: 22px;
+  }
+
+  .debt__saved-actions-row {
+    gap: 12px;
+  }
+
+  .debt__saved-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .debt {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .debt__summary {
+    margin-top: 50px;
+    padding: 16px 16px;
+  }
+
+  .debt__summary-title {
+    font-size: 24px;
+  }
+
+  .debt__summary-row,
+  .debt__summary-currency,
+  .debt__summary-value {
+    font-size: 28px;
+  }
+
+  .debt__bar {
+    padding: 12px 16px;
+  }
+
+  .debt__bar-text {
+    font-size: 20px;
+  }
+
+  .debt__saved-entry {
+    align-items: flex-start;
+  }
+
+  .debt__saved-title {
+    font-size: 22px;
+  }
+
+  .debt__saved-amount {
+    font-size: 20px;
+  }
+
+  .debt__saved-actions {
+    gap: 8px;
+  }
+
+  .debt__saved-icon {
+    width: 26px;
+    height: 26px;
+  }
 }

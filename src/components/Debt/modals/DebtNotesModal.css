@@ -1,8 +1,7 @@
 .debt-notes-modal {
   width: 100%;
   max-width: 600px;
-  position: absolute;
-  top: 20%;
+  margin: 180px auto 0;
 }
 
 .debt-notes-modal .modal__body {
@@ -26,4 +25,32 @@
 
 .debt .modal__close-icon:hover {
   opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .debt-notes-modal {
+    max-width: 520px;
+  }
+
+  .debt-notes__text {
+    font-size: 20px;
+  }
+
+  .debt-notes-modal .modal__body {
+    max-height: calc(100vh - 160px);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .debt-notes-modal {
+    max-width: 100%;
+  }
+
+  .debt-notes__text {
+    font-size: 18px;
+  }
+
+  .debt-notes-modal .modal__body {
+    max-height: calc(100vh - 140px);
+  }
 }

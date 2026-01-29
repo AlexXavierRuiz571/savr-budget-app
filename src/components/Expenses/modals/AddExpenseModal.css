@@ -3,17 +3,16 @@
   max-width: 900px;
 }
 
-.expenses-modal .modal__body{
+.expenses-modal .modal__body {
   background-color: #00262d;
-  border-top: 5px solid #00323b;
-  border-bottom: 5px solid #00323b;
+  border-top: 5px solid #00b3d3;
+  border-bottom: 5px solid #00b3d3;
 }
 
 .add-expense__location {
   margin-top: 8px;
   margin-bottom: 24px;
-  padding-left: 20px;
-  padding-top: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -238,4 +237,125 @@
   font-size: 14px;
   color: #b3b3b3;
   text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .expenses-modal {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .add-expense__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .add-expense__right {
+    padding-left: 16px;
+    border-left: 4px solid #00b3d3;
+  }
+
+  .add-expense__input,
+  .add-expense__select {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-expense__ranges {
+    gap: 30px;
+  }
+
+  .add-expense__disclaimer-text {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .expenses-modal {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .add-expense__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .add-expense__right {
+    padding-left: 0;
+    border-left: none;
+    border-top: 5px solid #00b3d3;
+    padding-top: 20px;
+
+    max-height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .add-expense__input,
+  .add-expense__select {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-expense__radio-row {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .add-expense__ranges {
+    gap: 24px;
+  }
+
+  .add-expense__range-row {
+    font-size: 16px;
+  }
+
+  .add-expense__disclaimer-text {
+    margin-top: 24px;
+    font-size: 13px;
+  }
+
+  .add-expense__estimate-label,
+  .add-expense__label {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .add-expense__location {
+    padding-left: 12px;
+    padding-top: 16px;
+    margin-bottom: 18px;
+  }
+
+  .add-expense__label,
+  .add-expense__estimate-label {
+    font-size: 20px;
+  }
+
+  .add-expense__input,
+  .add-expense__select {
+    height: 36px;
+  }
+
+  .add-expense__estimate-button {
+    width: 100%;
+  }
+
+  .add-expense__right {
+    max-height: 260px;
+    padding-top: 16px;
+  }
+
+  .add-expense__ranges {
+    gap: 20px;
+  }
+
+  .add-expense__disclaimer-text {
+    margin-top: 18px;
+    font-size: 12px;
+  }
 }

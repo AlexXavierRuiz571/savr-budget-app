@@ -12,8 +12,7 @@
 .add-lifestyle__type {
   margin-top: 8px;
   margin-bottom: 24px;
-  padding-left: 20px;
-  padding-top: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -261,4 +260,125 @@
   font-size: 14px;
   color: #b3b3b3;
   text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .lifestyle-modal {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .add-lifestyle__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .add-lifestyle__right {
+    padding-left: 16px;
+    border-left: 4px solid #c9a43e;
+  }
+
+  .add-lifestyle__input,
+  .add-lifestyle__select {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-lifestyle__ranges {
+    gap: 30px;
+  }
+
+  .add-lifestyle__disclaimer-text {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lifestyle-modal {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .add-lifestyle__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .add-lifestyle__right {
+    padding-left: 0;
+    border-left: none;
+    border-top: 5px solid #c9a43e;
+    padding-top: 20px;
+
+    max-height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .add-lifestyle__input,
+  .add-lifestyle__select {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-lifestyle__radio-row {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .add-lifestyle__ranges {
+    gap: 24px;
+  }
+
+  .add-lifestyle__range-row {
+    font-size: 16px;
+  }
+
+  .add-lifestyle__disclaimer-text {
+    margin-top: 24px;
+    font-size: 13px;
+  }
+
+  .add-lifestyle__estimate-label,
+  .add-lifestyle__label {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .add-lifestyle__location {
+    padding-left: 12px;
+    padding-top: 16px;
+    margin-bottom: 18px;
+  }
+
+  .add-lifestyle__label,
+  .add-lifestyle__estimate-label {
+    font-size: 20px;
+  }
+
+  .add-lifestyle__input,
+  .add-lifestyle__select {
+    height: 36px;
+  }
+
+  .add-lifestyle__estimate-button {
+    width: 100%;
+  }
+
+  .add-lifestyle__right {
+    max-height: 260px;
+    padding-top: 16px;
+  }
+
+  .add-lifestyle__ranges {
+    gap: 20px;
+  }
+
+  .add-lifestyle__disclaimer-text {
+    margin-top: 18px;
+    font-size: 12px;
+  }
 }
