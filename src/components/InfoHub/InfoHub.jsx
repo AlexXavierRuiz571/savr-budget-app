@@ -101,6 +101,21 @@ function InfoHub() {
             </p>
           </div>
 
+          <div className="infohub__profile-plan">
+            <h2 className="infohub__profile-plan-title">Profile</h2>
+
+            <p className="infohub__profile-plan-text">
+              Profile features are planned for a future stage. For now, SAVR
+              stores local saved data to support category totals and budget
+              calculations.
+            </p>
+
+            <p className="infohub__profile-plan-text">
+              The current structure is designed so it can later be replaced with
+              a full authenticated profile system without rewriting page logic.
+            </p>
+          </div>
+
           <div className="infohub__faq">
             {faqItems.map((item) => (
               <div className="infohub__faq-item" key={item.id}>

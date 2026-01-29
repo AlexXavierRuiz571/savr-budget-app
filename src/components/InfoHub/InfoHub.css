@@ -26,32 +26,35 @@
   box-sizing: border-box;
 }
 
-.infohub__about {
+.infohub__about,
+.infohub__profile-plan
+{
   width: 100%;
   max-width: 1280px;
   margin: 100px auto 0;
   background-color: #333333;
   padding: 20px 24px;
   box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
 }
 
-.infohub__about-title {
+.infohub__about-title,
+.infohub__profile-plan-title
+{
   margin: 0 0 20px 0;
   color: #ffffff;
   font-size: 40px;
   font-weight: 700;
-  text-decoration: underline;
+  border-bottom: 5px solid #ffffff;
 }
 
-.infohub__about-text {
+.infohub__about-text,
+.infohub__profile-plan-text {
   margin: 0 0 16px 0;
   color: #b3b3b3;
   font-size: 22px;
   font-weight: 600;
-}
-
-.infohub__about-text_strong {
-  margin-bottom: 0;
 }
 
 .infohub__faq {
@@ -61,6 +64,8 @@
   background-color: #333333;
   padding: 30px 24px;
   box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
 }
 
 .infohub__faq-item {
@@ -80,7 +85,6 @@
   color: #b3b3b3;
   font-size: 40px;
   font-weight: 800;
-  text-decoration: underline;
   cursor: pointer;
   transition: color 0.3s ease;
 }
@@ -108,9 +112,14 @@
     opacity 0.25s ease;
 }
 
+.infohub__faq-body-inner {
+  margin-top: 15px;
+}
+
 .infohub__faq-body_open {
   max-height: 600px;
   opacity: 1;
+  border-top: 5px solid #ffffff;
 }
 
 .infohub__faq-text {
@@ -128,4 +137,9 @@
 
 .infohub__faq-text:last-child {
   margin-bottom: 0;
+}
+
+.infohub .secondary-nav__list {
+  border: 1px solid #ffffff;
+  border-radius: 10px;
 }
