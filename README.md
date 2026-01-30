@@ -96,4 +96,4 @@ Additional improvements may include supporting more cities and countries, refini
 ## 👨‍💻 Author
 
 Alex Xavier Ruiz
-[LinkedIn](https://www.linkedin.com/in/alex-xavier-ruiz-291a29373) | [GitHub](https://github.com/AlexXavierRuiz571)
+[LinkedIn](https://www.linkedin.com/in/alex-xavier-ruiz-291a29373) || [GitHub](https://github.com/AlexXavierRuiz571)
