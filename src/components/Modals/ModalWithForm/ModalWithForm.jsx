@@ -1,5 +1,6 @@
 import "./ModalWithForm.css";
 import { useEffect } from "react";
+import closeIcon from "../../../assets/icons/close-icon.svg";
 
 function ModalWithForm({
   isOpen,
@@ -68,7 +69,7 @@ function ModalWithForm({
           >
             <img
               className="modal__close-icon"
-              src="/src/assets/icons/close-icon.svg"
+              src={closeIcon}
               alt=""
               aria-hidden="true"
             />

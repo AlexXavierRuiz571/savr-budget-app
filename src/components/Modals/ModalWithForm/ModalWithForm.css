@@ -48,10 +48,12 @@
   width: 40px;
   height: 40px;
   color: #b3b3b3;
+  opacity: .75;
 }
 
-.modal__close:hover .modal__close-icon {
+.modal__close-icon:hover {
   color: #ffffff;
+  opacity: 1;
 }
 
 .modal__form {
