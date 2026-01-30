@@ -1,0 +1,384 @@
+.lifestyle-modal {
+  width: 100%;
+  max-width: 900px;
+}
+
+.lifestyle-modal .modal__body {
+  background-color: #362c11;
+  border-top: 5px solid #c9a43e;
+  border-bottom: 5px solid #c9a43e;
+}
+
+.add-lifestyle__type {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 8px solid #c9a43e;
+}
+
+.add-lifestyle__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.add-lifestyle__left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.add-lifestyle__right {
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-left: 5px solid #c9a43e;
+}
+
+.add-lifestyle__label {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.add-lifestyle__estimate-label {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+}
+
+.add-lifestyle__required {
+  color: #c9a43e;
+}
+
+.add-lifestyle__input,
+.add-lifestyle__select {
+  max-width: 410px;
+  height: 36px;
+  background-color: #1e1e1e;
+  border: 1px solid #c9a43e;
+  color: #ffffff;
+  padding: 0 8px;
+  font-style: italic;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.add-lifestyle__select {
+  height: 36px;
+  background-color: #1e1e1e;
+  border: 1px solid #c9a43e;
+  color: #ffffff;
+  padding: 0 8px;
+}
+
+.add-lifestyle__select:required:invalid {
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
+.add-lifestyle__select option {
+  color: #ffffff;
+  font-style: italic;
+}
+
+.add-lifestyle__input::placeholder {
+  color: #b3b3b3;
+  font-style: italic;
+}
+
+.add-lifestyle__estimate-button {
+  color: #ffffff;
+  background-color: #c9a43e;
+  border: 1px solid #ffffff;
+  padding: 12px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-shadow: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.add-lifestyle__estimate-button:hover {
+  background-color: #6b5520;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.add-lifestyle__estimate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.add-lifestyle__travel {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-lifestyle__travel-title {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+}
+
+.add-lifestyle__travel-line {
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+  color: #b3b3b3;
+  justify-content: space-evenly;
+}
+
+.add-lifestyle__travel-sub {
+  font-weight: 500;
+  text-align: center;
+}
+
+.add-lifestyle__placeholder {
+  font-size: 14px;
+  color: #b3b3b3;
+  text-align: center;
+}
+
+.add-lifestyle__error {
+  color: #ff6b6b;
+  font-size: 13px;
+}
+
+.add-lifestyle__ranges {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.add-lifestyle__range-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 500;
+  color: #b3b3b3;
+}
+
+.add-lifestyle__summary {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-lifestyle__summary-text {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin: 0;
+  text-align: center;
+}
+
+.add-lifestyle__submit,
+.add-lifestyle__cancel {
+  height: 40px;
+  min-width: 120px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-lifestyle__submit {
+  background-color: #c9a43e;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-shadow: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.add-lifestyle__submit:hover {
+  background-color: #5b4300;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.add-lifestyle__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.add-lifestyle__cancel {
+  background-color: #5d4d20;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.add-lifestyle__cancel:hover {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.add-lifestyle__loader-wrap {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-lifestyle__spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #c9a43e;
+  animation: add-lifestyle-spin 0.9s linear infinite;
+}
+
+@keyframes add-lifestyle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.add-lifestyle__loading-text {
+  font-size: 14px;
+  color: #b3b3b3;
+  text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .lifestyle-modal {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .add-lifestyle__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .add-lifestyle__right {
+    padding-left: 16px;
+    border-left: 4px solid #c9a43e;
+  }
+
+  .add-lifestyle__input,
+  .add-lifestyle__select {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-lifestyle__ranges {
+    gap: 30px;
+  }
+
+  .add-lifestyle__disclaimer-text {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lifestyle-modal {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .add-lifestyle__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .add-lifestyle__right {
+    padding-left: 0;
+    border-left: none;
+    border-top: 5px solid #c9a43e;
+    padding-top: 20px;
+
+    max-height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .add-lifestyle__input,
+  .add-lifestyle__select {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-lifestyle__radio-row {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .add-lifestyle__ranges {
+    gap: 24px;
+  }
+
+  .add-lifestyle__range-row {
+    font-size: 16px;
+  }
+
+  .add-lifestyle__disclaimer-text {
+    margin-top: 24px;
+    font-size: 13px;
+  }
+
+  .add-lifestyle__estimate-label,
+  .add-lifestyle__label {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .add-lifestyle__location {
+    padding-left: 12px;
+    padding-top: 16px;
+    margin-bottom: 18px;
+  }
+
+  .add-lifestyle__label,
+  .add-lifestyle__estimate-label {
+    font-size: 20px;
+  }
+
+  .add-lifestyle__input,
+  .add-lifestyle__select {
+    height: 36px;
+  }
+
+  .add-lifestyle__estimate-button {
+    width: 100%;
+  }
+
+  .add-lifestyle__right {
+    max-height: 260px;
+    padding-top: 16px;
+  }
+
+  .add-lifestyle__ranges {
+    gap: 20px;
+  }
+
+  .add-lifestyle__disclaimer-text {
+    margin-top: 18px;
+    font-size: 12px;
+  }
+}

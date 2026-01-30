@@ -1,0 +1,541 @@
+.lifestyle {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.lifestyle::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("../../assets/images/lifestyle-background.png");
+  filter: blur(5px);
+  background-position: center;
+  background-size: cover;
+}
+
+.lifestyle__summary {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: #333333;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #c9a43e;
+}
+
+.lifestyle__summary-title {
+  margin: 0 0 25px 0;
+  color: #b3b3b3;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.lifestyle__summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.lifestyle__summary-currency {
+  color: #b3b3b3;
+  font-size: 40px;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.lifestyle__summary-value {
+  color: #b3b3b3;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.lifestyle__summary-line {
+  height: 4px;
+  width: 260px;
+  background-color: #b3b3b3;
+}
+
+.lifestyle__content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lifestyle__bar {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto 0;
+  background-color: #333333;
+  border: none;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #c9a43e;
+}
+
+.lifestyle__bar-text {
+  color: #b3b3b3;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.lifestyle__bar-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.lifestyle__bar-icon:hover {
+  opacity: 1;
+}
+
+.lifestyle__bar-action {
+  margin-top: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+}
+
+.lifestyle__submission {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #362c11;
+  padding: 18px 18px 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.lifestyle__submission-empty {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: 16px;
+  text-align: center;
+}
+
+.lifestyle__submission-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lifestyle__submission-item {
+  background-color: #333333;
+  border: 1px solid #c9a43e;
+  border-radius: 4px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  column-gap: 12px;
+  box-sizing: border-box;
+}
+
+.lifestyle__submission-name {
+  color: #c9a43e;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.lifestyle__submission-amount {
+  color: #b3b3b3;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.lifestyle__submission-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.lifestyle__submission-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.lifestyle__submission-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.75;
+}
+
+.lifestyle__submission-icon-btn:hover .lifestyle__submission-icon {
+  opacity: 1;
+}
+
+.lifestyle__submission-footer {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lifestyle__submission-label {
+  color: #b3b3b3;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.lifestyle__submission-input {
+  width: 100%;
+  height: 36px;
+  background-color: #1e1e1e;
+  border: 1px solid #c9a43e;
+  color: #ffffff;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-style: italic;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.lifestyle__submission-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  font-size: 16px;
+}
+
+.lifestyle__submission-buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  min-width: 120px;
+}
+
+.lifestyle__submission-save {
+  background-color: #c9a43e;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-shadow: none;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.lifestyle__submission-save:hover {
+  background-color: #5b4300;
+}
+
+.lifestyle__submission-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.lifestyle__submission-cancel {
+  background-color: #55461f;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.lifestyle__submission-cancel:hover {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.lifestyle__saved {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lifestyle__saved-group {
+  background-color: #333333;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #c9a43e;
+}
+
+.lifestyle__saved-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.lifestyle__saved-title {
+  color: #c9a43e;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.lifestyle__saved-monthly {
+  color: #b3b3b3;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.lifestyle__saved-actions {
+  display: flex;
+  gap: 15px;
+  align-items: end;
+  align-self: flex-end;
+}
+
+.lifestyle__saved-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.lifestyle__saved-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.75;
+}
+
+.lifestyle__saved-icon-btn:hover .lifestyle__saved-icon {
+  opacity: 1;
+}
+
+.lifestyle__saved + .lifestyle__submission {
+  margin-top: 14px;
+}
+
+.lifestyle__title-highlight {
+  color: #c9a43e;
+  font-weight: 700;
+}
+
+.lifestyle__highlight {
+  color: #c9a43e;
+}
+
+.lifestyle__confirm-delete {
+  background-color: #c9a43e;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.lifestyle__confirm-delete:hover {
+  background-color: #ffca38;
+  color: #000000;
+  border: 1px solid #000000;
+  text-shadow: none;
+}
+
+.lifestyle .delete-modal__cancel {
+  background-color: #55461f;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.lifestyle .delete-modal__cancel:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.lifestyle .modal__body {
+  background: none;
+  border: none;
+}
+
+.lifestyle .secondary-nav__list {
+  border: 1px solid #c9a43e;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .lifestyle {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  .lifestyle__summary {
+    margin-top: 70px;
+  }
+
+  .lifestyle__summary-title {
+    font-size: 32px;
+  }
+
+  .lifestyle__summary-row,
+  .lifestyle__summary-currency,
+  .lifestyle__summary-value {
+    font-size: 36px;
+  }
+
+  .lifestyle__summary-line {
+    width: 230px;
+  }
+
+  .lifestyle__bar-text {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lifestyle {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .lifestyle__summary {
+    margin-top: 50px;
+    padding: 18px 20px;
+  }
+
+  .lifestyle__summary-title {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .lifestyle__summary-row,
+  .lifestyle__summary-currency,
+  .lifestyle__summary-value {
+    font-size: 32px;
+  }
+
+  .lifestyle__summary-line {
+    width: 200px;
+  }
+
+  .lifestyle__bar {
+    margin-top: 35px;
+    padding: 12px 18px;
+  }
+
+  .lifestyle__bar-text {
+    font-size: 22px;
+  }
+
+  .lifestyle__saved {
+    margin-top: 35px;
+  }
+
+  .lifestyle__saved-title {
+    font-size: 24px;
+  }
+
+  .lifestyle__saved-monthly {
+    font-size: 22px;
+  }
+
+  .lifestyle__submission {
+    padding: 16px;
+  }
+
+  .lifestyle__submission-name {
+    font-size: 24px;
+  }
+
+  .lifestyle__submission-amount {
+    font-size: 28px;
+  }
+
+  .lifestyle__submission-label {
+    font-size: 20px;
+  }
+
+  .lifestyle__submission-buttons {
+    margin-top: 35px;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .lifestyle {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .lifestyle__summary {
+    margin-top: 35px;
+  }
+
+  .lifestyle__summary-title {
+    font-size: 24px;
+  }
+
+  .lifestyle__summary-row,
+  .lifestyle__summary-currency,
+  .lifestyle__summary-value {
+    font-size: 28px;
+  }
+
+  .lifestyle__summary-line {
+    width: 170px;
+  }
+
+  .lifestyle__bar-text {
+    font-size: 20px;
+  }
+
+  .lifestyle__submission-actions {
+    justify-content: flex-end;
+  }
+
+  .lifestyle__submission-name {
+    font-size: 22px;
+  }
+
+  .lifestyle__submission-amount {
+    font-size: 24px;
+  }
+
+  .lifestyle__saved-group {
+    padding: 12px;
+  }
+
+  .lifestyle__saved-title {
+    font-size: 22px;
+  }
+
+  .lifestyle__saved-monthly {
+    font-size: 20px;
+  }
+}

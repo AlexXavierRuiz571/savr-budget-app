@@ -1,0 +1,346 @@
+.income {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.income::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("../../assets/images/income-background.png");
+  filter: blur(3px);
+  background-position: center;
+  background-size: cover;
+}
+
+.income__content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.income__summary {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: #333333;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #800000;
+}
+
+.income__summary-title {
+  margin: 0 0 25px 0;
+  color: #b3b3b3;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.income__summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.income__summary-currency {
+  color: #b3b3b3;
+  font-size: 40px;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.income__summary-value {
+  color: #b3b3b3;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.income__bar {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto 0;
+  background-color: #333333;
+  border: none;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #800000;
+}
+
+.income__bar-text {
+  color: #b3b3b3;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.income__bar-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.income__bar-icon:hover {
+  opacity: 1;
+}
+
+.income__bar-action {
+  margin-top: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+}
+
+.income__saved {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.income__saved-entry {
+  background-color: #333333;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #800000;
+}
+
+.income__saved-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.income__saved-title {
+  color: #800000;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.income__saved-monthly {
+  color: #b3b3b3;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.income__saved-right {
+  display: flex;
+  align-items: end;
+  gap: 18px;
+}
+
+.income__saved-amount {
+  color: #b3b3b3;
+  font-size: 26px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.income__saved-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.income__saved-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.income__saved-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.75;
+}
+
+.income__saved-icon-btn:hover .income__saved-icon {
+  opacity: 1;
+}
+
+.income__highlight {
+  color: #800000;
+}
+
+.income__confirm-delete {
+  background-color: #800000;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.income__confirm-delete:hover {
+  background-color: #ff0000;
+  color: #000000;
+  border: 1px solid #000000;
+  text-shadow: none;
+}
+
+.income .delete-modal__cancel {
+  background-color: #2b0d0d;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.income .delete-modal__cancel:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.income .modal__body {
+  background: none;
+  border: none;
+}
+
+.income .secondary-nav__list {
+  border: 1px solid #800000;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .income {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  .income__summary {
+    margin-top: 70px;
+  }
+
+  .income__summary-title {
+    font-size: 32px;
+  }
+
+  .income__summary-row,
+  .income__summary-currency,
+  .income__summary-value {
+    font-size: 36px;
+  }
+
+  .income__bar-text {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .income {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .income__summary {
+    margin-top: 50px;
+    padding: 18px 20px;
+  }
+
+  .income__summary-title {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .income__summary-row,
+  .income__summary-currency,
+  .income__summary-value {
+    font-size: 32px;
+  }
+
+  .income__bar {
+    margin-top: 35px;
+    padding: 12px 18px;
+  }
+
+  .income__bar-text {
+    font-size: 22px;
+  }
+
+  .income__saved {
+    margin-top: 35px;
+  }
+
+  .income__saved-title {
+    font-size: 24px;
+  }
+
+  .income__saved-monthly {
+    font-size: 20px;
+  }
+
+  .income__saved-amount {
+    font-size: 22px;
+  }
+
+  .income__saved-right {
+    gap: 14px;
+  }
+
+  .income__saved-actions {
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .income {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .income__summary {
+    margin-top: 35px;
+  }
+
+  .income__summary-title {
+    font-size: 24px;
+  }
+
+  .income__summary-row,
+  .income__summary-currency,
+  .income__summary-value {
+    font-size: 28px;
+  }
+
+  .income__bar-text {
+    font-size: 20px;
+  }
+
+  .income__saved-entry {
+    padding: 12px;
+  }
+
+  .income__saved-title {
+    font-size: 22px;
+  }
+
+  .income__saved-monthly {
+    font-size: 18px;
+  }
+
+  .income__saved-amount {
+    font-size: 20px;
+  }
+}

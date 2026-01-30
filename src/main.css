@@ -1,0 +1,200 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../vendor/fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../vendor/fonts/Inter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../vendor/fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("../vendor/fonts/SpaceGrotesk-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #b3b3b3;
+  background-color: #141414;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+label,
+a,
+button,
+.income__saved-entry,
+.expenses__saved-group,
+.savings__saved-entry,
+.debt__saved-entry,
+.lifestyle__saved-group,
+.delete-modal__text,
+.add-savings__note-max,
+.add-debt__note-max {
+  text-shadow:
+    2px 0 0 #000,
+    -2px 0 0 #000,
+    0 2px 0 #000,
+    0 -2px 0 #000;
+}
+
+.text-no-outline {
+  text-shadow: none;
+}
+
+.header,
+.income-header,
+.expenses-header,
+.savings-header,
+.debt-header,
+.lifestyle-header,
+.infohub-header,
+.secondary-nav__list {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .header,
+  .income-header,
+  .expenses-header,
+  .savings-header,
+  .debt-header,
+  .lifestyle-header,
+  .infohub-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "left"
+      "right"
+      "nav";
+    row-gap: 16px;
+  }
+
+  .header__center,
+  .income-header__center,
+  .expenses-header__center,
+  .savings-header__center,
+  .debt-header__center,
+  .lifestyle-header__center,
+  .infohub-header__center {
+    grid-area: title;
+    text-align: center;
+  }
+
+  .header__left-panel,
+  .income-header__left-panel,
+  .expenses-header__left-panel,
+  .savings-header__left-panel,
+  .debt-header__left-panel,
+  .lifestyle-header__left-panel,
+  .infohub-header__left-panel {
+    grid-area: left;
+  }
+
+  .header__right-panel,
+  .income-header__right-panel,
+  .expenses-header__right-panel,
+  .savings-header__right-panel,
+  .debt-header__right-panel,
+  .lifestyle-header__right-panel,
+  .infohub-header__right-panel {
+    grid-area: right;
+  }
+
+  .secondary-nav {
+    grid-area: nav;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header,
+  .income-header,
+  .expenses-header,
+  .savings-header,
+  .debt-header,
+  .lifestyle-header,
+  .infohub-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "left"
+      "right"
+      "nav";
+    row-gap: 16px;
+  }
+
+  .header__center,
+  .income-header__center,
+  .expenses-header__center,
+  .savings-header__center,
+  .debt-header__center,
+  .lifestyle-header__center,
+  .infohub-header__center {
+    grid-area: title;
+    text-align: center;
+  }
+
+  .header__left-panel,
+  .income-header__left-panel,
+  .expenses-header__left-panel,
+  .savings-header__left-panel,
+  .debt-header__left-panel,
+  .lifestyle-header__left-panel,
+  .infohub-header__left-panel {
+    grid-area: left;
+  }
+
+  .header__right-panel,
+  .income-header__right-panel,
+  .expenses-header__right-panel,
+  .savings-header__right-panel,
+  .debt-header__right-panel,
+  .lifestyle-header__right-panel,
+  .infohub-header__right-panel {
+    grid-area: right;
+  }
+
+  .secondary-nav {
+    grid-area: nav;
+  }
+}

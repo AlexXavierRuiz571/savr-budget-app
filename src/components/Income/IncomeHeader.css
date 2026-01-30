@@ -1,0 +1,244 @@
+.income-header {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 400px 1fr 400px;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 50px;
+}
+
+.income-header__left-panel,
+.income-header__right-panel,
+.income-header__center {
+  background-color: #333333;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #800000;
+}
+
+.income-header__left-panel,
+.income-header__right-panel {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  height: 108px;
+}
+
+.income-header__left-panel {
+  justify-content: center;
+  font-size: 30px;
+}
+
+.income-header__right-panel {
+  justify-content: center;
+  font-size: 35px;
+}
+
+.income-header__center {
+  width: 100%;
+  max-width: 680px;
+  justify-self: center;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.income-header__left-text,
+.income-header__right-text,
+.income-header__title {
+  margin: 0;
+  color: #b3b3b3;
+}
+
+.income-header__right-text {
+  color: #b3b3b3;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.income-header__right-text:hover {
+  color: #ffffff;
+}
+
+
+.income-header__title {
+  color: #800000;
+  font-size: 95px;
+}
+
+.income-header__title-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.income-header__title-link:visited {
+  color: inherit;
+}
+
+.income-header__title-link:hover,
+.income-header__title-link:active {
+  text-decoration: none;
+}
+
+.income-header__left-panel {
+  position: relative;
+}
+
+.income-header__help-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.income-header__help-trigger:hover {
+  color: #800000;
+}
+
+.income-header__help-panel {
+  position: absolute;
+  top: 60%;
+  left: 65%;
+  margin-top: 14px;
+  width: 720px;
+  background-color: #333333;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  z-index: 50;
+  padding: 0;
+}
+
+.income-header__help-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 8px solid #800000;
+}
+
+.income-header__help-title {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: 34px;
+}
+
+.income-header__help-highlight {
+  color: #800000;
+}
+
+.income-header__help-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.income-header__help-close-icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0.75;
+  display: block;
+}
+
+.income-header__help-close-icon:hover {
+  opacity: 1;
+}
+
+.income-header__help-list {
+  margin: 0;
+  margin-top: 25px;
+  padding: 18px 26px 22px 46px;
+  color: #b3b3b3;
+  font-size: 25px;
+}
+
+.income-header__help-list li {
+  margin-bottom: 45px;
+}
+
+.income-header__help-list li:last-child {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .income-header {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    column-gap: 0;
+  }
+
+  .income-header__center {
+    max-width: 100%;
+    justify-self: stretch;
+  }
+
+  .income-header__left-panel,
+  .income-header__right-panel {
+    width: 100%;
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .income-header__title {
+    font-size: 96px;
+  }
+
+  .income-header__help-panel {
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 48px);
+    max-width: 720px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .income-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .income-header__title {
+    font-size: 72px;
+  }
+
+  .income-header__left-panel {
+    font-size: 40px;
+  }
+
+  .income-header__right-panel {
+    font-size: 28px;
+  }
+
+  .income-header__help-title {
+    font-size: 26px;
+  }
+
+  .income-header__help-list {
+    font-size: 20px;
+  }
+
+  .income-header__help-panel {
+    width: calc(100vw - 32px);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .income-header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .income-header__title {
+    font-size: 58px;
+  }
+}
