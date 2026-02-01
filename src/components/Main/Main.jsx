@@ -2,9 +2,9 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import MainHeader from "./MainHeader.jsx";
 import "./Main.css";
-import arrowCircle from "../../assets/Icons/arrow-circle.svg";
-import detailsIcon from "../../assets/Icons/details-icon.svg";
-import settingIcon from "../../assets/Icons/setting-icon.svg";
+import arrowCircle from "../../assets/icons/arrow-circle.svg";
+import detailsIcon from "../../assets/icons/details-icon.svg";
+import settingIcon from "../../assets/icons/setting-icon.svg";
 import useProfileGroups from "../../utils/useProfileGroups.js";
 import {
   getBudgetTotals,
