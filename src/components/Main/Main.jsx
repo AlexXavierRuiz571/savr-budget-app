@@ -105,40 +105,39 @@ function Main() {
     totals.income > 0 ? `${formatPercent(percents.lifestyle)}%` : "__%";
 
   const chartBackground = useMemo(() => {
-  if (totals.income <= 0) return "#4b4b4b";
+    if (totals.income <= 0) return "#4b4b4b";
 
-  const expensesPercent = Math.max(0, percents.expenses);
-  const savingsPercent = Math.max(0, percents.savings);
-  const debtPercent = Math.max(0, percents.debt);
-  const lifestylePercent = Math.max(0, percents.lifestyle);
+    const expensesPercent = Math.max(0, percents.expenses);
+    const savingsPercent = Math.max(0, percents.savings);
+    const debtPercent = Math.max(0, percents.debt);
+    const lifestylePercent = Math.max(0, percents.lifestyle);
 
-  const usedPercent =
-    expensesPercent + savingsPercent + debtPercent + lifestylePercent;
+    const usedPercent =
+      expensesPercent + savingsPercent + debtPercent + lifestylePercent;
 
-  const remainingPercent = Math.max(0, 1 - usedPercent);
+    const remainingPercent = Math.max(0, 1 - usedPercent);
 
-  const expensesEndPercent = expensesPercent * 100;
-  const savingsEndPercent = (expensesPercent + savingsPercent) * 100;
-  const debtEndPercent = (expensesPercent + savingsPercent + debtPercent) * 100;
-  const lifestyleEndPercent =
-    (expensesPercent + savingsPercent + debtPercent + lifestylePercent) * 100;
+    const expensesEndPercent = expensesPercent * 100;
+    const savingsEndPercent = (expensesPercent + savingsPercent) * 100;
+    const debtEndPercent =
+      (expensesPercent + savingsPercent + debtPercent) * 100;
+    const lifestyleEndPercent =
+      (expensesPercent + savingsPercent + debtPercent + lifestylePercent) * 100;
 
-  return `conic-gradient(
+    return `conic-gradient(
     #00b3d3 0% ${expensesEndPercent}%,
     #00632d ${expensesEndPercent}% ${savingsEndPercent}%,
     #574084 ${savingsEndPercent}% ${debtEndPercent}%,
     #c9a43e ${debtEndPercent}% ${lifestyleEndPercent}%,
     #4b4b4b ${lifestyleEndPercent}% 100%
   )`;
-}, [
-  totals.income,
-  percents.expenses,
-  percents.savings,
-  percents.debt,
-  percents.lifestyle,
-]);
-
-
+  }, [
+    totals.income,
+    percents.expenses,
+    percents.savings,
+    percents.debt,
+    percents.lifestyle,
+  ]);
 
   const suggestionText =
     typeof suggestion === "string" ? suggestion : suggestion?.text || "";
