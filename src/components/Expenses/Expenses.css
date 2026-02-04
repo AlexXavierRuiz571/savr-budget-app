@@ -494,7 +494,8 @@
   }
 
   .expenses__summary {
-    margin-top: 35px;
+    margin-top: 50px;
+    padding: 16px 16px;
   }
 
   .expenses__summary-title {
@@ -507,16 +508,16 @@
     font-size: 28px;
   }
 
-  .expenses__summary-line {
-    width: 170px;
+  .expenses__bar {
+    padding: 12px 16px;
   }
 
   .expenses__bar-text {
     font-size: 20px;
   }
 
-  .expenses__submission-actions {
-    justify-content: flex-end;
+  .expenses__submission-left {
+    gap: 10px;
   }
 
   .expenses__submission-name {
@@ -524,18 +525,116 @@
   }
 
   .expenses__submission-amount {
-    font-size: 24px;
+    font-size: 20px;
   }
 
-  .expenses__saved-group {
-    padding: 12px;
+  .expenses__submission-actions {
+    gap: 8px;
+  }
+
+  .expenses__submission-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .expenses__saved-left {
+    gap: 10px;
   }
 
   .expenses__saved-title {
     font-size: 22px;
   }
 
-  .expenses__saved-monthly {
+  .expenses__saved-amount {
     font-size: 20px;
+  }
+
+  .expenses__saved-actions {
+    gap: 8px;
+  }
+
+  .expenses__saved-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .expenses__submission-name {
+    font-size: 18px;
+  }
+
+  .expenses__submission-amount {
+    font-size: 18px;
+  }
+
+  .expenses__submission-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .expenses {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .expenses__summary {
+    margin-top: 45px;
+    padding: 14px 14px;
+  }
+
+  .expenses__summary-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .expenses__summary-row,
+  .expenses__summary-currency,
+  .expenses__summary-value {
+    font-size: 26px;
+  }
+
+  .expenses__bar {
+    padding: 12px 14px;
+  }
+
+  .expenses__bar-text {
+    font-size: 18px;
+  }
+
+  .expenses__submission-name {
+    font-size: 18px;
+  }
+
+  .expenses__submission-amount {
+    font-size: 16px;
+  }
+
+  .expenses__submission-actions-row {
+    gap: 10px;
+  }
+
+  .expenses__submission-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .expenses__saved-title {
+    font-size: 20px;
+  }
+
+  .expenses__saved-amount {
+    font-size: 18px;
+  }
+
+  .expenses__saved-actions-row {
+    gap: 10px;
+  }
+
+  .expenses__saved-icon {
+    width: 24px;
+    height: 24px;
   }
 }

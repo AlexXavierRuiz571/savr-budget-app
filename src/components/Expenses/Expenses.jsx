@@ -261,7 +261,7 @@ function Expenses({ getCityDetails }) {
               <img
                 className="expenses__bar-icon"
                 src={addIcon}
-                alt=""
+                alt="Add Expenses Icon"
                 aria-hidden="true"
               />
             </button>
@@ -290,7 +290,7 @@ function Expenses({ getCityDetails }) {
                         <img
                           className="expenses__submission-icon"
                           src={editIcon}
-                          alt=""
+                          alt="Edit Icon"
                           aria-hidden="true"
                         />
                       </button>
@@ -304,7 +304,7 @@ function Expenses({ getCityDetails }) {
                         <img
                           className="expenses__submission-icon"
                           src={deleteIcon}
-                          alt=""
+                          alt="Delete Icon"
                           aria-hidden="true"
                         />
                       </button>
@@ -374,7 +374,7 @@ function Expenses({ getCityDetails }) {
                     <img
                       className="expenses__saved-icon"
                       src={editIcon}
-                      alt=""
+                      alt="Edit Icon"
                       aria-hidden="true"
                     />
                   </button>
@@ -388,7 +388,7 @@ function Expenses({ getCityDetails }) {
                     <img
                       className="expenses__saved-icon"
                       src={deleteIcon}
-                      alt=""
+                      alt="Delete icon"
                       aria-hidden="true"
                     />
                   </button>

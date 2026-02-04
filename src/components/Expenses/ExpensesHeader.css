@@ -241,3 +241,21 @@
     font-size: 58px;
   }
 }
+
+@media screen and (max-width: 345px) {
+  .expenses-header {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .expenses-header__title {
+    font-size: 54px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .expenses-header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

@@ -340,8 +340,8 @@
     font-size: 20px;
   }
 
-  .debt__saved-entry {
-    align-items: flex-start;
+  .debt__saved-left {
+    gap: 10px;
   }
 
   .debt__saved-title {
@@ -359,5 +359,53 @@
   .debt__saved-icon {
     width: 26px;
     height: 26px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .debt {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .debt__summary {
+    margin-top: 45px;
+    padding: 14px 14px;
+  }
+
+  .debt__summary-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .debt__summary-row,
+  .debt__summary-currency,
+  .debt__summary-value {
+    font-size: 26px;
+  }
+
+  .debt__bar {
+    padding: 12px 14px;
+  }
+
+  .debt__bar-text {
+    font-size: 18px;
+  }
+
+  .debt__saved-title {
+    font-size: 20px;
+  }
+
+  .debt__saved-amount {
+    font-size: 18px;
+  }
+
+  .debt__saved-actions-row {
+    gap: 10px;
+  }
+
+  .debt__saved-icon {
+    width: 24px;
+    height: 24px;
   }
 }

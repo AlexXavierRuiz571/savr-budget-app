@@ -68,7 +68,7 @@ function IncomeHeader() {
                   <img
                     className="income-header__help-close-icon"
                     src={closeIcon}
-                    alt=""
+                    alt="Close Icon"
                   />
                 </button>
               </div>

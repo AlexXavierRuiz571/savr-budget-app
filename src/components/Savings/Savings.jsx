@@ -186,7 +186,12 @@ function Savings() {
               aria-label="Add Savings"
               onClick={handleOpenAddSavingsModal}
             >
-              <img className="savings__bar-icon" src={addIcon} alt="" aria-hidden="true" />
+              <img
+                className="savings__bar-icon"
+                src={addIcon}
+                alt="Add Savings Icon"
+                aria-hidden="true"
+              />
             </button>
           </div>
 
@@ -209,7 +214,12 @@ function Savings() {
                         aria-label={`View notes for ${entry.title}`}
                         onClick={() => openNotes(entry)}
                       >
-                        <img className="savings__saved-icon" src={notesIcon} alt="" aria-hidden="true" />
+                        <img
+                          className="savings__saved-icon"
+                          src={notesIcon}
+                          alt="View Notes"
+                          aria-hidden="true"
+                        />
                       </button>
                     )}
 
@@ -220,7 +230,12 @@ function Savings() {
                         aria-label={`Edit ${entry.title}`}
                         onClick={() => handleOpenEditSavingsModal(entry)}
                       >
-                        <img className="savings__saved-icon" src={editIcon} alt="" aria-hidden="true" />
+                        <img
+                          className="savings__saved-icon"
+                          src={editIcon}
+                          alt="Edit Icon"
+                          aria-hidden="true"
+                        />
                       </button>
 
                       <button
@@ -229,7 +244,12 @@ function Savings() {
                         aria-label={`Delete ${entry.title}`}
                         onClick={() => openDeleteSavings(entry)}
                       >
-                        <img className="savings__saved-icon" src={deleteIcon} alt="" aria-hidden="true" />
+                        <img
+                          className="savings__saved-icon"
+                          src={deleteIcon}
+                          alt="Delete Icon"
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
                   </div>

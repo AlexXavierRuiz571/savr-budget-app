@@ -232,3 +232,47 @@
     font-size: 16px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .infohub__container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .infohub__about,
+  .infohub__profile-plan {
+    padding: 16px 14px;
+  }
+
+  .infohub__profile-plan,
+  .infohub__faq {
+    margin-top: 50px;
+  }
+
+  .infohub__about {
+    margin-top: 60px;
+  }
+
+  .infohub__faq {
+    padding: 18px 14px;
+  }
+
+  .infohub__faq-item {
+    margin-bottom: 40px;
+  }
+
+  .infohub__about-title,
+  .infohub__profile-plan-title {
+    font-size: 26px;
+  }
+
+  .infohub__faq-title {
+    font-size: 26px;
+  }
+
+  .infohub__about-text,
+  .infohub__profile-plan-text,
+  .infohub__faq-text {
+    font-size: 16px;
+  }
+}

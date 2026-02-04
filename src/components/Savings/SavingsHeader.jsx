@@ -66,7 +66,7 @@ function SavingsHeader() {
                 <img
                   className="savings-header__help-close-icon"
                   src={closeIcon}
-                  alt=""
+                  alt="Close Icon"
                 />
               </button>
             </div>

@@ -1,30 +1,4 @@
-@font-face {
-  font-family: "Inter";
-  src: url("../vendor/fonts/Inter-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("../vendor/fonts/Inter-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("../vendor/fonts/Inter-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("../vendor/fonts/SpaceGrotesk-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
+@import "../src/assets/fonts/fonts.css";
 
 :root {
   font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -87,10 +61,6 @@ button,
 }
 
 @media screen and (max-width: 1024px) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
 
   .header,
   .income-header,

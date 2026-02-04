@@ -494,7 +494,8 @@
   }
 
   .lifestyle__summary {
-    margin-top: 35px;
+    margin-top: 50px;
+    padding: 16px 16px;
   }
 
   .lifestyle__summary-title {
@@ -507,16 +508,16 @@
     font-size: 28px;
   }
 
-  .lifestyle__summary-line {
-    width: 170px;
+  .lifestyle__bar {
+    padding: 12px 16px;
   }
 
   .lifestyle__bar-text {
     font-size: 20px;
   }
 
-  .lifestyle__submission-actions {
-    justify-content: flex-end;
+  .lifestyle__submission-left {
+    gap: 10px;
   }
 
   .lifestyle__submission-name {
@@ -524,18 +525,116 @@
   }
 
   .lifestyle__submission-amount {
-    font-size: 24px;
+    font-size: 20px;
   }
 
-  .lifestyle__saved-group {
-    padding: 12px;
+  .lifestyle__submission-actions {
+    gap: 8px;
+  }
+
+  .lifestyle__submission-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .lifestyle__saved-left {
+    gap: 10px;
   }
 
   .lifestyle__saved-title {
     font-size: 22px;
   }
 
-  .lifestyle__saved-monthly {
+  .lifestyle__saved-amount {
     font-size: 20px;
+  }
+
+  .lifestyle__saved-actions {
+    gap: 8px;
+  }
+
+  .lifestyle__saved-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .lifestyle__submission-name {
+    font-size: 18px;
+  }
+
+  .lifestyle__submission-amount {
+    font-size: 18px;
+  }
+
+  .lifestyle__submission-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .lifestyle {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .lifestyle__summary {
+    margin-top: 45px;
+    padding: 14px 14px;
+  }
+
+  .lifestyle__summary-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .lifestyle__summary-row,
+  .lifestyle__summary-currency,
+  .lifestyle__summary-value {
+    font-size: 26px;
+  }
+
+  .lifestyle__bar {
+    padding: 12px 14px;
+  }
+
+  .lifestyle__bar-text {
+    font-size: 18px;
+  }
+
+  .lifestyle__submission-name {
+    font-size: 18px;
+  }
+
+  .lifestyle__submission-amount {
+    font-size: 16px;
+  }
+
+  .lifestyle__submission-actions-row {
+    gap: 10px;
+  }
+
+  .lifestyle__submission-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .lifestyle__saved-title {
+    font-size: 20px;
+  }
+
+  .lifestyle__saved-amount {
+    font-size: 18px;
+  }
+
+  .lifestyle__saved-actions-row {
+    gap: 10px;
+  }
+
+  .lifestyle__saved-icon {
+    width: 24px;
+    height: 24px;
   }
 }

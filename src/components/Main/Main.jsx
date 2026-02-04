@@ -165,7 +165,7 @@ function Main() {
             <img
               className={`main__summary-icon ${isExpanded ? "main__summary-icon_open" : ""}`}
               src={arrowCircle}
-              alt=""
+              alt="Toggle budget breakdown"
               aria-hidden="true"
             />
           </button>
@@ -249,7 +249,7 @@ function Main() {
             <img
               className="main__card-action-icon"
               src={detailsIcon}
-              alt=""
+              alt="View Details"
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
@@ -276,7 +276,7 @@ function Main() {
             <img
               className="main__card-action-icon"
               src={detailsIcon}
-              alt=""
+              alt="View Details"
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
@@ -303,7 +303,7 @@ function Main() {
             <img
               className="main__card-action-icon"
               src={detailsIcon}
-              alt=""
+              alt="View Details"
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
@@ -327,7 +327,7 @@ function Main() {
             <img
               className="main__card-action-icon"
               src={detailsIcon}
-              alt=""
+              alt="View Details"
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
@@ -354,7 +354,7 @@ function Main() {
             <img
               className="main__card-action-icon"
               src={detailsIcon}
-              alt=""
+              alt="View Details"
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>
@@ -377,7 +377,7 @@ function Main() {
             <img
               className="main__card-action-icon"
               src={settingIcon}
-              alt=""
+              alt="Open Settings"
               aria-hidden="true"
             />
             <span className="main__card-action-text">View Details</span>

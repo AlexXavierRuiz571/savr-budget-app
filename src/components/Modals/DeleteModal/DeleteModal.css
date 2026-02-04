@@ -58,3 +58,19 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+@media screen and (max-width: 350px) {
+  .delete-modal__actions {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .delete-modal__text {
+    font-size: 35px;
+  }
+
+  .delete-modal__actions {
+    gap: 15px;
+  }
+}

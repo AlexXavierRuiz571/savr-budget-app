@@ -69,7 +69,7 @@ function LifestyleHeader() {
                 <img
                   className="lifestyle-header__help-close-icon"
                   src={closeIcon}
-                  alt=""
+                  alt="Close Icon"
                 />
               </button>
             </div>

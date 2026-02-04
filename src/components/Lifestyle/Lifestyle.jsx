@@ -257,7 +257,7 @@ function Lifestyle({ getCityDetails }) {
               <img
                 className="lifestyle__bar-icon"
                 src={addIcon}
-                alt=""
+                alt="Add Lifestyle Entry Icon"
                 aria-hidden="true"
               />
             </button>
@@ -286,7 +286,7 @@ function Lifestyle({ getCityDetails }) {
                         <img
                           className="lifestyle__submission-icon"
                           src={editIcon}
-                          alt=""
+                          alt="Edit Icon"
                           aria-hidden="true"
                         />
                       </button>
@@ -300,7 +300,7 @@ function Lifestyle({ getCityDetails }) {
                         <img
                           className="lifestyle__submission-icon"
                           src={deleteIcon}
-                          alt=""
+                          alt="Delete Icon"
                           aria-hidden="true"
                         />
                       </button>
@@ -370,7 +370,7 @@ function Lifestyle({ getCityDetails }) {
                     <img
                       className="lifestyle__saved-icon"
                       src={editIcon}
-                      alt=""
+                      alt="Edit Icon"
                       aria-hidden="true"
                     />
                   </button>
@@ -384,7 +384,7 @@ function Lifestyle({ getCityDetails }) {
                     <img
                       className="lifestyle__saved-icon"
                       src={deleteIcon}
-                      alt=""
+                      alt="Delete Icon"
                       aria-hidden="true"
                     />
                   </button>

@@ -70,7 +70,7 @@ function ModalWithForm({
             <img
               className="modal__close-icon"
               src={closeIcon}
-              alt=""
+              alt="Close Icon"
               aria-hidden="true"
             />
           </button>

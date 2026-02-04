@@ -219,6 +219,11 @@
     width: calc(100vw - 48px);
     max-width: 720px;
   }
+
+  .header__help-list {
+    padding-left: 42px;
+    padding-right: 22px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -245,6 +250,7 @@
 
   .header__help-list {
     font-size: 20px;
+    padding-left: 38px;
   }
 
   .header__help-panel {
@@ -264,5 +270,50 @@
 
   .header__slogan {
     font-size: 18px;
+  }
+
+  .header__help-panel {
+    width: calc(100vw - 24px);
+  }
+
+  .header__help-list {
+    font-size: 18px;
+    padding: 16px 18px 20px 34px;
+  }
+
+  .header__help-list li {
+    margin-bottom: 28px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .header__title {
+    font-size: 52px;
+  }
+
+  .header__slogan {
+    font-size: 16px;
+  }
+
+  .header__right-panel {
+    font-size: 24px;
+  }
+
+  .header__help-panel {
+    width: calc(100vw - 20px);
+  }
+
+  .header__help-title {
+    font-size: 22px;
+  }
+
+  .header__help-list {
+    font-size: 17px;
+    padding: 14px 16px 18px 30px;
   }
 }

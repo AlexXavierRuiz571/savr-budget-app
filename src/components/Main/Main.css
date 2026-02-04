@@ -6,6 +6,7 @@
   flex-direction: column;
   box-sizing: border-box;
   min-height: 100vh;
+  position: relative;
 }
 
 .main::before {
@@ -174,7 +175,7 @@
   width: 100%;
   margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(3, 275px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 275px));
   justify-content: center;
   gap: 40px;
   box-sizing: border-box;
@@ -217,6 +218,10 @@
   align-items: center;
   justify-content: center;
   flex: 1;
+}
+
+.main__card-body_type_info {
+  padding: 30px;
 }
 
 .main__card-amount {
@@ -334,18 +339,23 @@
 .main__card_type_income {
   border: 1px solid #800000;
 }
+
 .main__card_type_expenses {
   border: 1px solid #00b3d3;
 }
+
 .main__card_type_savings {
   border: 1px solid #00632d;
 }
+
 .main__card_type_debt {
   border: 1px solid #574084;
 }
+
 .main__card_type_lifestyle {
   border: 1px solid #c9a43e;
 }
+
 .main__card_type_info {
   border: 1px solid #ffffff;
 }
@@ -364,11 +374,8 @@
   .main__breakdown-inner {
     padding: 18px;
   }
-}
 
-@media screen and (max-width: 930px) {
   .main__cards {
-    grid-template-columns: repeat(2, 275px);
     gap: 30px;
   }
 }
@@ -412,17 +419,6 @@
   }
 }
 
-@media screen and (max-width: 620px) {
-  .main__cards {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .main__card {
-    max-width: 275px;
-  }
-}
-
 @media screen and (max-width: 430px) {
   .main {
     padding-left: 12px;
@@ -455,5 +451,33 @@
     width: 210px;
     height: 210px;
     margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .main__summary-text {
+    font-size: 15px;
+  }
+
+  .main__chart {
+    width: 190px;
+    height: 190px;
+  }
+
+  .main__card-amount {
+    font-size: 28px;
+  }
+
+  .main__card-text {
+    font-size: 18px;
+  }
+
+  .main__card-action-text {
+    font-size: 16px;
   }
 }

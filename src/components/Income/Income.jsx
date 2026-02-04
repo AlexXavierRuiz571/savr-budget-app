@@ -197,7 +197,7 @@ function Income() {
               <img
                 className="income__bar-icon"
                 src={addIcon}
-                alt=""
+                alt="Add Income Icon"
                 aria-hidden="true"
               />
             </button>
@@ -231,7 +231,7 @@ function Income() {
                         <img
                           className="income__saved-icon"
                           src={editIcon}
-                          alt=""
+                          alt="Edit Icon"
                           aria-hidden="true"
                         />
                       </button>
@@ -245,7 +245,7 @@ function Income() {
                         <img
                           className="income__saved-icon"
                           src={deleteIcon}
-                          alt=""
+                          alt="Delete Icon"
                           aria-hidden="true"
                         />
                       </button>

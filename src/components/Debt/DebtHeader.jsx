@@ -66,7 +66,7 @@ function DebtHeader() {
                 <img
                   className="debt-header__help-close-icon"
                   src={closeIcon}
-                  alt=""
+                  alt="Close Icon"
                 />
               </button>
             </div>

@@ -79,7 +79,9 @@ function Debt() {
   };
 
   const getDefaultDebtTitle = () => {
-    const usedTitles = new Set(savedDebt.map((entry) => (entry.title || "").trim()));
+    const usedTitles = new Set(
+      savedDebt.map((entry) => (entry.title || "").trim()),
+    );
 
     let index = 1;
     let candidate = `Debt ${index}`;
@@ -194,7 +196,12 @@ function Debt() {
               aria-label="Add Debt"
               onClick={handleOpenAddDebtModal}
             >
-              <img className="debt__bar-icon" src={addIcon} alt="" aria-hidden="true" />
+              <img
+                className="debt__bar-icon"
+                src={addIcon}
+                alt="Add Debt Icon"
+                aria-hidden="true"
+              />
             </button>
           </div>
 
@@ -218,7 +225,12 @@ function Debt() {
                         aria-label={`View notes for ${entry.title}`}
                         onClick={() => openNotes(entry)}
                       >
-                        <img className="debt__saved-icon" src={notesIcon} alt="" aria-hidden="true" />
+                        <img
+                          className="debt__saved-icon"
+                          src={notesIcon}
+                          alt="View Notes"
+                          aria-hidden="true"
+                        />
                       </button>
                     )}
 
@@ -229,7 +241,12 @@ function Debt() {
                         aria-label={`Edit ${entry.title}`}
                         onClick={() => handleOpenEditDebtModal(entry)}
                       >
-                        <img className="debt__saved-icon" src={editIcon} alt="" aria-hidden="true" />
+                        <img
+                          className="debt__saved-icon"
+                          src={editIcon}
+                          alt="Edit Icon"
+                          aria-hidden="true"
+                        />
                       </button>
 
                       <button
@@ -238,7 +255,12 @@ function Debt() {
                         aria-label={`Delete ${entry.title}`}
                         onClick={() => openDeleteDebt(entry)}
                       >
-                        <img className="debt__saved-icon" src={deleteIcon} alt="" aria-hidden="true" />
+                        <img
+                          className="debt__saved-icon"
+                          src={deleteIcon}
+                          alt="Delete icon"
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
                   </div>

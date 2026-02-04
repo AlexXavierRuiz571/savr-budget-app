@@ -344,3 +344,71 @@
     font-size: 20px;
   }
 }
+
+@media screen and (max-width: 387px) {
+ .income__saved-title {
+  font-size: 20px;
+ }
+
+ .income__saved-amount {
+  font-size: 18px;
+ }
+
+ .income__saved-actions-row {
+    gap: 10px;
+  }
+
+  .income__saved-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .income {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .income__summary {
+    margin-top: 45px;
+    padding: 14px 14px;
+  }
+
+  .income__summary-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .income__summary-row,
+  .income__summary-currency,
+  .income__summary-value {
+    font-size: 26px;
+  }
+
+  .income__bar {
+    padding: 12px 14px;
+  }
+
+  .income__bar-text {
+    font-size: 18px;
+  }
+
+  .income__saved-title {
+    font-size: 18px;
+  }
+
+.income__saved-monthly,
+  .income__saved-amount {
+    font-size: 16px;
+  }
+
+  .income__saved-actions-row {
+    gap: 10px;
+  }
+
+  .income__saved-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

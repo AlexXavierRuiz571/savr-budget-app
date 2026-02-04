@@ -340,8 +340,8 @@
     font-size: 20px;
   }
 
-  .savings__saved-entry {
-    align-items: flex-start;
+  .savings__saved-left {
+    gap: 10px;
   }
 
   .savings__saved-title {
@@ -359,5 +359,53 @@
   .savings__saved-icon {
     width: 26px;
     height: 26px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .savings {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .savings__summary {
+    margin-top: 45px;
+    padding: 14px 14px;
+  }
+
+  .savings__summary-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .savings__summary-row,
+  .savings__summary-currency,
+  .savings__summary-value {
+    font-size: 26px;
+  }
+
+  .savings__bar {
+    padding: 12px 14px;
+  }
+
+  .savings__bar-text {
+    font-size: 18px;
+  }
+
+  .savings__saved-title {
+    font-size: 20px;
+  }
+
+  .savings__saved-amount {
+    font-size: 18px;
+  }
+
+  .savings__saved-actions-row {
+    gap: 10px;
+  }
+
+  .savings__saved-icon {
+    width: 24px;
+    height: 24px;
   }
 }
