@@ -1,0 +1,76 @@
+.delete-modal {
+  width: 100%;
+  max-width: 600px;
+  background-color: #333333;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.modal__body {
+  background: none;
+  border: none;
+}
+
+.delete-modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.delete-modal__text {
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #b3b3b3;
+  margin-bottom: 36px;
+}
+
+.delete-modal__name {
+  font-weight: 700;
+}
+
+.delete-modal__actions {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  width: 100%;
+}
+
+.delete-modal__delete {
+  min-width: 120px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-modal__cancel {
+  min-width: 120px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 350px) {
+  .delete-modal__actions {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .delete-modal__text {
+    font-size: 35px;
+  }
+
+  .delete-modal__actions {
+    gap: 15px;
+  }
+}

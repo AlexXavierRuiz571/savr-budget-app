@@ -1,0 +1,133 @@
+.infohub-header {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 50px;
+}
+
+.infohub-header__right-panel,
+.infohub-header__center {
+  background-color: #333333;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
+.infohub-header__right-panel {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  height: 108px;
+}
+
+.infohub-header__right-panel {
+  justify-content: center;
+  font-size: 35px;
+}
+
+.infohub-header__center {
+  width: 100%;
+  max-width: none;
+  height: 175px;
+  padding: 16px 24px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infohub-header__right-text,
+.infohub-header__title {
+  margin: 0;
+  color: #b3b3b3;
+}
+
+.infohub-header__title {
+  color: #ffffff;
+  font-size: 60px;
+  justify-content: center;
+}
+
+.infohub-header__title-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.infohub-header__title-link:visited {
+  color: inherit;
+}
+
+.infohub-header__title-link:hover,
+.infohub-header__title-link:active {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .infohub-header {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    column-gap: 0;
+  }
+
+  .infohub-header__center {
+    max-width: 100%;
+    justify-self: stretch;
+  }
+
+  .infohub-header__right-panel {
+    width: 100%;
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .infohub-header__title {
+    font-size: 96px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .infohub-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .infohub-header__title {
+    font-size: 72px;
+  }
+
+  .infohub-header__right-panel {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .infohub-header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .infohub-header__title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .infohub-header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .infohub-header__title {
+    font-size: 42px;
+  }
+}

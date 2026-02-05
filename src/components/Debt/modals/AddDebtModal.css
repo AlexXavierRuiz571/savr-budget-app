@@ -1,0 +1,115 @@
+.debt-modal {
+  width: 100%;
+  max-width: 700px;
+}
+
+.debt-modal .modal__body {
+  border-top: 8px solid #574084;
+}
+
+.add-debt__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-debt__label {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.add-debt__required {
+  color: #574084;
+}
+
+.add-debt__select,
+.add-debt__input,
+.add-debt__textarea {
+  width: 100%;
+  height: 36px;
+  background-color: #1e1e1e;
+  border: 1px solid #574084;
+  color: #ffffff;
+  padding: 0 8px;
+  box-sizing: border-box;
+  font-style: italic;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.add-debt__textarea {
+  height: 120px;
+  padding: 10px 8px;
+  resize: none;
+}
+
+.add-debt__select {
+  height: 36px;
+  background-color: #1e1e1e;
+  border: 1px solid #574084;
+  padding: 0 8px;
+}
+
+.add-debt__select option {
+  color: #ffffff;
+  font-style: italic;
+}
+
+.add-debt__select::placeholder,
+.add-debt__input::placeholder,
+.add-debt__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
+.add-debt__note-max {
+  font-size: 12px;
+  color: #b3b3b3;
+  margin-top: -12px;
+  font-weight: 500;
+}
+
+.add-debt__submit,
+.add-debt__cancel {
+  height: 40px;
+  min-width: 120px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-debt__submit {
+  background-color: #574084;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-shadow: none;
+  transition: background-color 0.2s ease;
+}
+
+.add-debt__submit:hover {
+  background-color: #1a102e;
+}
+
+.add-debt__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.add-debt__cancel {
+  background-color: #291f3f;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.add-debt__cancel:hover {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.debt__title-highlight {
+  color: #574084;
+}

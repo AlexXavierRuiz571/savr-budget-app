@@ -1,106 +1,99 @@
-# 💸 Savr: Budget Tracker App
+# SAVR – Budget Simulation App
 
-**Savr** is a responsive budget simulation app built from scratch as a cumulative project alongside my learning in the **TripleTen Software Engineering program**. This project brings together everything I've learned so far from semantic HTML, modular CSS to clean, and event-driven JavaScript to simulate real-world budgeting behaviors.
+## Overview
 
----
+**SAVR** is a responsive frontend budget simulation application designed to help users understand how their income is distributed across expenses, savings, debt, and lifestyle spending.
 
-## 📌 Project Goals
+Unlike a traditional budget tracker, SAVR focuses on **simulation**. It combines user-entered values with real-world cost-of-living averages to provide a more realistic picture of a monthly budget. All values connect back to a central dashboard so users can see how individual financial decisions impact the overall balance.
 
-- Apply TripleTen sprint knowledge in a single, focused build
-- Practice responsive layout, validation, and DOM interaction
-- Use BEM-style CSS and dark color theming
-- Lay groundwork for full-stack and React conversion
+This project is a complete refactor of an earlier version of SAVR and was rebuilt from the ground up with clearer structure, shared calculation logic, and a more intentional user experience.
 
 ---
 
-## 🔧 Tech Stack
-
-- **HTML5** — semantic structure with accessibility in mind
-- **CSS3** — modular styles using BEM naming and dark monochromatic color scheme (maroon/black/silver)
-- **JavaScript (vanilla)** — clean event-driven code for budget logic and interactivity
-- **Git & GitHub** — source control, versioning, and collaboration
-
----
-
-## 📱 Features
-
-- Set a monthly income
-- Add/delete expenses by name, amount, and category
-- Auto-calculate total income, total expenses, and remaining balance
-- Live form validation with button state toggling
-- Custom input styling, spinner removal, and focus states
-- Context menu alerts on right-click
-- Dynamic current year in footer
-- Fully responsive across devices
-
----
-
-## 🖼️ UI Style
-
-- Colors: Maroon, black, silver (monochromatic)
-- Font: Orbitron for headings, system sans-serif for body
-- Structure: Block-based layout: Budget Input, Expense Form, Summary
-- Styling: No shadows, no spinners, accessible focus/hover states section
-
----
-
-## 🚧 To-Do List
-
-- [ ] Add localStorage for persistent budget state
-- [X] Create tracker section with visual progress bar
-- [ ] Add user profile for saved budgets
-- [ ] Integrate real-world data for estimated costs
-- [ ] Include icons and animations for UI polish
-- [ ] Filter expenses by category
-- [ ] Rebuild using React components
-
----
-
-## 🌐 Live Demo
+## 🔗 Live Demo
 
 [View on GitHub Pages](https://alexxavierruiz571.github.io/savr-budget-app/)
 
 ---
 
-## 👤 Author
+## Project Pitch Video
 
-**Alex Xavier Ruiz**
-Aspiring Full-Stack Developer • TripleTen Student
-[LinkedIn](https://www.linkedin.com/in/alex-ruiz-291a29373)
-[GitHub](https://github.com/AlexXavierRuiz571)
+Check out [this video](https://drive.google.com/file/d/1L2K_I--Bqox4G_quCMheZ7Ws1hhMu9HH/view?usp=sharing), where I describe my
+project and some challenges I faced while building it.
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Technologies Used
 
-```
-savr-budget-app/
-├── index.html
-├── styles/
-│   └── index.css
-├── scripts/
-│   └── app.js
-├── blocks/
-│   ├── header.css
-│   ├── budget-input.css
-│   ├── expenses.css
-│   ├── footer.css
-│   ├── form.css
-│   └── tracker.css
-├── vendor/
-│   └── normalize.css
-├── images/
-├── README.md
-└── .gitignore, .editorconfig, etc.
+- React (component-based UI)
+- React Router
+- JavaScript (ES6+)
+- CSS3 (Flexbox, Grid)
+- Vite (development and build tooling)
+- Git & GitHub for version control
+- External cost-of-living API
+- Local JSON fallback data
 
 ---
 
-## 🤖 AI Assistance
+## 📦 Features
 
-Throughout the development of this project, I used AI tools (ChatGPT and GitHub Copilot) to assist with:
+- Central dashboard with summary chart and totals
+- Income input as the foundation for all calculations
+- Expenses and Lifestyle pages powered by cost-of-living averages
+- Graceful API fallback using curated local JSON data
+- Savings and Debt pages with optional notes for context
+- Reusable modal system for consistent data entry
+- Automatic persistence using browser local storage
+- Fully responsive layout across screen sizes
 
-- Structuring modular CSS and BEM naming
-- Debugging JavaScript logic
-- Planning and writing README documentation
+---
 
-All code and decisions were made by me, with AI used as a development support resource.
+## ⚙️ How It Works
+
+- The Main page acts as the central hub, aggregating all saved values and visualizing how income is allocated.
+- Shared calculation logic ensures totals remain consistent across all pages.
+- Expenses and Lifestyle use API-driven averages with fallback support to maintain reliability.
+- Income, Savings, and Debt rely on direct user input and integrate cleanly into the same system.
+- All data is stored locally in the browser. There is no authentication or remote database in this version.
+
+---
+
+## 🌍 Cost-of-Living Data
+
+Expenses and Lifestyle estimates are based on cost-of-living data provided by **TravelTables**, which aggregates pricing information for food, rent, utilities, transportation, and other common expenses across thousands of cities worldwide.
+
+SAVR accesses this data through the **Cost of Living and Prices API** hosted on RapidAPI.
+
+- TravelTables website:
+  https://traveltables.com
+- Cost of Living and Prices API (RapidAPI):
+  https://rapidapi.com/traveltables/api/cost-of-living-and-prices
+
+Cost-of-living values are used strictly for simulation and planning purposes.
+
+---
+
+## 🚧 Known Limitations
+
+- All data is stored locally in the browser and resets if browser storage is cleared
+- Cost-of-living estimates depend on external data availability and accuracy
+- The free tier of the cost-of-living API is subject to request limits and may restrict how often data can be fetched
+- Some cities or categories may have limited or incomplete data
+
+**Values are intended for planning and simulation purposes only, not exact financial advice!**
+
+---
+
+## 🔮 Future Plans
+
+This version of SAVR is frontend-only. Future plans include adding a backend with persistent user profiles, authentication, expanded cost-of-living coverage, and remote data storage to make the application fully full-stack.
+
+Additional improvements may include supporting more cities and countries, refining cost-of-living estimates, and expanding planning tools to provide more flexible and detailed budget simulations.
+
+---
+
+## 👨‍💻 Author
+
+Alex Xavier Ruiz
+[LinkedIn](https://www.linkedin.com/in/alex-xavier-ruiz-291a29373) || [GitHub](https://github.com/AlexXavierRuiz571)

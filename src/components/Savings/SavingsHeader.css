@@ -1,0 +1,243 @@
+.savings-header {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 400px 1fr 400px;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 50px;
+}
+
+.savings-header__left-panel,
+.savings-header__right-panel,
+.savings-header__center {
+  background-color: #333333;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #00632d;
+}
+
+.savings-header__left-panel,
+.savings-header__right-panel {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  height: 108px;
+}
+
+.savings-header__left-panel {
+  justify-content: center;
+  font-size: 25px;
+}
+
+.savings-header__right-panel {
+  justify-content: center;
+  font-size: 35px;
+}
+
+.savings-header__center {
+  width: 100%;
+  max-width: 680px;
+  justify-self: center;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.savings-header__left-text,
+.savings-header__right-text,
+.savings-header__title {
+  margin: 0;
+  color: #b3b3b3;
+}
+
+.savings-header__right-text {
+  color: #b3b3b3;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.savings-header__right-text:hover {
+  color: #ffffff;
+}
+
+.savings-header__title {
+  color: #00632d;
+  font-size: 95px;
+}
+
+.savings-header__title-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.savings-header__title-link:visited {
+  color: inherit;
+}
+
+.savings-header__title-link:hover,
+.savings-header__title-link:active {
+  text-decoration: none;
+}
+
+.savings-header__left-panel {
+  position: relative;
+}
+
+.savings-header__help-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.savings-header__help-trigger:hover {
+  color: #00632d;
+}
+
+.savings-header__help-panel {
+  position: absolute;
+  top: 60%;
+  left: 65%;
+  margin-top: 14px;
+  width: 720px;
+  background-color: #333333;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  z-index: 50;
+  padding: 0;
+}
+
+.savings-header__help-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 8px solid #00632d;
+}
+
+.savings-header__help-title {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: 34px;
+}
+
+.savings-header__help-highlight {
+  color: #00632d;
+}
+
+.savings-header__help-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.savings-header__help-close-icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0.75;
+  display: block;
+}
+
+.savings-header__help-close-icon:hover {
+  opacity: 1;
+}
+
+.savings-header__help-list {
+  margin: 0;
+  margin-top: 25px;
+  padding: 18px 26px 22px 46px;
+  color: #b3b3b3;
+  font-size: 25px;
+}
+
+.savings-header__help-list li {
+  margin-bottom: 45px;
+}
+
+.savings-header__help-list li:last-child {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .savings-header {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    column-gap: 0;
+  }
+
+  .savings-header__center {
+    max-width: 100%;
+    justify-self: stretch;
+  }
+
+  .savings-header__left-panel,
+  .savings-header__right-panel {
+    width: 100%;
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .savings-header__title {
+    font-size: 96px;
+  }
+
+  .savings-header__help-panel {
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 48px);
+    max-width: 720px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .savings-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .savings-header__title {
+    font-size: 72px;
+  }
+
+  .savings-header__left-panel {
+    font-size: 40px;
+  }
+
+  .savings-header__right-panel {
+    font-size: 28px;
+  }
+
+  .savings-header__help-title {
+    font-size: 26px;
+  }
+
+  .savings-header__help-list {
+    font-size: 20px;
+  }
+
+  .savings-header__help-panel {
+    width: calc(100vw - 32px);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .savings-header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .savings-header__title {
+    font-size: 58px;
+  }
+}
