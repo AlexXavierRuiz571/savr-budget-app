@@ -1,5 +1,5 @@
 import "./AddDebtModal.css";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 
 const DEBT_TYPE_OPTIONS = [
@@ -18,18 +18,17 @@ function AddDebtModal({ isOpen, onClose, onAddDebt }) {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
 
-  useEffect(() => {
-    if (!isOpen) return;
+  const resetForm = () => {
     setAmount("");
     setDebtType("");
     setTitle("");
     setNotes("");
-  }, [isOpen]);
+  };
 
   const canSubmit = useMemo(() => {
     const num = Number(amount);
-    return amount !== "" && !Number.isNaN(num) && num > 0;
-  }, [amount]);
+    return amount !== "" && !Number.isNaN(num) && num > 0 && Boolean(debtType);
+  }, [amount, debtType]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -45,14 +44,12 @@ function AddDebtModal({ isOpen, onClose, onAddDebt }) {
       });
     }
 
+    resetForm();
     onClose();
   };
 
   const handleClose = () => {
-    setAmount("");
-    setDebtType("");
-    setTitle("");
-    setNotes("");
+    resetForm();
     onClose();
   };
 

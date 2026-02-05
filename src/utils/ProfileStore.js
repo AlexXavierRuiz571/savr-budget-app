@@ -24,7 +24,7 @@ const safeParseArray = (raw) => {
   try {
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [];
-  } catch (err) {
+  } catch {
     return [];
   }
 };

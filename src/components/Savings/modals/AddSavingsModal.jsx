@@ -1,18 +1,11 @@
 import "./AddSavingsModal.css";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 
 function AddSavingsModal({ isOpen, onClose, onAddSavings }) {
   const [amount, setAmount] = useState("");
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
-
-  useEffect(() => {
-    if (!isOpen) return;
-    setAmount("");
-    setTitle("");
-    setNotes("");
-  }, [isOpen]);
 
   const canSubmit = useMemo(() => {
     const num = Number(amount);

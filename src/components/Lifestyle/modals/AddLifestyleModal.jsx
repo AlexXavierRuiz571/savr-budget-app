@@ -312,7 +312,8 @@ function AddLifestyleModal({
         setCityDetails(data);
         setHasLoadedEstimates(true);
         setSelectedGoodId("");
-      } catch (err) {
+      } catch (error) {
+        void error;
         setEstimateError("No estimates could be loaded.");
         setHasLoadedEstimates(false);
         setCityDetails(null);

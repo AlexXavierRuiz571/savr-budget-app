@@ -23,7 +23,6 @@ const TRANSPORT_TYPES = [
 function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   const [cityId, setCityId] = useState("");
 
-  // User inputs (left side)
   const [expenseType, setExpenseType] = useState("");
   const [transportType, setTransportType] = useState("");
   const [expenseName, setExpenseName] = useState("");
@@ -31,7 +30,6 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
   const [frequency, setFrequency] = useState("");
   const [isVariable, setIsVariable] = useState(null);
 
-  // Estimates (right side)
   const [hasLoadedEstimates, setHasLoadedEstimates] = useState(false);
   const [isLoadingEstimates, setIsLoadingEstimates] = useState(false);
   const [estimateError, setEstimateError] = useState("");
@@ -91,17 +89,14 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
         avg: price.usd?.avg ?? price.avg ?? "",
         max: price.usd?.max ?? price.max ?? "",
       }))
-      .sort((priceA, priceB) => priceA.name.localeCompare(priceB.name));
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [hasLoadedEstimates, cityDetails, expenseType]);
 
   const selectedItem = useMemo(() => {
     if (!selectedGoodId) return null;
-    return (
-      filteredItems.find((i) => i.goodId === String(selectedGoodId)) || null
-    );
+    return filteredItems.find((i) => i.goodId === selectedGoodId) || null;
   }, [filteredItems, selectedGoodId]);
 
-  // Keep selectedGoodId valid after estimates/type changes
   useEffect(() => {
     if (!hasLoadedEstimates) return;
 
@@ -126,7 +121,7 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
       const data = await getCityDetails(cityId);
       setCityDetails(data);
       setHasLoadedEstimates(true);
-    } catch (err) {
+    } catch {
       setEstimateError("No estimates could be loaded.");
       setHasLoadedEstimates(false);
       setCityDetails(null);
@@ -138,14 +133,10 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
 
   const formatMoney = (value) => {
     if (value === "" || value === null || value === undefined) return "__";
-
     const num = Number(value);
     if (Number.isNaN(num)) return "__";
-
     return num.toFixed(2);
   };
-
-  const showEstimateTilde = true;
 
   const canSubmit =
     isLocationSet &&
@@ -397,24 +388,21 @@ function AddExpenseModal({ isOpen, onClose, getCityDetails, onAddExpense }) {
                     <div className="add-expense__range-row">
                       <span>Low</span>
                       <span>
-                        {showEstimateTilde ? "~ " : ""}
-                        {formatMoney(selectedItem.min)}
+                        ~ {formatMoney(selectedItem.min)}
                       </span>
                     </div>
 
                     <div className="add-expense__range-row">
                       <span>Mid</span>
                       <span>
-                        {showEstimateTilde ? "~ " : ""}
-                        {formatMoney(selectedItem.avg)}
+                        ~ {formatMoney(selectedItem.avg)}
                       </span>
                     </div>
 
                     <div className="add-expense__range-row">
                       <span>High</span>
                       <span>
-                        {showEstimateTilde ? "~ " : ""}
-                        {formatMoney(selectedItem.max)}
+                        ~ {formatMoney(selectedItem.max)}
                       </span>
                     </div>
                   </div>

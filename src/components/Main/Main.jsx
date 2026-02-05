@@ -112,11 +112,6 @@ function Main() {
     const debtPercent = Math.max(0, percents.debt);
     const lifestylePercent = Math.max(0, percents.lifestyle);
 
-    const usedPercent =
-      expensesPercent + savingsPercent + debtPercent + lifestylePercent;
-
-    const remainingPercent = Math.max(0, 1 - usedPercent);
-
     const expensesEndPercent = expensesPercent * 100;
     const savingsEndPercent = (expensesPercent + savingsPercent) * 100;
     const debtEndPercent =

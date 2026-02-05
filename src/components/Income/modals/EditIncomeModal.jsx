@@ -1,5 +1,5 @@
 import "./AddIncomeModal.css";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 
 const FREQUENCY_OPTIONS = [
@@ -27,69 +27,52 @@ const toMonthlyAmount = (amount, frequency) => {
 };
 
 function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
-  const [amount, setAmount] = useState("");
-  const [frequency, setFrequency] = useState("");
-  const [incomeTitle, setIncomeTitle] = useState("");
-
-  const resetForm = () => {
-    setAmount("");
-    setFrequency("");
-    setIncomeTitle("");
-  };
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    if (!incomeToEdit) {
-      resetForm();
-      return;
-    }
-
-    setAmount(
-      incomeToEdit.amount === 0 || incomeToEdit.amount
+  const [formValues, setFormValues] = useState(() => ({
+    amount:
+      incomeToEdit && (incomeToEdit.amount === 0 || incomeToEdit.amount)
         ? String(incomeToEdit.amount)
         : "",
-    );
-    setFrequency(incomeToEdit.frequency || "");
-    setIncomeTitle(incomeToEdit.title || "");
-  }, [isOpen, incomeToEdit]);
+    frequency: incomeToEdit?.frequency || "",
+    incomeTitle: incomeToEdit?.title || "",
+  }));
 
   const canSubmit = useMemo(() => {
-    return amount !== "" && Number(amount) >= 0 && Boolean(frequency);
-  }, [amount, frequency]);
+    return (
+      formValues.amount !== "" &&
+      Number(formValues.amount) >= 0 &&
+      Boolean(formValues.frequency)
+    );
+  }, [formValues.amount, formValues.frequency]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (!canSubmit) return;
     if (!incomeToEdit) return;
 
-    const monthlyTotal = toMonthlyAmount(amount, frequency);
-    const isEstimate = frequency !== "monthly";
-
-    const trimmedTitle = (incomeTitle || "").trim();
+    const monthlyTotal = toMonthlyAmount(
+      formValues.amount,
+      formValues.frequency,
+    );
+    const isEstimate = formValues.frequency !== "monthly";
+    const trimmedTitle = (formValues.incomeTitle || "").trim();
 
     if (typeof onUpdateIncome === "function") {
       onUpdateIncome({
         ...incomeToEdit,
         title: trimmedTitle,
-        amount: Number(amount),
-        frequency,
+        amount: Number(formValues.amount),
+        frequency: formValues.frequency,
         monthlyTotal,
         isEstimate,
       });
     }
 
-    resetForm();
-    onClose();
-  };
-
-  const handleClose = () => {
-    resetForm();
     onClose();
   };
 
   return (
     <ModalWithForm
+      key={`${isOpen}-${incomeToEdit?.id || "empty"}`}
       isOpen={isOpen}
       title={
         <>
@@ -99,7 +82,7 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
           </span>
         </>
       }
-      onClose={handleClose}
+      onClose={onClose}
       onSubmit={handleSubmit}
       className="income-modal"
       showDefaultActions={false}
@@ -116,7 +99,7 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
           <button
             className="add-income__cancel"
             type="button"
-            onClick={handleClose}
+            onClick={onClose}
           >
             Cancel
           </button>
@@ -134,8 +117,13 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
             type="number"
             min="0"
             step="0.01"
-            value={amount}
-            onChange={(evt) => setAmount(evt.target.value)}
+            value={formValues.amount}
+            onChange={(evt) =>
+              setFormValues((prev) => ({
+                ...prev,
+                amount: evt.target.value,
+              }))
+            }
             placeholder="Edit amount"
             required
           />
@@ -147,8 +135,13 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
 
         <select
           className="add-income__select"
-          value={frequency}
-          onChange={(evt) => setFrequency(evt.target.value)}
+          value={formValues.frequency}
+          onChange={(evt) =>
+            setFormValues((prev) => ({
+              ...prev,
+              frequency: evt.target.value,
+            }))
+          }
           required
         >
           <option value="">Select frequency</option>
@@ -163,8 +156,13 @@ function EditIncomeModal({ isOpen, onClose, incomeToEdit, onUpdateIncome }) {
         <input
           className="add-income__input"
           type="text"
-          value={incomeTitle}
-          onChange={(evt) => setIncomeTitle(evt.target.value)}
+          value={formValues.incomeTitle}
+          onChange={(evt) =>
+            setFormValues((prev) => ({
+              ...prev,
+              incomeTitle: evt.target.value,
+            }))
+          }
           placeholder="Job"
         />
       </div>

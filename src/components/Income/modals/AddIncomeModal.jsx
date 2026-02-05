@@ -1,5 +1,5 @@
 import "./AddIncomeModal.css";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 
 const FREQUENCY_OPTIONS = [
@@ -36,11 +36,6 @@ function AddIncomeModal({ isOpen, onClose, onAddIncome }) {
     setFrequency("");
     setIncomeName("");
   };
-
-  useEffect(() => {
-    if (!isOpen) return;
-    resetForm();
-  }, [isOpen]);
 
   const canSubmit = useMemo(() => {
     return amount !== "" && Number(amount) >= 0 && Boolean(frequency);

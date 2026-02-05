@@ -1,8 +1,8 @@
 import "../modals/AddExpenseModal.css";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 import Preloader from "../../Preloader/Preloader.jsx";
-import { CITY_OPTIONS} from "../../../utils/cities.js";
+import { CITY_OPTIONS } from "../../../utils/cities.js";
 import { expenseGoodIds } from "../../../utils/goodIds.js";
 
 const EXPENSE_TYPES = [
@@ -29,7 +29,6 @@ function EditExpenseModal({
 }) {
   const [cityId, setCityId] = useState("");
 
-  // User inputs (left side)
   const [expenseType, setExpenseType] = useState("");
   const [transportType, setTransportType] = useState("");
   const [expenseName, setExpenseName] = useState("");
@@ -37,7 +36,6 @@ function EditExpenseModal({
   const [frequency, setFrequency] = useState("");
   const [isVariable, setIsVariable] = useState(null);
 
-  // Estimates (right side)
   const [hasLoadedEstimates, setHasLoadedEstimates] = useState(false);
   const [isLoadingEstimates, setIsLoadingEstimates] = useState(false);
   const [estimateError, setEstimateError] = useState("");
@@ -46,15 +44,15 @@ function EditExpenseModal({
 
   const isLocationSet = Boolean(cityId);
 
-  const resetEstimates = () => {
+  const resetEstimates = useCallback(() => {
     setHasLoadedEstimates(false);
     setIsLoadingEstimates(false);
     setEstimateError("");
     setCityDetails(null);
     setSelectedGoodId("");
-  };
+  }, []);
 
-  const resetForm = () => {
+  const resetForm = useCallback(() => {
     setCityId("");
     setExpenseType("");
     setTransportType("");
@@ -63,7 +61,7 @@ function EditExpenseModal({
     setFrequency("");
     setIsVariable(null);
     resetEstimates();
-  };
+  }, [resetEstimates]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -73,14 +71,9 @@ function EditExpenseModal({
       return;
     }
 
-    const nextCityId = String(expenseToEdit.cityId || "");
     const nextExpenseType = expenseToEdit.expenseType || "";
-    const nextIsVariable =
-      typeof expenseToEdit.isVariable === "boolean"
-        ? expenseToEdit.isVariable
-        : null;
 
-    setCityId(nextCityId);
+    setCityId(String(expenseToEdit.cityId || ""));
     setExpenseType(nextExpenseType);
     setTransportType(
       nextExpenseType === "transportation"
@@ -94,10 +87,14 @@ function EditExpenseModal({
         : "",
     );
     setFrequency(expenseToEdit.frequency || "");
-    setIsVariable(nextIsVariable);
+    setIsVariable(
+      typeof expenseToEdit.isVariable === "boolean"
+        ? expenseToEdit.isVariable
+        : null,
+    );
 
     resetEstimates();
-  }, [isOpen, expenseToEdit]);
+  }, [isOpen, expenseToEdit, resetForm, resetEstimates]);
 
   const handleLocationChange = (evt) => {
     setCityId(evt.target.value);
@@ -128,18 +125,16 @@ function EditExpenseModal({
       .map((price) => ({
         goodId: String(price.good_id),
         name: price.item_name,
-        min: price.usd?.min ?? String(price.min ?? ""),
-        avg: price.usd?.avg ?? String(price.avg ?? ""),
-        max: price.usd?.max ?? String(price.max ?? ""),
+        min: price.usd?.min ?? price.min ?? "",
+        avg: price.usd?.avg ?? price.avg ?? "",
+        max: price.usd?.max ?? price.max ?? "",
       }))
-      .sort((priceA, priceB) => priceA.name.localeCompare(priceB.name));
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [hasLoadedEstimates, cityDetails, expenseType]);
 
   const selectedItem = useMemo(() => {
     if (!selectedGoodId) return null;
-    return (
-      filteredItems.find((i) => i.goodId === String(selectedGoodId)) || null
-    );
+    return filteredItems.find((i) => i.goodId === selectedGoodId) || null;
   }, [filteredItems, selectedGoodId]);
 
   useEffect(() => {
@@ -171,9 +166,11 @@ function EditExpenseModal({
       const data = await getCityDetails(cityId);
       setCityDetails(data);
       setHasLoadedEstimates(true);
-    } catch (err) {
+    } catch {
       setEstimateError("No estimates could be loaded.");
       setHasLoadedEstimates(false);
+      setCityDetails(null);
+      setSelectedGoodId("");
     } finally {
       setIsLoadingEstimates(false);
     }
@@ -181,10 +178,8 @@ function EditExpenseModal({
 
   const formatMoney = (value) => {
     if (value === "" || value === null || value === undefined) return "__";
-
     const num = Number(value);
     if (Number.isNaN(num)) return "__";
-
     return num.toFixed(2);
   };
 
@@ -199,21 +194,18 @@ function EditExpenseModal({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (!canSubmit) return;
-    if (!expenseToEdit) return;
+    if (!canSubmit || !expenseToEdit) return;
 
-    if (typeof onUpdateExpense === "function") {
-      onUpdateExpense({
-        ...expenseToEdit,
-        name: expenseName.trim(),
-        amount: Number(amount),
-        frequency,
-        expenseType,
-        transportType: expenseType === "transportation" ? transportType : "",
-        isVariable,
-        cityId,
-      });
-    }
+    onUpdateExpense({
+      ...expenseToEdit,
+      name: expenseName.trim(),
+      amount: Number(amount),
+      frequency,
+      expenseType,
+      transportType: expenseType === "transportation" ? transportType : "",
+      isVariable,
+      cityId,
+    });
 
     onClose();
   };
@@ -340,7 +332,6 @@ function EditExpenseModal({
               type="text"
               value={expenseName}
               onChange={(evt) => setExpenseName(evt.target.value)}
-              placeholder="Must be typed"
               required
               disabled={isLoadingEstimates}
             />
@@ -366,7 +357,6 @@ function EditExpenseModal({
               <label className="add-expense__radio">
                 <input
                   type="radio"
-                  name="fixedVariableEdit"
                   checked={isVariable === false}
                   onChange={() => setIsVariable(false)}
                   disabled={isLoadingEstimates}
@@ -377,7 +367,6 @@ function EditExpenseModal({
               <label className="add-expense__radio">
                 <input
                   type="radio"
-                  name="fixedVariableEdit"
                   checked={isVariable === true}
                   onChange={() => setIsVariable(true)}
                   disabled={isLoadingEstimates}
@@ -450,21 +439,21 @@ function EditExpenseModal({
                   <div className="add-expense__range-row">
                     <span>Low</span>
                     <span>
-                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.min)}
+                      {isVariable ? "~ " : ""}${formatMoney(selectedItem?.min)}
                     </span>
                   </div>
 
                   <div className="add-expense__range-row">
                     <span>Mid</span>
                     <span>
-                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.avg)}
+                      {isVariable ? "~ " : ""}${formatMoney(selectedItem?.avg)}
                     </span>
                   </div>
 
                   <div className="add-expense__range-row">
                     <span>High</span>
                     <span>
-                      {isVariable ? "~" : ""}${formatMoney(selectedItem?.max)}
+                      {isVariable ? "~ " : ""}${formatMoney(selectedItem?.max)}
                     </span>
                   </div>
                 </div>

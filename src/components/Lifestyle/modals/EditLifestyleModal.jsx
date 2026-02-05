@@ -50,7 +50,6 @@ const SUMMARY_COPY = {
   },
 };
 
-// IMPORTANT: normalize whatever was saved into what the UI expects
 const normalizeLifestyleType = (raw) => {
   if (!raw) return "";
   if (raw === "diningOut") return "dining_out";
@@ -115,8 +114,6 @@ function EditLifestyleModal({
     return options.find((opt) => opt.value === destination) || null;
   }, [isTravel, destination]);
 
-  // For subscriptions/hobbies/other, use first option as the benchmark
-  // (No dropdown in the current UI.)
   const benchmarkOption = useMemo(() => {
     if (!isBenchmarkType) return null;
 
@@ -130,7 +127,6 @@ function EditLifestyleModal({
     setIsLoadingEstimates(false);
     setEstimateError("");
     setCityDetails(null);
-    // keep selectedGoodId unless we explicitly change type/location
   };
 
   const resetForm = () => {
@@ -144,7 +140,6 @@ function EditLifestyleModal({
     resetEstimates();
   };
 
-  // Prefill when modal opens
   useEffect(() => {
     if (!isOpen) return;
 
@@ -178,7 +173,7 @@ function EditLifestyleModal({
     );
 
     resetEstimates();
-  }, [isOpen, lifestyleToEdit]);
+  }, [isOpen, lifestyleToEdit, resetForm]);
 
   const handleTypeChange = (evt) => {
     const next = evt.target.value;
@@ -356,7 +351,8 @@ function EditLifestyleModal({
         const data = await getCityDetails(cityId);
         setCityDetails(data);
         setHasLoadedEstimates(true);
-      } catch (err) {
+      } catch (error) {
+        void error;
         setEstimateError("No estimates could be loaded.");
         setHasLoadedEstimates(false);
         setCityDetails(null);

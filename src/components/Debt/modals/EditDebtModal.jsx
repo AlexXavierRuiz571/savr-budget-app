@@ -1,5 +1,5 @@
 import "./AddDebtModal.css";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 
 const DEBT_TYPE_OPTIONS = [
@@ -13,59 +13,32 @@ const DEBT_TYPE_OPTIONS = [
 ];
 
 function EditDebtModal({ isOpen, onClose, debtToEdit, onUpdateDebt }) {
-  const [amount, setAmount] = useState("");
-  const [debtType, setDebtType] = useState("");
-  const [title, setTitle] = useState("");
-  const [notes, setNotes] = useState("");
-
-  const resetForm = () => {
-    setAmount("");
-    setDebtType("");
-    setTitle("");
-    setNotes("");
-  };
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    if (!debtToEdit) {
-      resetForm();
-      return;
-    }
-
-    setAmount(
-      debtToEdit.amount === 0 || debtToEdit.amount ? String(debtToEdit.amount) : "",
-    );
-    setDebtType(debtToEdit.debtType || "");
-    setTitle(debtToEdit.title || "");
-    setNotes(debtToEdit.notes || "");
-  }, [isOpen, debtToEdit]);
+  const [formValues, setFormValues] = useState({
+    amount: debtToEdit?.amount != null ? String(debtToEdit.amount) : "",
+    debtType: debtToEdit?.debtType || "",
+    title: debtToEdit?.title || "",
+    notes: debtToEdit?.notes || "",
+  });
 
   const canSubmit = useMemo(() => {
-    const num = Number(amount);
-    return amount !== "" && !Number.isNaN(num) && num > 0;
-  }, [amount]);
+    const num = Number(formValues.amount);
+    return formValues.amount !== "" && !Number.isNaN(num) && num > 0;
+  }, [formValues.amount]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (!canSubmit) return;
-    if (!debtToEdit) return;
+    if (!canSubmit || !debtToEdit) return;
 
     if (typeof onUpdateDebt === "function") {
       onUpdateDebt({
         ...debtToEdit,
-        amount: Number(amount),
-        debtType: debtType.trim(),
-        title: title.trim(),
-        notes: notes.trim().slice(0, 250),
+        amount: Number(formValues.amount),
+        debtType: formValues.debtType.trim(),
+        title: formValues.title.trim(),
+        notes: (formValues.notes || "").trim().slice(0, 250),
       });
     }
 
-    onClose();
-  };
-
-  const handleClose = () => {
-    resetForm();
     onClose();
   };
 
@@ -78,21 +51,31 @@ function EditDebtModal({ isOpen, onClose, debtToEdit, onUpdateDebt }) {
     </>
   );
 
+  const formKey = !isOpen
+    ? "closed"
+    : debtToEdit?.id
+      ? `open-${debtToEdit.id}`
+      : "open-empty";
+
   return (
     <ModalWithForm
+      key={formKey}
       isOpen={isOpen}
       title={modalTitle}
-      onClose={handleClose}
+      onClose={onClose}
       onSubmit={handleSubmit}
       className="debt-modal"
       showDefaultActions={false}
       footerContent={
         <>
-          <button className="add-debt__submit" type="submit" disabled={!canSubmit}>
+          <button
+            className="add-debt__submit"
+            type="submit"
+            disabled={!canSubmit}
+          >
             Save
           </button>
-
-          <button className="add-debt__cancel" type="button" onClick={handleClose}>
+          <button className="add-debt__cancel" type="button" onClick={onClose}>
             Cancel
           </button>
         </>
@@ -102,15 +85,19 @@ function EditDebtModal({ isOpen, onClose, debtToEdit, onUpdateDebt }) {
         <label className="add-debt__label">
           Monthly payment <span className="add-debt__required">*</span>
         </label>
-
         <div className="add-debt__label">
           <input
             className="add-debt__input add-debt__input_type_amount"
             type="number"
             min="0"
             step="0.01"
-            value={amount}
-            onChange={(evt) => setAmount(evt.target.value)}
+            value={formValues.amount}
+            onChange={(evt) =>
+              setFormValues((previous) => ({
+                ...previous,
+                amount: evt.target.value,
+              }))
+            }
             placeholder="Enter amount"
             required
           />
@@ -119,8 +106,13 @@ function EditDebtModal({ isOpen, onClose, debtToEdit, onUpdateDebt }) {
         <label className="add-debt__label">Debt Type (optional)</label>
         <select
           className="add-debt__select"
-          value={debtType}
-          onChange={(evt) => setDebtType(evt.target.value)}
+          value={formValues.debtType}
+          onChange={(evt) =>
+            setFormValues((previous) => ({
+              ...previous,
+              debtType: evt.target.value,
+            }))
+          }
         >
           <option value="">Select Debt type</option>
           {DEBT_TYPE_OPTIONS.map((opt) => (
@@ -134,8 +126,13 @@ function EditDebtModal({ isOpen, onClose, debtToEdit, onUpdateDebt }) {
         <input
           className="add-debt__input"
           type="text"
-          value={title}
-          onChange={(evt) => setTitle(evt.target.value)}
+          value={formValues.title}
+          onChange={(evt) =>
+            setFormValues((previous) => ({
+              ...previous,
+              title: evt.target.value,
+            }))
+          }
           placeholder="Job"
           maxLength={60}
         />
@@ -143,8 +140,13 @@ function EditDebtModal({ isOpen, onClose, debtToEdit, onUpdateDebt }) {
         <label className="add-debt__label">Notes (optional)</label>
         <textarea
           className="add-debt__textarea"
-          value={notes}
-          onChange={(evt) => setNotes(evt.target.value)}
+          value={formValues.notes}
+          onChange={(evt) =>
+            setFormValues((previous) => ({
+              ...previous,
+              notes: evt.target.value,
+            }))
+          }
           placeholder="Optional Notes"
           maxLength={250}
           rows={4}

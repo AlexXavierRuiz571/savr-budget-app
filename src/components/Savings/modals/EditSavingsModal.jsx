@@ -1,69 +1,63 @@
 import "../modals/AddSavingsModal.css";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ModalWithForm from "../../Modals/ModalWithForm/ModalWithForm.jsx";
 
 function EditSavingsModal({ isOpen, onClose, savingsToEdit, onUpdateSavings }) {
-  const [amount, setAmount] = useState("");
-  const [title, setTitle] = useState("");
-  const [notes, setNotes] = useState("");
+  const [formValues, setFormValues] = useState({
+    amount: savingsToEdit?.amount != null ? String(savingsToEdit.amount) : "",
+    title: savingsToEdit?.title || "",
+    notes: savingsToEdit?.notes || "",
+  });
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    if (!savingsToEdit) {
-      setAmount("");
-      setTitle("");
-      setNotes("");
-      return;
-    }
-
-    setAmount(
-      savingsToEdit.amount === 0 || savingsToEdit.amount
-        ? String(savingsToEdit.amount)
-        : "",
-    );
-    setTitle(savingsToEdit.title || "");
-    setNotes(savingsToEdit.notes || "");
-  }, [isOpen, savingsToEdit]);
+  const resetForm = () => {
+    setFormValues({ amount: "", title: "", notes: "" });
+  };
 
   const canSubmit = useMemo(() => {
-    const num = Number(amount);
-    return amount !== "" && !Number.isNaN(num) && num > 0;
-  }, [amount]);
+    const num = Number(formValues.amount);
+    return formValues.amount !== "" && !Number.isNaN(num) && num > 0;
+  }, [formValues.amount]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (!canSubmit) return;
-    if (!savingsToEdit) return;
+    if (!canSubmit || !savingsToEdit) return;
 
     if (typeof onUpdateSavings === "function") {
       onUpdateSavings({
         ...savingsToEdit,
-        title: title.trim(),
-        amount: Number(amount),
-        notes: notes.trim().slice(0, 250),
+        title: formValues.title.trim(),
+        amount: Number(formValues.amount),
+        notes: (formValues.notes || "").trim().slice(0, 250),
       });
     }
 
+    resetForm();
     onClose();
   };
 
   const handleClose = () => {
-    setAmount("");
-    setTitle("");
-    setNotes("");
+    resetForm();
     onClose();
   };
 
   const modalTitle = (
     <>
       Edit{" "}
-      <span className="savings__title-highlight">{savingsToEdit?.title}</span>
+      <span className="savings__title-highlight">
+        {savingsToEdit?.title || "Savings"}
+      </span>
     </>
   );
 
+  const formKey = !isOpen
+    ? "closed"
+    : savingsToEdit?.id
+      ? `open-${savingsToEdit.id}`
+      : "open-empty";
+
   return (
     <ModalWithForm
+      key={formKey}
       isOpen={isOpen}
       title={modalTitle}
       onClose={handleClose}
@@ -79,7 +73,6 @@ function EditSavingsModal({ isOpen, onClose, savingsToEdit, onUpdateSavings }) {
           >
             Save
           </button>
-
           <button
             className="add-savings__cancel"
             type="button"
@@ -99,8 +92,13 @@ function EditSavingsModal({ isOpen, onClose, savingsToEdit, onUpdateSavings }) {
           type="number"
           min="0"
           step="0.01"
-          value={amount}
-          onChange={(evt) => setAmount(evt.target.value)}
+          value={formValues.amount}
+          onChange={(evt) =>
+            setFormValues((prev) => ({
+              ...prev,
+              amount: evt.target.value,
+            }))
+          }
           required
         />
 
@@ -108,8 +106,13 @@ function EditSavingsModal({ isOpen, onClose, savingsToEdit, onUpdateSavings }) {
         <input
           className="add-savings__input"
           type="text"
-          value={title}
-          onChange={(evt) => setTitle(evt.target.value)}
+          value={formValues.title}
+          onChange={(evt) =>
+            setFormValues((prev) => ({
+              ...prev,
+              title: evt.target.value,
+            }))
+          }
           placeholder="Job"
           maxLength={60}
         />
@@ -117,8 +120,13 @@ function EditSavingsModal({ isOpen, onClose, savingsToEdit, onUpdateSavings }) {
         <label className="add-savings__label">Notes (optional)</label>
         <textarea
           className="add-savings__textarea"
-          value={notes}
-          onChange={(evt) => setNotes(evt.target.value)}
+          value={formValues.notes}
+          onChange={(evt) =>
+            setFormValues((prev) => ({
+              ...prev,
+              notes: evt.target.value,
+            }))
+          }
           maxLength={250}
           rows={4}
         />
